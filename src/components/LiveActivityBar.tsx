@@ -46,22 +46,22 @@ export function LiveActivityBar() {
             <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse"></span>
             <span className="text-[10px] font-bold tracking-wider text-primary-400 uppercase">En vivo</span>
           </div>
-          <div className="relative h-6 flex-1 overflow-hidden">
+          <div className="relative h-6 flex-1 overflow-hidden" aria-live="polite">
             {messages.map((m, i) => (
               <div
                 key={i}
-                className={`absolute inset-0 flex items-center gap-2 text-sm text-slate-300 transition-all duration-700 ${
+                className={`absolute inset-0 flex items-center gap-2 text-sm text-neutral-700 transition-all duration-700 ${
                   i === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                 }`}
               >
-                <m.Icon size={14} className="text-primary-400 flex-shrink-0" />
+                <m.Icon size={14} className="text-primary-400 flex-shrink-0" strokeWidth={1.75} />
                 <span className="truncate">{m.text}</span>
               </div>
             ))}
           </div>
         </div>
         <div className="hidden md:flex items-center gap-2 flex-shrink-0">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Ahorrado hoy</span>
+          <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500">Ahorrado hoy</span>
           <span
             key={saved}
             className="text-sm font-bold text-primary-300 tabular-nums"

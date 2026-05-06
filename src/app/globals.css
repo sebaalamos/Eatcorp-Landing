@@ -6,10 +6,7 @@
  * FUENTE DE VERDAD: https://github.com/sebaalamos/EatCorp/blob/main/docs/BRAND.md
  *
  * Cuando los tokens se actualicen en el repo de la app (eatcorp/src/index.css),
- * sincronizar este archivo manualmente. Hoy los componentes del landing usan
- * mayoritariamente clases Tailwind nativas (emerald-*, amber-*, slate-*) en
- * vez de estos tokens. Mantenemos los tokens disponibles para refactor futuro
- * — alinear emerald-* → primary-*, amber-* → warning-*, etc.
+ * sincronizar este archivo manualmente.
  */
 
 @theme {
@@ -47,9 +44,18 @@
   --color-accent-900: #5a2316;
 
   /* ─── Semánticos ─── */
+  --color-success-50:  #f0fdf4;
+  --color-success-300: #86efac;
   --color-success-500: #16a34a;
+  --color-success-700: #166534;
+  --color-warning-50:  #fffbeb;
+  --color-warning-300: #fcd34d;
   --color-warning-500: #d97706;
+  --color-warning-700: #92400e;
+  --color-danger-50:   #fef2f2;
+  --color-danger-300:  #fca5a5;
   --color-danger-500:  #dc2626;
+  --color-danger-700:  #991b1b;
 
   /* ─── Sub-marca por app (mismas que app.eatcorp.cl) ─── */
   --color-app-buyeat:      #10b981;
@@ -62,9 +68,7 @@
 
   /* ─── Neutrals (invertidos — landing en dark fijo) ───
      Espejan los valores que la app autenticada usa bajo
-     [data-theme="dark"]. Si en el futuro queremos toggle
-     light/dark, mover estos a un selector y restaurar los
-     valores originales en :root. */
+     [data-theme="dark"]. El landing es siempre dark. */
   --color-neutral-0:   #111827;
   --color-neutral-50:  #0d1117;
   --color-neutral-100: #161d2a;
@@ -79,6 +83,32 @@
 
   /* ─── Tipografía ─── */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* ─── Tipografía landing (clamp para responsive sin breakpoints) ─── */
+  --text-display: clamp(2.5rem, 6vw, 5rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.025em;
+  --text-h1-marketing: clamp(1.75rem, 3.5vw, 2.75rem);
+  --text-h1-marketing--line-height: 1.15;
+  --text-h1-marketing--letter-spacing: -0.02em;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+
+  /* ─── Sombras de marca ─── */
+  --shadow-wow: 0 24px 80px -16px rgba(16, 185, 129, 0.55), 0 0 0 1px rgba(16, 185, 129, 0.15);
+  --shadow-wow-soft: 0 16px 48px -16px rgba(16, 185, 129, 0.35);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+
+  /* ─── Radii ─── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  /* ─── Easing ─── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 html {
@@ -88,16 +118,51 @@ html {
 }
 
 body {
-  background: #020617;
+  background:
+    radial-gradient(ellipse 1200px 600px at 50% -100px, rgba(16, 185, 129, 0.12), transparent 60%),
+    radial-gradient(ellipse 800px 400px at 100% 30%, rgba(225, 98, 61, 0.06), transparent 60%),
+    #020617;
+  background-attachment: fixed;
   color: #f1f5f9;
   font-family: var(--font-sans);
   letter-spacing: -0.01em;
+  font-feature-settings: "cv11", "ss01", "ss03";
 }
 
 h1, h2, h3 {
   letter-spacing: -0.02em;
 }
 
+/* ───────────────────────────── Signature corner (terracota) ─────────────────────────────
+   Corte diagonal terracota del DNA gráfico (BRAND.md §Primitivas).
+   Aplicar como utility a contenedores rounded — imita el cut del isotipo.
+*/
+.signature-corner {
+  position: relative;
+  isolation: isolate;
+}
+.signature-corner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(225deg, var(--color-accent-500) 0 50%, transparent 50%);
+  pointer-events: none;
+  z-index: 2;
+}
+.signature-corner-sm::after { width: 16px; height: 16px; }
+.signature-corner-lg::after { width: 44px; height: 44px; }
+
+/* ───────────────────────────── Focus visible global ───────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--color-primary-400);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ───────────────────────────── Animaciones ───────────────────────────── */
 @keyframes shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
@@ -127,6 +192,21 @@ h1, h2, h3 {
   0% { transform: scale(1); }
   20% { transform: scale(1.06); }
   100% { transform: scale(1); }
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

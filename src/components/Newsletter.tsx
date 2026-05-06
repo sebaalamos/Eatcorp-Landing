@@ -44,7 +44,7 @@ export function Newsletter() {
             Newsletter
           </div>
           <h3 className="text-2xl font-bold text-white mb-1">Mantente al día</h3>
-          <p className="text-sm text-slate-300">
+          <p className="text-sm text-neutral-700">
             Tips, casos de éxito y novedades para restoranes. Una vez al mes, sin spam.
           </p>
         </div>
@@ -58,7 +58,7 @@ export function Newsletter() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={status === 'loading' || status === 'success'}
-              className="flex-1 px-4 py-3 rounded-lg bg-brand-800 border border-brand-700 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary-500 focus:bg-brand-900 transition disabled:opacity-60"
+              className="flex-1 px-4 py-3 rounded-lg bg-brand-800 border border-brand-700 text-white placeholder:text-neutral-500 focus:outline-none focus:border-primary-500 focus:bg-brand-900 transition disabled:opacity-60"
             />
             <button
               type="submit"

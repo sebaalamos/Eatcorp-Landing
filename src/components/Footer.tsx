@@ -6,51 +6,53 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-brand-950 text-slate-400 py-16 px-4 border-t border-slate-800">
+    <footer className="bg-brand-950 text-neutral-700 py-16 px-4 border-t border-brand-800">
       <div className="max-w-6xl mx-auto">
         <Newsletter />
 
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-1">
-            <Logo size={36} textColor="text-white" />
-            <p className="text-sm mt-4 leading-relaxed">
-              Plataforma de gestión integral para restoranes en LatAm.
+            <Logo size={36} textColor="text-neutral-900" />
+            <p className="text-sm mt-4 leading-relaxed text-neutral-700">
+              El motor de los restoranes en Chile y LatAm.
             </p>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Producto</h4>
+            <h4 className="text-neutral-900 font-semibold mb-4 text-xs uppercase tracking-[0.16em]">Producto</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#features" className="hover:text-white transition">Apps</a></li>
-              <li><a href="#pricing" className="hover:text-white transition">Precios</a></li>
-              <li><a href="#faq" className="hover:text-white transition">FAQ</a></li>
-              <li><a href="https://app.eatcorp.cl" className="hover:text-white transition">Iniciar sesión</a></li>
+              <li><a href="#features" className="hover:text-neutral-900 transition">Apps</a></li>
+              <li><a href="#pricing" className="hover:text-neutral-900 transition">Precios</a></li>
+              <li><a href="#faq" className="hover:text-neutral-900 transition">FAQ</a></li>
+              <li><a href="https://app.eatcorp.cl" className="hover:text-neutral-900 transition">Iniciar sesión</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Empresa</h4>
+            <h4 className="text-neutral-900 font-semibold mb-4 text-xs uppercase tracking-[0.16em]">Empresa</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="mailto:hola@eatcorp.cl" className="hover:text-white transition">Contacto</a></li>
-              <li><a href="#" className="hover:text-white transition">Sobre nosotros</a></li>
-              <li><a href="#" className="hover:text-white transition">Casos de éxito</a></li>
-              <li><a href="#" className="hover:text-white transition">Blog</a></li>
+              <li><a href="mailto:hola@eatcorp.cl" className="hover:text-neutral-900 transition">Contacto</a></li>
+              <li><a href="#" className="hover:text-neutral-900 transition">Sobre nosotros</a></li>
+              <li><a href="#" className="hover:text-neutral-900 transition">Casos de éxito</a></li>
+              <li><a href="#" className="hover:text-neutral-900 transition">Blog</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Legal</h4>
+            <h4 className="text-neutral-900 font-semibold mb-4 text-xs uppercase tracking-[0.16em]">Legal</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition">Privacidad</a></li>
-              <li><a href="#" className="hover:text-white transition">Términos</a></li>
-              <li><a href="#" className="hover:text-white transition">Procesamiento de datos</a></li>
+              <li><a href="#" className="hover:text-neutral-900 transition">Privacidad</a></li>
+              <li><a href="#" className="hover:text-neutral-900 transition">Términos</a></li>
+              <li><a href="#" className="hover:text-neutral-900 transition">Procesamiento de datos</a></li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-brand-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-          <p className="flex items-center gap-1.5">&copy; {currentYear} EatCorp. Hecho con <Leaf size={13} className="text-primary-400" /> para LatAm.</p>
+        <div className="pt-8 border-t border-brand-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-600">
+          <p className="flex items-center gap-1.5">
+            &copy; {currentYear} EatCorp. Hecho con <Leaf size={13} className="text-primary-400" /> para LatAm.
+          </p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition">Instagram</a>
-            <a href="#" className="hover:text-white transition">LinkedIn</a>
-            <a href="https://app.eatcorp.cl" className="hover:text-white transition">app.eatcorp.cl ↗</a>
+            <a href="#" className="hover:text-neutral-900 transition">Instagram</a>
+            <a href="#" className="hover:text-neutral-900 transition">LinkedIn</a>
+            <a href="https://app.eatcorp.cl" className="hover:text-neutral-900 transition">app.eatcorp.cl ↗</a>
           </div>
         </div>
       </div>

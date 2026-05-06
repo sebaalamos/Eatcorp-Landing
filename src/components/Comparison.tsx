@@ -19,17 +19,17 @@ const columns = [
     key: 'manual' as const,
     title: 'Excel + WhatsApp',
     subtitle: 'El método tradicional',
-    accent: 'border-slate-700 bg-brand-800/40',
-    titleColor: 'text-slate-300',
-    subColor: 'text-slate-500',
+    accent: 'border-brand-700 bg-brand-800/40',
+    titleColor: 'text-neutral-700',
+    subColor: 'text-neutral-500',
   },
   {
     key: 'generic' as const,
     title: 'Software genérico',
     subtitle: 'ERP, CRM globales',
-    accent: 'border-slate-700 bg-brand-800/40',
-    titleColor: 'text-slate-300',
-    subColor: 'text-slate-500',
+    accent: 'border-brand-700 bg-brand-800/40',
+    titleColor: 'text-neutral-700',
+    subColor: 'text-neutral-500',
   },
   {
     key: 'eatcorp' as const,
@@ -72,19 +72,19 @@ export function Comparison() {
           <div className="inline-block px-3 py-1 mb-3 rounded-full bg-primary-500/15 text-primary-300 text-xs font-semibold uppercase tracking-wide border border-primary-500/30">
             Comparativa
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
             ¿Por qué EatCorp?
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
             Comparado con cómo se opera hoy en la mayoría de restoranes.
           </p>
         </div>
 
-        <div className="hidden md:block bg-brand-950 rounded-2xl border border-slate-800 shadow-lg overflow-hidden">
+        <div className="hidden md:block bg-brand-950 rounded-2xl border border-brand-800 shadow-lg overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-slate-800 bg-brand-800/60">
-                <th className="text-left py-4 px-6 text-sm font-semibold text-slate-300 w-2/5">Característica</th>
+              <tr className="border-b border-brand-800 bg-brand-800/60">
+                <th className="text-left py-4 px-6 text-sm font-semibold text-neutral-700 w-2/5">Característica</th>
                 {columns.map((c) => (
                   <th
                     key={c.key}
@@ -98,8 +98,8 @@ export function Comparison() {
             </thead>
             <tbody>
               {rows.map((r, i) => (
-                <tr key={r.feature} className={`border-b border-slate-800 ${i % 2 === 1 ? 'bg-brand-800/30' : ''}`}>
-                  <td className="py-4 px-6 text-sm text-slate-200 font-medium">{r.feature}</td>
+                <tr key={r.feature} className={`border-b border-brand-800 ${i % 2 === 1 ? 'bg-brand-800/30' : ''}`}>
+                  <td className="py-4 px-6 text-sm text-neutral-800 font-medium">{r.feature}</td>
                   <td className="py-4 px-3"><div className="flex justify-center"><CellIcon value={r.manual} /></div></td>
                   <td className="py-4 px-3"><div className="flex justify-center"><CellIcon value={r.generic} /></div></td>
                   <td className="py-4 px-3 bg-primary-500/10"><div className="flex justify-center"><CellIcon value={r.eatcorp} /></div></td>
@@ -113,22 +113,22 @@ export function Comparison() {
           {columns.map((c) => (
             <div
               key={c.key}
-              className={`relative rounded-2xl border-2 shadow-md overflow-hidden ${c.highlight ? 'border-primary-500/50 bg-brand-800' : 'border-slate-800 bg-brand-900'}`}
+              className={`relative rounded-2xl border-2 shadow-md overflow-hidden ${c.highlight ? 'border-primary-500/50 bg-brand-800' : 'border-brand-800 bg-brand-900'}`}
             >
               {c.highlight && (
                 <div className="absolute top-3 right-3 text-[9px] font-bold uppercase tracking-wider bg-primary-600 text-white px-2 py-0.5 rounded-full">
                   Recomendado
                 </div>
               )}
-              <div className={`px-5 py-4 border-b ${c.highlight ? 'bg-primary-500/15 border-primary-500/30' : 'bg-brand-800/60 border-slate-800'}`}>
+              <div className={`px-5 py-4 border-b ${c.highlight ? 'bg-primary-500/15 border-primary-500/30' : 'bg-brand-800/60 border-brand-800'}`}>
                 <h3 className={`text-lg font-bold ${c.titleColor}`}>{c.title}</h3>
                 <p className={`text-[11px] uppercase tracking-wider font-semibold ${c.subColor}`}>{c.subtitle}</p>
               </div>
-              <ul className="divide-y divide-slate-800">
+              <ul className="divide-y divide-brand-800">
                 {rows.map((r) => (
                   <li key={r.feature} className="flex items-center gap-3 px-5 py-3">
                     <CellIcon value={r[c.key]} size="sm" />
-                    <span className="text-sm text-slate-300 flex-1 leading-snug">{r.feature}</span>
+                    <span className="text-sm text-neutral-700 flex-1 leading-snug">{r.feature}</span>
                   </li>
                 ))}
               </ul>
@@ -136,7 +136,7 @@ export function Comparison() {
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 text-xs text-slate-400">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 text-xs text-neutral-600">
           <div className="flex items-center gap-1.5"><Check size={14} className="text-primary-300" /> Sí</div>
           <div className="flex items-center gap-1.5"><Minus size={14} className="text-amber-300" /> Parcial</div>
           <div className="flex items-center gap-1.5"><X size={14} className="text-red-400" /> No</div>

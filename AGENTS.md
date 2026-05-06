@@ -26,7 +26,7 @@ Este repo es **`eatcorp-landing`** (Next.js, dominio `eatcorp.cl`). La fuente de
 | "Quiero cambiar el verde de marca" | Editar `src/index.css` en `EatCorp` primero, luego sincronizar acá. |
 | "Quiero un nuevo color de acento" | Discutir con el dueño antes — la paleta es bi-color signature (esmeralda + terracota), no se agrega liberalmente. |
 | "Mi componente necesita un color por app" | Usar `--color-app-<slug>` definido en `globals.css`. |
-| "Necesito una fuente serif para el hero" | Cargar `Fraunces` con `next/font/google` solo si es necesario. NO se carga global por defecto para no inflar bundle. |
+| "Necesito una fuente serif para el hero" | **No.** EatCorp usa solo Inter en app y landing (decisión 2026-05-06, ver BRAND.md remoto §Tipografía). Jerarquía por peso/tamaño/color, no por familia. |
 | "El favicon se ve raro" | Copiar `public/favicon.svg` desde el repo `EatCorp` (es la versión oficial). |
 
 ## Reglas de trabajo (heredadas del repo principal)

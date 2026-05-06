@@ -7,28 +7,30 @@ import './globals.css'
 const inter = Inter({
   variable: '--font-sans',
   subsets: ['latin'],
+  display: 'swap',
 })
 
 export const viewport: Viewport = {
   themeColor: '#020617',
 }
 
-const TITLE = 'EatCorp — La plataforma todo-en-uno para tu restorán'
+const TITLE = 'EatCorp — El motor de tu restaurante'
 const DESCRIPTION =
-  'Plataforma SaaS para restoranes en LatAm: compras, tareas, redes sociales con IA, reservas y mantención. Reemplaza el Excel y los grupos de WhatsApp. En castellano, listo en 30 minutos.'
+  'Compras, tareas, redes sociales con IA, mantención y más en una sola plataforma. En castellano, hecha para restoranes en Chile y LatAm. Activa tu restorán en 30 minutos.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://eatcorp.cl'),
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
-    'software restorán LatAm',
-    'gestión restaurante',
+    'software restorán Chile',
+    'gestión restaurante LatAm',
     'compras restaurante',
     'tareas cocina',
     'redes sociales restaurante IA',
     'mantención restaurante',
     'reservas restaurante',
+    'plataforma restaurante',
   ],
   authors: [{ name: 'EatCorp' }],
   creator: 'EatCorp',
