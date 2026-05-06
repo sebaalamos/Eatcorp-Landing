@@ -7,28 +7,28 @@ import { LeadModal } from './LeadModal'
 type Client = {
   name: string
   tag: string
-  instagram: string
   logo: string
   width: number
   height: number
+  logoBgClass: string
 }
 
 const clients: Client[] = [
   {
     name: 'El Toro',
     tag: 'Vitacura · Santiago',
-    instagram: 'https://instagram.com/eltoro.cl',
     logo: '/logo-eltoro.png',
     width: 820,
     height: 340,
+    logoBgClass: 'bg-[#1a0404]',
   },
   {
     name: 'Tigre',
     tag: 'Vitacura · Santiago',
-    instagram: 'https://instagram.com/tigre.cl',
     logo: '/logo-tigre.png',
     width: 729,
     height: 190,
+    logoBgClass: 'bg-[#0a3424]',
   },
 ]
 
@@ -48,15 +48,11 @@ export function ClientLogos() {
 
         <div className="flex flex-wrap justify-center items-center gap-4 md:gap-5">
           {clients.map((c) => (
-            <a
+            <div
               key={c.name}
-              href={c.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${c.name} — ${c.tag}`}
-              className="group flex items-center gap-4 pl-4 pr-5 py-3 rounded-xl bg-brand-800/50 border border-brand-700 hover:border-primary-500/50 hover:bg-brand-800 hover:-translate-y-0.5 transition-all"
+              className="flex items-center gap-4 pl-4 pr-5 py-3 rounded-xl bg-brand-800/50 border border-brand-700"
             >
-              <div className="w-14 h-14 rounded-lg bg-white/95 flex items-center justify-center flex-shrink-0 overflow-hidden p-1.5 ring-1 ring-brand-700/50 group-hover:ring-primary-500/40 transition">
+              <div className={`w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden p-1.5 ring-1 ring-brand-700/50 ${c.logoBgClass}`}>
                 <Image
                   src={c.logo}
                   alt={`Logo ${c.name}`}
@@ -69,7 +65,7 @@ export function ClientLogos() {
                 <div className="text-sm font-semibold text-neutral-900 leading-tight">{c.name}</div>
                 <div className="text-[11px] text-neutral-600 mt-0.5">{c.tag}</div>
               </div>
-            </a>
+            </div>
           ))}
           <button
             type="button"
