@@ -65,7 +65,7 @@ export function ComingSoonGrid() {
             return (
               <div
                 key={app.name}
-                className={`group relative bg-brand-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-slate-600 hover:-translate-y-1 transition-all duration-300 hover:shadow-xl`}
+                className={`group relative bg-brand-900 rounded-2xl border border-brand-800 overflow-hidden hover:border-slate-600 hover:-translate-y-1 transition-all duration-300 hover:shadow-xl`}
                 style={{ animation: `slide-up 0.5s ease-out ${idx * 0.1}s backwards` }}
               >
                 <div className={`relative h-1 bg-gradient-to-r ${app.color} overflow-hidden`}>
@@ -86,12 +86,12 @@ export function ComingSoonGrid() {
                     <Icon size={22} />
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-100 mb-1">{app.name}</h3>
-                  <p className="text-sm text-slate-400 leading-snug mb-4">{app.description}</p>
+                  <h3 className="text-xl font-bold text-neutral-900 mb-1">{app.name}</h3>
+                  <p className="text-sm text-neutral-600 leading-snug mb-4">{app.description}</p>
 
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between text-[10px]">
-                      <span className="font-semibold uppercase tracking-wider text-slate-500">Avance</span>
+                      <span className="font-semibold uppercase tracking-wider text-neutral-500">Avance</span>
                       <span className={`font-bold tabular-nums ${app.accentText}`}>{app.progress}%</span>
                     </div>
                     <div className="h-1.5 bg-brand-800 rounded-full overflow-hidden">
@@ -102,7 +102,7 @@ export function ComingSoonGrid() {
                         <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.5)_50%,transparent_100%)] bg-[length:200%_100%] animate-[shimmer_2s_ease-in-out_infinite]"></div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] text-slate-400">
+                    <div className="flex items-center gap-1.5 text-[10px] text-neutral-600">
                       <span className={`w-1.5 h-1.5 rounded-full ${app.accentBg.replace('/15', '/60')} animate-pulse`}></span>
                       <span>{app.vibe}</span>
                     </div>
@@ -113,7 +113,7 @@ export function ComingSoonGrid() {
           })}
       </div>
 
-      <p className="text-center text-sm text-slate-500 mt-10">
+      <p className="text-center text-sm text-neutral-500 mt-10">
         ¿Tienes una idea? <a href="mailto:hola@eatcorp.cl" className="text-primary-300 hover:text-primary-200 hover:underline font-medium">Cuéntanos</a> qué app necesitas.
       </p>
     </>
@@ -130,14 +130,14 @@ function Blueprint({ type, color }: { type: Upcoming['blueprint']; color: string
           {Array.from({ length: 9 }).map((_, i) => (
             <div
               key={i}
-              className="aspect-square rounded-md border border-slate-700 bg-brand-900/60 flex items-center justify-center"
+              className="aspect-square rounded-md border border-brand-700 bg-brand-900/60 flex items-center justify-center"
               style={{ animation: `slide-up 0.4s ease-out ${i * 0.04}s backwards` }}
             >
               <div className="w-1.5 h-1.5 rounded-full" style={{ background: accent, opacity: 0.7 }}></div>
             </div>
           ))}
         </div>
-        <div className="mt-1.5 h-3 rounded-md border border-slate-700 bg-brand-900/60 flex items-center justify-end px-1.5">
+        <div className="mt-1.5 h-3 rounded-md border border-brand-700 bg-brand-900/60 flex items-center justify-end px-1.5">
           <div className="h-1 w-10 rounded" style={{ background: accent, opacity: 0.8 }}></div>
         </div>
       </div>
@@ -151,7 +151,7 @@ function Blueprint({ type, color }: { type: Upcoming['blueprint']; color: string
           {Array.from({ length: 4 }).map((_, i) => (
             <div
               key={i}
-              className="rounded-md border border-slate-700 bg-brand-900/60 p-1.5 flex gap-1.5"
+              className="rounded-md border border-brand-700 bg-brand-900/60 p-1.5 flex gap-1.5"
               style={{ animation: `slide-up 0.4s ease-out ${i * 0.06}s backwards` }}
             >
               <div className="w-7 h-7 rounded" style={{ background: accent, opacity: 0.4 }}></div>
@@ -171,7 +171,7 @@ function Blueprint({ type, color }: { type: Upcoming['blueprint']; color: string
   return (
     <div className="h-32 px-5 pt-5 pb-2 relative overflow-hidden bg-gradient-to-b from-brand-800/40 to-transparent">
       <div className="h-full flex flex-col">
-        <div className="flex justify-between items-end h-16 gap-1 border-b border-slate-700 pb-0.5">
+        <div className="flex justify-between items-end h-16 gap-1 border-b border-brand-700 pb-0.5">
           {[40, 65, 50, 80, 35, 90, 60].map((h, i) => (
             <div
               key={i}
@@ -189,7 +189,7 @@ function Blueprint({ type, color }: { type: Upcoming['blueprint']; color: string
           {[1, 2, 3].map((i) => (
             <div
               key={i}
-              className="flex-1 h-3 rounded border border-slate-700 bg-brand-900/60 flex items-center justify-center"
+              className="flex-1 h-3 rounded border border-brand-700 bg-brand-900/60 flex items-center justify-center"
             >
               <div className="w-3 h-1 rounded" style={{ background: accent, opacity: 0.6 }}></div>
             </div>

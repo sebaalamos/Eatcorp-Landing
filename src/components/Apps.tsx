@@ -50,15 +50,15 @@ export function AppsGrid() {
             <AppPreview type={app.preview} accent={app.accent} />
             <div className="p-5">
               {app.external && (
-                <span className="absolute top-3 right-3 text-[10px] font-semibold uppercase tracking-wide text-slate-400 bg-brand-950/80 border border-slate-700 px-2 py-0.5 rounded-full">Externa</span>
+                <span className="absolute top-3 right-3 text-[10px] font-semibold uppercase tracking-wide text-neutral-600 bg-brand-950/80 border border-brand-700 px-2 py-0.5 rounded-full">Externa</span>
               )}
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 rounded-lg bg-brand-950/60 shadow-sm border border-current/30">
                   <Icon size={20} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-100">{app.name}</h3>
-                  <p className="text-[11px] text-slate-400">{app.description}</p>
+                  <h3 className="font-bold text-neutral-900">{app.name}</h3>
+                  <p className="text-[11px] text-neutral-600">{app.description}</p>
                 </div>
               </div>
               <div className="mt-3 inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide bg-brand-950/60 backdrop-blur px-2 py-1 rounded-full">

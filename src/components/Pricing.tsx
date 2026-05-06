@@ -97,18 +97,18 @@ export function Pricing() {
           <div className="inline-block px-3 py-1 mb-3 rounded-full bg-primary-500/15 text-primary-300 text-xs font-semibold uppercase tracking-wide border border-primary-500/30">
             Precios simples
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
             Elige el plan de tu restorán
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-neutral-600 max-w-2xl mx-auto mb-8">
             14 días gratis sin tarjeta de crédito. Cancela cuando quieras.
           </p>
 
-          <div className="inline-flex items-center gap-3 bg-brand-900 border border-slate-700 rounded-full p-1 shadow-sm">
+          <div className="inline-flex items-center gap-3 bg-brand-900 border border-brand-700 rounded-full p-1 shadow-sm">
             <button
               onClick={() => setAnnual(false)}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition ${
-                !annual ? 'bg-primary-600 text-white shadow shadow-primary-600/30' : 'text-slate-300 hover:text-white'
+                !annual ? 'bg-primary-600 text-white shadow shadow-primary-600/30' : 'text-neutral-700 hover:text-white'
               }`}
             >
               Mensual
@@ -116,7 +116,7 @@ export function Pricing() {
             <button
               onClick={() => setAnnual(true)}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition flex items-center gap-2 ${
-                annual ? 'bg-primary-600 text-white shadow shadow-primary-600/30' : 'text-slate-300 hover:text-white'
+                annual ? 'bg-primary-600 text-white shadow shadow-primary-600/30' : 'text-neutral-700 hover:text-white'
               }`}
             >
               Anual
@@ -140,7 +140,7 @@ export function Pricing() {
                 className={`relative rounded-2xl p-8 flex flex-col ${
                   plan.popular
                     ? 'bg-gradient-to-br from-brand-800 to-brand-900 text-white border-2 border-primary-500 shadow-2xl shadow-primary-500/20 md:scale-105'
-                    : 'bg-brand-900 border border-slate-800'
+                    : 'bg-brand-900 border border-brand-800'
                 }`}
               >
                 {plan.popular && (
@@ -151,10 +151,10 @@ export function Pricing() {
                 )}
 
                 <div>
-                  <h3 className={`text-2xl font-bold mb-2 ${plan.popular ? 'text-white' : 'text-slate-100'}`}>
+                  <h3 className={`text-2xl font-bold mb-2 ${plan.popular ? 'text-white' : 'text-neutral-900'}`}>
                     {plan.name}
                   </h3>
-                  <p className={`text-sm mb-6 ${plan.popular ? 'text-slate-300' : 'text-slate-400'}`}>
+                  <p className={`text-sm mb-6 ${plan.popular ? 'text-neutral-700' : 'text-neutral-600'}`}>
                     {plan.description}
                   </p>
 
@@ -162,10 +162,10 @@ export function Pricing() {
                     {plan.monthly > 0 ? (
                       <>
                         <div className="flex items-baseline gap-1">
-                          <span className={`text-4xl font-bold tabular-nums ${plan.popular ? 'text-white' : 'text-slate-100'}`}>
+                          <span className={`text-4xl font-bold tabular-nums ${plan.popular ? 'text-white' : 'text-neutral-900'}`}>
                             {formatUSD(price)}
                           </span>
-                          <span className={`text-sm ${plan.popular ? 'text-slate-400' : 'text-slate-500'}`}>
+                          <span className={`text-sm ${plan.popular ? 'text-neutral-600' : 'text-neutral-500'}`}>
                             USD/mes
                           </span>
                         </div>
@@ -176,7 +176,7 @@ export function Pricing() {
                         )}
                       </>
                     ) : (
-                      <div className={`text-3xl font-bold ${plan.popular ? 'text-white' : 'text-slate-100'}`}>
+                      <div className={`text-3xl font-bold ${plan.popular ? 'text-white' : 'text-neutral-900'}`}>
                         Conversemos
                       </div>
                     )}
@@ -190,7 +190,7 @@ export function Pricing() {
                         size={16}
                         className={`flex-shrink-0 mt-0.5 ${plan.popular ? 'text-primary-300' : 'text-primary-400'}`}
                       />
-                      <span className={plan.popular ? 'text-slate-200' : 'text-slate-300'}>{f}</span>
+                      <span className={plan.popular ? 'text-neutral-800' : 'text-neutral-700'}>{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -201,7 +201,7 @@ export function Pricing() {
                   className={`w-full py-3 rounded-lg font-semibold transition ${
                     plan.popular
                       ? 'bg-primary-500 hover:bg-primary-400 text-brand-950 shadow-lg shadow-primary-500/30'
-                      : 'bg-brand-800 hover:bg-brand-700 text-slate-100 border border-slate-700'
+                      : 'bg-brand-800 hover:bg-brand-700 text-neutral-900 border border-brand-700'
                   }`}
                 >
                   {plan.cta}
@@ -211,7 +211,7 @@ export function Pricing() {
           })}
         </div>
 
-        <p className="text-center text-sm text-slate-400 mt-8">
+        <p className="text-center text-sm text-neutral-600 mt-8">
           Todos los planes incluyen actualizaciones automáticas y backups diarios.
         </p>
       </div>

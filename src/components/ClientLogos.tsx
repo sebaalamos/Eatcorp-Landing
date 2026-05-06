@@ -1,51 +1,83 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { LeadModal } from './LeadModal'
 
-const clients = [
-  { name: 'El Toro', tag: 'Vitacura', instagram: 'https://instagram.com/eltoro.cl', initials: 'ET', gradient: 'from-amber-400 to-orange-500' },
-  { name: 'Tigre', tag: 'Vitacura', instagram: 'https://instagram.com/tigre.cl', initials: 'TG', gradient: 'from-primary-400 to-teal-500' },
+type Client = {
+  name: string
+  tag: string
+  logo: string
+  width: number
+  height: number
+  logoBgClass: string
+}
+
+const clients: Client[] = [
+  {
+    name: 'El Toro',
+    tag: 'Vitacura · Santiago',
+    logo: '/logo-eltoro.png',
+    width: 820,
+    height: 340,
+    logoBgClass: 'bg-[#1a0404]',
+  },
+  {
+    name: 'Tigre',
+    tag: 'Vitacura · Santiago',
+    logo: '/logo-tigre.png',
+    width: 729,
+    height: 190,
+    logoBgClass: 'bg-[#0a3424]',
+  },
 ]
 
 export function ClientLogos() {
   const [modalOpen, setModalOpen] = useState(false)
 
   return (
-    <section className="py-12 px-4 bg-brand-900 border-b border-slate-800">
+    <section aria-label="Restoranes que operan con EatCorp" className="py-14 px-4 bg-brand-900/60 border-y border-brand-800">
       <div className="max-w-6xl mx-auto">
-        <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">
-          Restoranes que operan con EatCorp
-        </p>
-        <div className="flex flex-wrap justify-center items-center gap-6">
+        <div className="flex items-center justify-center gap-3 mb-8">
+          <div aria-hidden className="h-px w-10 bg-gradient-to-r from-transparent to-brand-700"></div>
+          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-600">
+            Restoranes que ya operan con EatCorp
+          </p>
+          <div aria-hidden className="h-px w-10 bg-gradient-to-l from-transparent to-brand-700"></div>
+        </div>
+
+        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-5">
           {clients.map((c) => (
-            <a
+            <div
               key={c.name}
-              href={c.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-5 py-3 rounded-xl bg-brand-800/60 border border-slate-700 hover:border-primary-500/40 hover:bg-brand-800 transition-all"
+              className="flex items-center gap-4 pl-4 pr-5 py-3 rounded-xl bg-brand-800/50 border border-brand-700"
             >
-              <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${c.gradient} flex items-center justify-center text-white font-bold text-sm shadow-sm flex-shrink-0`}>
-                {c.initials}
+              <div className={`w-14 h-14 rounded-lg flex items-center justify-center flex-shrink-0 overflow-hidden p-1.5 ring-1 ring-brand-700/50 ${c.logoBgClass}`}>
+                <Image
+                  src={c.logo}
+                  alt={`Logo ${c.name}`}
+                  width={c.width}
+                  height={c.height}
+                  className="max-h-full w-auto object-contain"
+                />
               </div>
-              <div>
-                <div className="text-sm font-semibold text-slate-100">{c.name}</div>
-                <div className="text-[11px] text-slate-400">{c.tag}</div>
+              <div className="text-left">
+                <div className="text-sm font-semibold text-neutral-900 leading-tight">{c.name}</div>
+                <div className="text-[11px] text-neutral-600 mt-0.5">{c.tag}</div>
               </div>
-            </a>
+            </div>
           ))}
           <button
             type="button"
             onClick={() => setModalOpen(true)}
-            className="flex items-center gap-3 px-5 py-3 rounded-xl border border-dashed border-slate-700 hover:border-primary-500/60 text-slate-500 hover:text-primary-300 transition-all"
+            className="group flex items-center gap-3 px-5 py-4 rounded-xl border border-dashed border-brand-700 hover:border-primary-500/60 text-neutral-600 hover:text-primary-300 hover:bg-brand-800/40 transition-all"
           >
-            <div className="w-9 h-9 rounded-full border-2 border-dashed border-slate-600 flex items-center justify-center text-slate-500 text-lg leading-none">
+            <div className="w-9 h-9 rounded-full border-2 border-dashed border-brand-700 group-hover:border-primary-500/60 flex items-center justify-center text-neutral-500 group-hover:text-primary-300 text-lg leading-none transition">
               +
             </div>
             <div className="text-sm font-medium text-left">
-              <div className="text-slate-300">¿Tu restorán acá?</div>
-              <div className="text-[11px] text-slate-500">Escríbenos</div>
+              <div className="text-neutral-700 group-hover:text-neutral-900 transition">¿Tu restorán acá?</div>
+              <div className="text-[11px] text-neutral-500">Escríbenos</div>
             </div>
           </button>
         </div>

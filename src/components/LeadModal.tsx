@@ -91,14 +91,14 @@ export function LeadModal({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md bg-brand-900 border border-slate-700 rounded-2xl shadow-2xl p-6"
+        className="relative w-full max-w-md bg-brand-900 border border-brand-700 rounded-2xl shadow-2xl p-6"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={onClose}
           aria-label="Cerrar"
-          className="absolute top-4 right-4 text-slate-400 hover:text-slate-100 transition"
+          className="absolute top-4 right-4 text-neutral-600 hover:text-neutral-900 transition"
         >
           <X size={20} />
         </button>
@@ -108,8 +108,8 @@ export function LeadModal({
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-500/15 border border-primary-500/30 mb-4">
               <Check size={24} className="text-primary-300" />
             </div>
-            <h3 className="text-xl font-bold text-slate-100 mb-2">¡Recibido!</h3>
-            <p className="text-sm text-slate-300 mb-6">
+            <h3 className="text-xl font-bold text-neutral-900 mb-2">¡Recibido!</h3>
+            <p className="text-sm text-neutral-700 mb-6">
               Te escribimos en menos de 24 horas hábiles.
             </p>
             {successCtaHref && successCtaLabel && (
@@ -123,19 +123,19 @@ export function LeadModal({
             <button
               type="button"
               onClick={onClose}
-              className="block w-full mt-3 text-sm text-slate-400 hover:text-slate-200"
+              className="block w-full mt-3 text-sm text-neutral-600 hover:text-neutral-800"
             >
               Cerrar
             </button>
           </div>
         ) : (
           <>
-            <h3 className="text-xl font-bold text-slate-100 mb-2">{title}</h3>
-            <p className="text-sm text-slate-400 mb-5">{description}</p>
+            <h3 className="text-xl font-bold text-neutral-900 mb-2">{title}</h3>
+            <p className="text-sm text-neutral-600 mb-5">{description}</p>
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wide">
+                <label className="block text-xs font-semibold text-neutral-700 mb-1.5 uppercase tracking-wide">
                   Email
                 </label>
                 <input
@@ -145,13 +145,13 @@ export function LeadModal({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={status === 'loading'}
-                  className="w-full px-4 py-3 rounded-lg bg-brand-800 border border-slate-700 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-primary-500 transition disabled:opacity-60"
+                  className="w-full px-4 py-3 rounded-lg bg-brand-800 border border-brand-700 text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:border-primary-500 transition disabled:opacity-60"
                 />
               </div>
 
               {withMessage && (
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wide">
+                  <label className="block text-xs font-semibold text-neutral-700 mb-1.5 uppercase tracking-wide">
                     Cuéntanos brevemente
                   </label>
                   <textarea
@@ -160,7 +160,7 @@ export function LeadModal({
                     rows={4}
                     disabled={status === 'loading'}
                     placeholder="Cantidad de locales, equipo, qué buscas..."
-                    className="w-full px-4 py-3 rounded-lg bg-brand-800 border border-slate-700 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-primary-500 transition disabled:opacity-60 resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-brand-800 border border-brand-700 text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:border-primary-500 transition disabled:opacity-60 resize-none"
                   />
                 </div>
               )}

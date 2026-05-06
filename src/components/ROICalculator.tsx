@@ -58,18 +58,18 @@ export function ROICalculator() {
           <div className="inline-block px-3 py-1 mb-3 rounded-full bg-primary-500/15 text-primary-300 text-xs font-semibold uppercase tracking-wide border border-primary-500/30">
             Calculadora de ahorro
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
             ¿Cuánto te ahorra EatCorp?
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
             Cuéntanos cómo operas hoy y ve el ahorro estimado en tiempo real.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 bg-brand-900 rounded-2xl shadow-2xl shadow-black/40 border border-slate-800 p-6 md:p-8">
+        <div className="grid lg:grid-cols-2 gap-8 bg-brand-900 rounded-2xl shadow-2xl shadow-black/40 border border-brand-800 p-6 md:p-8">
           <div className="space-y-6">
             <div>
-              <label className="text-sm font-semibold text-slate-200 mb-2 block">¿Cómo operas hoy?</label>
+              <label className="text-sm font-semibold text-neutral-800 mb-2 block">¿Cómo operas hoy?</label>
               <div className="grid grid-cols-3 gap-2">
                 {(['manual', 'mixed', 'software'] as OperationStyle[]).map((s) => (
                   <button
@@ -78,7 +78,7 @@ export function ROICalculator() {
                     className={`text-xs font-semibold py-2.5 px-2 rounded-lg border-2 transition ${
                       style === s
                         ? 'bg-primary-600 text-white border-primary-500 shadow-md shadow-primary-600/30'
-                        : 'bg-brand-800 text-slate-300 border-slate-700 hover:border-slate-500'
+                        : 'bg-brand-800 text-neutral-700 border-brand-700 hover:border-slate-500'
                     }`}
                   >
                     {styleLabel[s]}
@@ -137,7 +137,7 @@ export function ROICalculator() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-brand-950 to-brand-800 rounded-xl p-6 text-white relative overflow-hidden border border-slate-700">
+          <div className="bg-gradient-to-br from-brand-950 to-brand-800 rounded-xl p-6 text-white relative overflow-hidden border border-brand-700">
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/30 rounded-full blur-3xl"></div>
             <div className="relative space-y-5">
               <div>
@@ -155,14 +155,14 @@ export function ROICalculator() {
               </div>
 
               <div className="space-y-2 pt-4 border-t border-brand-700">
-                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Desglose por área</div>
+                <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-600">Desglose por área</div>
                 {breakdown.map((b) => {
                   const Icon = b.icon
                   const percent = (b.value / maxValue) * 100
                   return (
                     <div key={b.label} className="space-y-0.5">
                       <div className="flex items-center justify-between text-xs">
-                        <div className="flex items-center gap-1.5 text-slate-300">
+                        <div className="flex items-center gap-1.5 text-neutral-700">
                           <Icon size={11} />
                           <span>{b.label}</span>
                         </div>
@@ -181,14 +181,14 @@ export function ROICalculator() {
 
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-brand-700">
                 <div>
-                  <div className="flex items-center gap-1.5 text-slate-400 text-[10px] mb-1 uppercase tracking-wider">
+                  <div className="flex items-center gap-1.5 text-neutral-600 text-[10px] mb-1 uppercase tracking-wider">
                     <Clock size={10} />
                     Horas ganadas
                   </div>
                   <div className="text-xl font-bold tabular-nums">{horasMes} hrs/mes</div>
                 </div>
                 <div>
-                  <div className="flex items-center gap-1.5 text-slate-400 text-[10px] mb-1 uppercase tracking-wider">
+                  <div className="flex items-center gap-1.5 text-neutral-600 text-[10px] mb-1 uppercase tracking-wider">
                     <TrendingUp size={10} />
                     Recupero
                   </div>
@@ -196,7 +196,7 @@ export function ROICalculator() {
                 </div>
               </div>
 
-              <div className="text-[10px] text-slate-400 leading-relaxed">
+              <div className="text-[10px] text-neutral-600 leading-relaxed">
                 Cálculo basado en clientes promedio. Ahorro real puede ser mayor según
                 la eficiencia operativa actual y el plan elegido.
               </div>
@@ -225,8 +225,8 @@ function SliderInput({ label, icon: Icon, value, min, max, step, onChange, colSp
   return (
     <div className={colSpan === 2 ? 'col-span-2' : ''}>
       <div className="flex justify-between items-baseline mb-1.5">
-        <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-          <Icon size={12} className="text-slate-400" />
+        <label className="text-xs font-semibold text-neutral-700 flex items-center gap-1.5">
+          <Icon size={12} className="text-neutral-600" />
           {label}
         </label>
         <span className="text-xl font-bold text-primary-300 tabular-nums">{value}</span>
@@ -243,7 +243,7 @@ function SliderInput({ label, icon: Icon, value, min, max, step, onChange, colSp
           background: `linear-gradient(to right, #10b981 0%, #34d399 ${percent}%, #1e293b ${percent}%, #1e293b 100%)`,
         }}
       />
-      <div className="flex justify-between text-[9px] text-slate-500 mt-0.5">
+      <div className="flex justify-between text-[9px] text-neutral-500 mt-0.5">
         <span>{min}</span>
         <span>{max}</span>
       </div>
