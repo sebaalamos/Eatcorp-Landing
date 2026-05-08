@@ -3,8 +3,8 @@ import { Shield, Headset, Zap, Lock } from 'lucide-react'
 const items = [
   { icon: Headset, label: 'Soporte en castellano', sub: 'Respuesta en 24 h hábiles' },
   { icon: Lock, label: 'TLS + RLS', sub: 'Encriptado end-to-end' },
-  { icon: Shield, label: 'Backups diarios', sub: '30 días de retención' },
-  { icon: Zap, label: 'Uptime 99.9%', sub: 'Monitoreo 24/7' },
+  { icon: Shield, label: 'Backups diarios', sub: 'Datos seguros' },
+  { icon: Zap, label: 'Uptime alto', sub: 'Monitoreo activo' },
 ]
 
 const tech = ['Supabase', 'Vercel', 'Resend', 'Sentry']
