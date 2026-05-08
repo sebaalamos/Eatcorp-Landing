@@ -1,19 +1,17 @@
 import { Shield, Headset, Zap, Lock } from 'lucide-react'
 
 const items = [
-  { icon: Headset, label: 'Soporte en castellano', sub: 'Respuesta en 24 h hábiles' },
+  { icon: Headset, label: 'Soporte en español', sub: 'Respuesta en 24 h hábiles' },
   { icon: Lock, label: 'TLS + RLS', sub: 'Encriptado end-to-end' },
   { icon: Shield, label: 'Backups diarios', sub: 'Datos seguros' },
   { icon: Zap, label: 'Uptime alto', sub: 'Monitoreo activo' },
 ]
 
-const tech = ['Supabase', 'Vercel', 'Resend', 'Sentry']
-
 export function TrustBar() {
   return (
     <section className="py-16 px-4 bg-brand-900 border-t border-brand-800">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-4 mb-12">
+        <div className="grid md:grid-cols-4 gap-4">
           {items.map((item) => {
             const Icon = item.icon
             return (
@@ -31,22 +29,6 @@ export function TrustBar() {
               </div>
             )
           })}
-        </div>
-
-        <div className="text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500 mb-4">
-            Construido con tecnología confiable
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-3 opacity-90">
-            {tech.map((t) => (
-              <div
-                key={t}
-                className="font-mono text-xs text-neutral-700 px-3 py-1.5 border border-brand-700 bg-brand-950/40 rounded-md"
-              >
-                {t}
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
