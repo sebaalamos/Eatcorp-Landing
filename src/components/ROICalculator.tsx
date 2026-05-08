@@ -197,8 +197,8 @@ export function ROICalculator() {
               </div>
 
               <div className="text-[10px] text-neutral-600 leading-relaxed">
-                Cálculo basado en clientes promedio. Ahorro real puede ser mayor según
-                la eficiencia operativa actual y el plan elegido.
+                Estimación de referencia, no garantía. El ahorro real depende de
+                la eficiencia operativa actual y de los flujos que actives.
               </div>
             </div>
           </div>
