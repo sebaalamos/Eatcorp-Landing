@@ -6,22 +6,22 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    number: '6',
-    label: 'Apps integradas',
-    description: 'BuyEat, TaskEat, LikeEat, MaintainEat, BookEat y StaffEat — todo conectado.',
+    number: '8',
+    label: 'Apps disponibles',
+    description: 'BuyEat, TaskEat, LikeEat, MaintainEat, EventEat, MenuEat, BookEat y StaffEat — todo conectado.',
   },
   {
-    number: '30 min',
-    label: 'Setup completo',
-    description: 'Activa apps, invita a tu equipo y opera el mismo día.',
+    number: 'Multi-local',
+    label: 'Por diseño',
+    description: 'Cada local con su data aislada y permisos por app, equipo y rol.',
   },
   {
-    number: '14 días',
-    label: 'Gratis',
-    description: 'Sin tarjeta de crédito, sin compromiso, sin letra chica.',
+    number: 'Demo',
+    label: 'Personalizada',
+    description: 'Te guiamos en una llamada para configurar tu primer flujo.',
   },
   {
-    number: '24h',
+    number: 'Hábil',
     label: 'Soporte',
     description: 'En castellano, en horario hábil, con personas reales.',
   },
@@ -43,7 +43,7 @@ export function Stats() {
               ></div>
               <div className="relative">
                 <div
-                  className="font-bold text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-br from-primary-300 to-primary-500 leading-none mb-2 tabular-nums tracking-tight"
+                  className="font-bold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-br from-primary-300 to-primary-500 leading-none mb-2 tabular-nums tracking-tight"
                   style={{ animationDelay: `${i * 80}ms` }}
                 >
                   {number}
