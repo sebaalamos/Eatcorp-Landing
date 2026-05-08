@@ -61,7 +61,7 @@ export function CTA() {
           </button>
         </div>
         <p className="mt-5 text-xs text-neutral-500">
-          14 días gratis · sin tarjeta de crédito · sin instalación
+          Sin tarjeta de crédito · sin instalación · todo en castellano
         </p>
       </div>
 

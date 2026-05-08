@@ -18,23 +18,15 @@ const faqs = [
   },
   {
     q: '¿Necesito ser técnico para usarlo?',
-    a: 'No. Está diseñado pensando en operadores de restoranes, no en programadores. Si sabes usar WhatsApp y Instagram, sabes usar EatCorp. El onboarding completo demora menos de 30 minutos.',
+    a: 'No. Está diseñado pensando en operadores de restoranes, no en programadores. Si sabes usar WhatsApp y Instagram, sabes usar EatCorp.',
   },
   {
-    q: '¿Pueden importar mi contabilidad o data actual?',
-    a: 'Sí. Tenemos importadores para Excel, Google Sheets, Defontana y otros sistemas comunes del rubro. En el plan Pro y Enterprise el equipo de EatCorp te ayuda con la importación inicial sin costo adicional.',
+    q: '¿Pueden importar mi data actual?',
+    a: 'Sí. Trabajamos con planillas de Excel y Google Sheets para subir proveedores, productos, contactos y otros catálogos al iniciar. Si tienes un sistema específico, escríbenos y vemos la mejor manera de migrar tu data.',
   },
   {
     q: '¿Cuántos usuarios puedo tener?',
-    a: 'Depende del plan. Starter incluye 5 usuarios, Pro hasta 25, Enterprise ilimitado. Cada usuario puede tener distintos roles y accesos por app — el cocinero solo ve TaskEat, el admin ve todo. Puedes agregar/quitar usuarios cuando quieras.',
-  },
-  {
-    q: '¿Cómo se paga? ¿Hay contratos largos?',
-    a: 'Mensual o anual, lo que prefieras. Aceptamos transferencia, tarjeta de crédito y débito. Cancelas cuando quieras sin letra chica ni penalidades. El plan anual viene con 20% de descuento.',
-  },
-  {
-    q: '¿Hay periodo de prueba?',
-    a: '14 días gratis sin tarjeta de crédito. Acceso completo a todas las funcionalidades. Si en 14 días no estás convencido, no pasa nada — sin cobros automáticos ni sorpresas.',
+    a: 'No hay un tope rígido. Cada usuario tiene distintos roles y accesos por app — el cocinero solo ve TaskEat, el admin ve todo. Puedes agregar y quitar usuarios cuando quieras.',
   },
 ]
 

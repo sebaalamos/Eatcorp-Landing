@@ -7,7 +7,6 @@ import { Logo } from './Logo'
 
 const navLinks = [
   { href: '#features', label: 'Apps' },
-  { href: '#pricing', label: 'Precios' },
   { href: '#faq', label: 'FAQ' },
   { href: '#contacto', label: 'Contacto' },
 ]

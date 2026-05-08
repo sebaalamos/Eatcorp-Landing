@@ -85,7 +85,7 @@ export function Hero() {
         </div>
 
         <p className="text-xs text-neutral-500 mb-14">
-          14 días gratis · sin tarjeta · sin instalación
+          Sin instalación · sin tarjeta de crédito · todo en castellano
         </p>
 
         <div className="relative max-w-5xl mx-auto">

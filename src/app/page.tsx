@@ -12,7 +12,6 @@ import { ADayWithEatCorp } from '@/components/ADayWithEatCorp'
 import { ROICalculator } from '@/components/ROICalculator'
 import { Comparison } from '@/components/Comparison'
 import { Testimonials } from '@/components/Testimonials'
-import { Pricing } from '@/components/Pricing'
 import { FAQ } from '@/components/FAQ'
 import { Stats } from '@/components/Stats'
 import { TrustBar } from '@/components/TrustBar'
@@ -38,7 +37,6 @@ export default function Home() {
       <ROICalculator />
       <Comparison />
       <Testimonials />
-      <Pricing />
       <FAQ />
       <Stats />
       <TrustBar />
