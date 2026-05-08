@@ -61,7 +61,7 @@ export function Hero() {
 
         <p className="text-lg md:text-xl text-neutral-700 mb-10 max-w-2xl mx-auto leading-relaxed">
           Compras, tareas, redes sociales con IA y mantención en una sola plataforma.
-          En castellano, lista en 30 minutos.
+          En español, lista en 30 minutos.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4 px-6 sm:px-0">
@@ -85,7 +85,7 @@ export function Hero() {
         </div>
 
         <p className="text-xs text-neutral-500 mb-14">
-          Sin instalación · sin tarjeta de crédito · todo en castellano
+          Sin instalación · sin tarjeta de crédito · todo en español
         </p>
 
         <div className="relative max-w-5xl mx-auto">

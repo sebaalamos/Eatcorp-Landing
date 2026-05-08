@@ -61,7 +61,7 @@ export function CTA() {
           </button>
         </div>
         <p className="mt-5 text-xs text-neutral-500">
-          Sin tarjeta de crédito · sin instalación · todo en castellano
+          Sin tarjeta de crédito · sin instalación · todo en español
         </p>
       </div>
 

@@ -16,7 +16,7 @@ export const viewport: Viewport = {
 
 const TITLE = 'EatCorp — El motor de tu restaurante'
 const DESCRIPTION =
-  'Compras, tareas, redes sociales con IA, mantención y más en una sola plataforma. En castellano, hecha para restoranes en Chile y LatAm. Activa tu restorán en 30 minutos.'
+  'Compras, tareas, redes sociales con IA, mantención y más en una sola plataforma. En español, hecha para restoranes en Chile y LatAm. Activa tu restorán en 30 minutos.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://eatcorp.cl'),

@@ -23,7 +23,7 @@ const stats: Stat[] = [
   {
     number: 'Hábil',
     label: 'Soporte',
-    description: 'En castellano, en horario hábil, con personas reales.',
+    description: 'En español, en horario hábil, con personas reales.',
   },
 ]
 
