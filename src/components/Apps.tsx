@@ -1,6 +1,6 @@
 'use client'
 
-import { ShoppingCart, CheckSquare, Share2, Wrench, Calendar, Users, Camera } from 'lucide-react'
+import { ShoppingCart, CheckSquare, Share2, Wrench, Calendar, Users, Camera, PartyPopper, BookOpen } from 'lucide-react'
 
 type AppDef = {
   id: string
@@ -8,9 +8,10 @@ type AppDef = {
   name: string
   description: string
   metric: string
-  accent: 'blue' | 'emerald' | 'pink' | 'amber' | 'cyan' | 'violet'
+  accent: 'blue' | 'emerald' | 'pink' | 'amber' | 'cyan' | 'violet' | 'rose' | 'orange'
   external: boolean
-  preview: 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster'
+  externalUrl?: string
+  preview: 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu'
 }
 
 const apps: AppDef[] = [
@@ -18,8 +19,10 @@ const apps: AppDef[] = [
   { id: 'taskeat', icon: CheckSquare, name: 'TaskEat', description: 'Tareas y equipos', metric: 'Visibilidad híbrida', accent: 'emerald', external: false, preview: 'kanban' },
   { id: 'likeeat', icon: Share2, name: 'LikeEat', description: 'RRSS con IA', metric: 'Captions en 3s', accent: 'pink', external: false, preview: 'post' },
   { id: 'maintaineat', icon: Wrench, name: 'MaintainEat', description: 'Activos y mantención', metric: 'Cero parada sorpresa', accent: 'amber', external: false, preview: 'assets' },
-  { id: 'bookeat', icon: Calendar, name: 'BookEat', description: 'Reservas en línea', metric: 'Mesa al día', accent: 'cyan', external: true, preview: 'calendar' },
-  { id: 'staffeat', icon: Users, name: 'StaffEat', description: 'Gestión de personal', metric: 'Turnos al instante', accent: 'violet', external: true, preview: 'roster' },
+  { id: 'eventeat', icon: PartyPopper, name: 'EventEat', description: 'Eventos y arriendos', metric: 'Cotiza y agenda', accent: 'rose', external: false, preview: 'events' },
+  { id: 'menueat', icon: BookOpen, name: 'MenuEat', description: 'Carta digital con QR', metric: 'Bilingüe ES + EN', accent: 'orange', external: false, preview: 'menu' },
+  { id: 'bookeat', icon: Calendar, name: 'BookEat', description: 'Reservas en línea', metric: 'Mesa al día', accent: 'cyan', external: true, externalUrl: 'https://bookeat.cl', preview: 'calendar' },
+  { id: 'staffeat', icon: Users, name: 'StaffEat', description: 'Gestión de personal', metric: 'Vacaciones y ausencias', accent: 'violet', external: true, externalUrl: 'https://sistema-vacaciones-eight.vercel.app/admin', preview: 'roster' },
 ]
 
 const accentClasses: Record<string, string> = {
@@ -29,12 +32,19 @@ const accentClasses: Record<string, string> = {
   amber: 'bg-amber-500/10 text-amber-300 border-amber-500/30 hover:border-amber-400',
   cyan: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30 hover:border-cyan-400',
   violet: 'bg-violet-500/10 text-violet-300 border-violet-500/30 hover:border-violet-400',
+  rose: 'bg-rose-500/10 text-rose-300 border-rose-500/30 hover:border-rose-400',
+  orange: 'bg-orange-500/10 text-orange-300 border-orange-500/30 hover:border-orange-400',
 }
 
 export function AppsGrid() {
-  const handleAppClick = (appId: string, external: boolean) => {
-    if (external) return
-    window.location.href = `https://app.eatcorp.cl/#/${appId}`
+  const handleAppClick = (app: AppDef) => {
+    if (app.external && app.externalUrl) {
+      window.open(app.externalUrl, '_blank', 'noopener,noreferrer')
+      return
+    }
+    if (!app.external) {
+      window.location.href = `https://app.eatcorp.cl/#/${app.id}`
+    }
   }
 
   return (
@@ -44,7 +54,7 @@ export function AppsGrid() {
         return (
           <button
             key={app.id}
-            onClick={() => handleAppClick(app.id, app.external)}
+            onClick={() => handleAppClick(app)}
             className={`group relative rounded-xl border-2 transition-all duration-300 text-left overflow-hidden ${accentClasses[app.accent]} hover:shadow-2xl hover:shadow-current/20 hover:-translate-y-1 hover:scale-[1.02] [transform:perspective(1000px)] [&:hover]:[transform:perspective(1000px)_rotateX(2deg)_rotateY(-2deg)_translateY(-4px)_scale(1.02)]`}
           >
             <AppPreview type={app.preview} accent={app.accent} />
@@ -81,6 +91,8 @@ function AppPreview({ type, accent }: { type: AppDef['preview']; accent: string 
     amber: 'from-amber-500/30 via-amber-500/10 to-transparent',
     cyan: 'from-cyan-500/30 via-cyan-500/10 to-transparent',
     violet: 'from-violet-500/30 via-violet-500/10 to-transparent',
+    rose: 'from-rose-500/30 via-rose-500/10 to-transparent',
+    orange: 'from-orange-500/30 via-orange-500/10 to-transparent',
   }
 
   return (
@@ -92,6 +104,8 @@ function AppPreview({ type, accent }: { type: AppDef['preview']; accent: string 
         {type === 'assets' && <AssetsPreview />}
         {type === 'calendar' && <CalendarPreview />}
         {type === 'roster' && <RosterPreview />}
+        {type === 'events' && <EventsPreview />}
+        {type === 'menu' && <MenuPreview />}
       </div>
     </div>
   )
@@ -188,6 +202,43 @@ function RosterPreview() {
           <div className="w-3 h-1 bg-white/80 rounded"></div>
         </div>
       ))}
+    </div>
+  )
+}
+
+function EventsPreview() {
+  return (
+    <div className="flex flex-col gap-1 h-full justify-center">
+      {[
+        { w: 'w-3/4', date: 'bg-rose-400' },
+        { w: 'w-1/2', date: 'bg-rose-300' },
+        { w: 'w-2/3', date: 'bg-rose-500' },
+      ].map((row, i) => (
+        <div key={i} className="flex items-center gap-1">
+          <div className={`w-2 h-2 rounded-sm ${row.date}`}></div>
+          <div className={`h-1 ${row.w} bg-white/80 rounded`}></div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function MenuPreview() {
+  return (
+    <div className="flex gap-1.5 h-full">
+      <div className="w-6 h-full rounded bg-white/90 flex items-center justify-center flex-shrink-0">
+        <div className="grid grid-cols-3 gap-px p-0.5">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div key={i} className="w-0.5 h-0.5 bg-orange-700"></div>
+          ))}
+        </div>
+      </div>
+      <div className="flex-1 space-y-0.5 pt-1">
+        <div className="h-1 w-full bg-orange-300 rounded"></div>
+        <div className="h-1 w-3/4 bg-orange-200 rounded"></div>
+        <div className="h-1 w-2/3 bg-orange-200 rounded"></div>
+        <div className="h-1 w-1/2 bg-orange-300 rounded"></div>
+      </div>
     </div>
   )
 }
