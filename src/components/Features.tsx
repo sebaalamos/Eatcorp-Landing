@@ -1,4 +1,4 @@
-import { ShoppingCart, CheckSquare, Share2, Wrench, Sparkles, RotateCw, AlertTriangle, Heart, MessageCircle, Send, Bookmark, BadgeCheck, Camera, Wine, Check } from 'lucide-react'
+import { ShoppingCart, Share2, BookOpen, PartyPopper, Sparkles, RotateCw, Camera, BadgeCheck, Heart, MessageCircle, Send, Bookmark, Check, QrCode, Languages, Users, CalendarClock } from 'lucide-react'
 
 export function Features() {
   return (
@@ -6,7 +6,7 @@ export function Features() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-block px-3 py-1 mb-3 rounded-full bg-primary-500/15 text-primary-300 text-xs font-semibold uppercase tracking-wide border border-primary-500/30">
-            Apps integradas
+            Apps que más mueven la aguja
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4 tracking-tight">Una app para cada operación</h2>
           <p className="text-xl text-neutral-700 max-w-2xl mx-auto">
@@ -19,36 +19,36 @@ export function Features() {
             icon={ShoppingCart}
             iconBg="bg-blue-500"
             title="BuyEat"
-            tagline="Compras a proveedores"
-            description="Cotiza, recepciona, aprueba y paga facturas. Detección automática de discrepancias entre OC y factura. Lotes de pago con export bancario directo."
+            tagline="Compras y pagos a proveedores"
+            description="Cotiza, recepciona, aprueba y paga facturas en lotes. Detección automática de discrepancias entre OC y factura. Export bancario directo."
             mockup={<BuyEatMockup />}
             reverse={false}
-          />
-          <FeatureRow
-            icon={CheckSquare}
-            iconBg="bg-primary-500"
-            title="TaskEat"
-            tagline="Tareas y equipos"
-            description="Organiza tareas en categorías con permisos por equipo. Asignaciones, plazos y comentarios. Visibilidad híbrida — cada miembro ve solo lo suyo."
-            mockup={<TaskEatMockup />}
-            reverse={true}
           />
           <FeatureRow
             icon={Share2}
             iconBg="bg-pink-500"
             title="LikeEat"
             tagline="Redes sociales con IA"
-            description="Plan mensual generado por IA con efemérides locales. Magic Post: una foto y la IA escribe el caption. Brand Discovery aprende tu estilo."
+            description="Magic Post: una foto y la IA escribe el caption. Plan mensual con efemérides locales. Brand Discovery aprende tu estilo y tu voz."
             mockup={<LikeEatMockup />}
+            reverse={true}
+          />
+          <FeatureRow
+            icon={BookOpen}
+            iconBg="bg-orange-500"
+            title="MenuEat"
+            tagline="Carta digital con QR"
+            description="Carta bilingüe español + inglés en segundos, con foto de cada plato y precios siempre vigentes. QR durable: el sticker de la mesa nunca cambia."
+            mockup={<MenuEatMockup />}
             reverse={false}
           />
           <FeatureRow
-            icon={Wrench}
-            iconBg="bg-amber-500"
-            title="MaintainEat"
-            tagline="Activos y mantenimiento"
-            description="Registra equipos críticos, planifica mantenciones preventivas y reduce tiempo de parada. Asigna técnicos y trackea trabajos."
-            mockup={<MaintainEatMockup />}
+            icon={PartyPopper}
+            iconBg="bg-rose-500"
+            title="EventEat"
+            tagline="Eventos privados y arriendos"
+            description="Cotiza eventos, agéndalos y trackea cada checklist. Vista financiera con costo, margen y estado de cobro. No se te escapa una propuesta."
+            mockup={<EventEatMockup />}
             reverse={true}
           />
         </div>
@@ -71,7 +71,7 @@ function FeatureRow({ icon: Icon, iconBg, title, tagline, description, mockup, r
   return (
     <div className={`grid md:grid-cols-2 gap-12 items-center ${reverse ? 'md:[&>*:first-child]:order-2' : ''}`}>
       <div>
-        <div className={`inline-flex items-center gap-3 mb-4`}>
+        <div className="inline-flex items-center gap-3 mb-4">
           <div className={`${iconBg} w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-md`}>
             <Icon size={22} />
           </div>
@@ -82,7 +82,7 @@ function FeatureRow({ icon: Icon, iconBg, title, tagline, description, mockup, r
         </div>
         <p className="text-lg text-neutral-700 leading-relaxed mb-6">{description}</p>
         <a href="#apps" className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-semibold">
-          Conocer más
+          Ver todas las apps
           <span aria-hidden>→</span>
         </a>
       </div>
@@ -100,6 +100,9 @@ function MockupFrame({ children, glow }: { children: React.ReactNode; glow: stri
           <div className="w-2 h-2 rounded-full bg-red-400"></div>
           <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
           <div className="w-2 h-2 rounded-full bg-green-400"></div>
+          <div className="flex-1 mx-3 h-4 rounded bg-brand-900 border border-brand-800 px-2 flex items-center text-[9px] text-neutral-600 font-mono">
+            app.eatcorp.cl
+          </div>
         </div>
         {children}
       </div>
@@ -110,11 +113,11 @@ function MockupFrame({ children, glow }: { children: React.ReactNode; glow: stri
 function BuyEatMockup() {
   const invoices = [
     { name: 'Distribuidora Central', amount: '$1.240.000', due: 'Vence hoy', status: 'Pendiente', selected: true, urgent: true },
-    { name: 'Carnes del Sur Ltda.', amount: '$680.500', due: 'Pronto pago -3%', status: 'Pendiente', selected: true, savings: true },
-    { name: 'Bebidas Nacional S.A.', amount: '$720.000', due: 'En 5 días', status: 'Pendiente', selected: true },
-    { name: 'Lácteos Cordillera', amount: '$310.000', due: 'En 8 días', status: 'Aprobada' },
-    { name: 'Verduras del Valle', amount: '$245.500', due: 'En 12 días', status: 'Aprobada' },
-    { name: 'Insumos Cocina Pro', amount: '$182.000', due: 'En 18 días', status: 'Pagada' },
+    { name: 'Carnes y embutidos S.A.', amount: '$680.500', due: 'Pronto pago -3%', status: 'Pendiente', selected: true, savings: true },
+    { name: 'Bebidas premium', amount: '$720.000', due: 'En 5 días', status: 'Pendiente', selected: true },
+    { name: 'Lácteos cordillera', amount: '$310.000', due: 'En 8 días', status: 'Aprobada' },
+    { name: 'Verduras del valle', amount: '$245.500', due: 'En 12 días', status: 'Aprobada' },
+    { name: 'Insumos cocina', amount: '$182.000', due: 'En 18 días', status: 'Pagada' },
   ]
 
   return (
@@ -123,7 +126,7 @@ function BuyEatMockup() {
         <div className="flex items-center justify-between mb-3">
           <div>
             <div className="text-sm font-semibold text-neutral-900">Pagos pendientes</div>
-            <div className="text-[10px] text-neutral-600 mt-0.5">El Toro · Vitacura</div>
+            <div className="text-[10px] text-neutral-600 mt-0.5">Lote del día · 6 facturas</div>
           </div>
           <div className="flex gap-1">
             {['Todas', 'Pendientes', 'Aprobadas'].map((f, i) => (
@@ -167,97 +170,9 @@ function BuyEatMockup() {
             <span className="font-bold text-neutral-900">3 seleccionadas</span> · Total <span className="font-bold text-neutral-900">$2.640.500</span>
           </div>
           <button className="px-3 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-lg shadow-md shadow-blue-500/30 flex items-center gap-1.5">
-            <CheckSquare size={12} />
+            <Check size={12} />
             Aprobar lote
           </button>
-        </div>
-      </div>
-    </MockupFrame>
-  )
-}
-
-function TaskEatMockup() {
-  const cols = [
-    {
-      name: 'Por hacer',
-      color: 'bg-brand-800/60 border-brand-700',
-      tasks: [
-        { label: 'Reponer aceite oliva', priority: 'media', when: 'hoy', who: 'M', whoBg: 'bg-primary-500' },
-        { label: 'Coordinar evento jueves', priority: 'alta', when: 'mañana', who: 'C', whoBg: 'bg-amber-500' },
-        { label: 'Pedir botellas Pisco', priority: 'baja', when: '3d', who: 'J', whoBg: 'bg-blue-500' },
-      ],
-    },
-    {
-      name: 'En curso',
-      color: 'bg-amber-500/10 border-amber-500/30',
-      tasks: [
-        { label: 'Limpieza profunda horno', priority: 'alta', when: 'hoy', who: 'P', whoBg: 'bg-rose-500' },
-        { label: 'Inventario semanal', priority: 'media', when: 'hoy', who: 'M', whoBg: 'bg-primary-500' },
-      ],
-    },
-    {
-      name: 'Listas',
-      color: 'bg-primary-500/10 border-primary-500/30',
-      tasks: [
-        { label: 'Capacitar nuevo runner', priority: 'media', when: 'ayer', who: 'C', whoBg: 'bg-amber-500' },
-        { label: 'Probar nuevo proveedor', priority: 'baja', when: 'lun', who: 'J', whoBg: 'bg-blue-500' },
-        { label: 'Cambiar menú QR', priority: 'media', when: 'sáb', who: 'P', whoBg: 'bg-rose-500' },
-      ],
-    },
-  ]
-
-  const priorityClass = (p: string) =>
-    p === 'alta' ? 'bg-rose-500/20 text-rose-300' : p === 'media' ? 'bg-amber-500/20 text-amber-300' : 'bg-brand-700 text-neutral-600'
-
-  return (
-    <MockupFrame glow="bg-primary-500/30">
-      <div className="p-4 bg-gradient-to-br from-brand-900 to-brand-950">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
-            <div className="text-sm font-semibold text-neutral-900">Cocina · El Toro</div>
-            <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-primary-500/20 text-primary-300 font-bold">8</span>
-          </div>
-          <span className="text-[9px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full bg-primary-600 text-white shadow-sm shadow-primary-500/40">Mi equipo</span>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          {cols.map((c, ci) => (
-            <div key={c.name} className={`p-2 rounded-lg border ${c.color}`}>
-              <div className="flex items-center justify-between mb-1.5">
-                <div className="text-[10px] font-bold uppercase tracking-wide text-neutral-800">{c.name}</div>
-                <span className="text-[9px] text-neutral-600">{c.tasks.length}</span>
-              </div>
-              <div className="space-y-1.5">
-                {c.tasks.map((t, j) => (
-                  <div
-                    key={j}
-                    className="bg-brand-900 p-1.5 rounded border border-brand-700 shadow-sm shadow-black/30"
-                    style={{ animation: `slide-up 0.5s ease-out ${(ci * 3 + j) * 0.08}s backwards` }}
-                  >
-                    <div className="text-[9px] font-medium text-neutral-800 leading-tight mb-1">{t.label}</div>
-                    <div className="flex items-center justify-between">
-                      <span className={`text-[7px] font-bold uppercase tracking-wide px-1 py-0.5 rounded ${priorityClass(t.priority)}`}>
-                        {t.priority}
-                      </span>
-                      <div className="flex items-center gap-1">
-                        <span className="text-[8px] text-neutral-500">{t.when}</span>
-                        <div className={`w-3.5 h-3.5 rounded-full ${t.whoBg} flex items-center justify-center text-white text-[7px] font-bold`}>
-                          {t.who}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex items-center gap-2 mt-3 text-[10px] text-neutral-600">
-          <div className="flex -space-x-1.5">
-            {['bg-primary-500', 'bg-blue-500', 'bg-amber-500', 'bg-rose-500'].map((b, i) => (
-              <div key={i} className={`w-5 h-5 rounded-full ${b} border-2 border-brand-900`}></div>
-            ))}
-          </div>
-          <span>4 personas · 8 tareas activas</span>
         </div>
       </div>
     </MockupFrame>
@@ -270,7 +185,7 @@ function LikeEatMockup() {
     { d: 'M', color: 'bg-orange-400', label: 'Pasta', active: true },
     { d: 'M', color: 'bg-red-400', label: 'Asado' },
     { d: 'J', color: 'bg-rose-400', label: 'Maridaje' },
-    { d: 'V', color: 'bg-amber-400', label: 'Picante', special: '18-S' },
+    { d: 'V', color: 'bg-amber-400', label: 'Picante', special: '21-M' },
     { d: 'S', color: 'bg-yellow-400', label: 'Empanada' },
     { d: 'D', color: 'bg-blue-400', label: 'Brunch' },
   ]
@@ -281,7 +196,7 @@ function LikeEatMockup() {
         <div className="flex items-center justify-between mb-3">
           <div>
             <div className="text-sm font-semibold text-neutral-900">Plan de la semana</div>
-            <div className="text-[10px] text-neutral-600 mt-0.5">@eltoro · 9 posts agendados</div>
+            <div className="text-[10px] text-neutral-600 mt-0.5">9 posts agendados</div>
           </div>
           <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-300 font-semibold border border-pink-500/30">
             <Sparkles size={10} />
@@ -327,10 +242,10 @@ function LikeEatMockup() {
         <div className="bg-brand-800/60 border border-brand-700 rounded-lg overflow-hidden shadow-sm">
           <div className="flex items-center gap-2 px-2.5 py-1.5 border-b border-brand-700">
             <div className="w-6 h-6 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-[8px] font-bold shadow-sm">
-              ET
+              R
             </div>
             <div className="flex items-center gap-0.5 flex-1 min-w-0">
-              <span className="text-[10px] font-bold text-neutral-900 truncate">eltoro_restaurante</span>
+              <span className="text-[10px] font-bold text-neutral-900 truncate">tu_restorán</span>
               <BadgeCheck size={11} className="text-blue-400 flex-shrink-0 fill-blue-400 stroke-brand-900" />
             </div>
             <span className="text-[9px] text-neutral-500">Hoy 18:30</span>
@@ -368,7 +283,7 @@ function LikeEatMockup() {
             </div>
             <div className="text-[10px] font-bold text-neutral-900">312 me gusta</div>
             <div className="text-[10px] text-neutral-700 leading-snug mt-0.5">
-              <span className="font-bold">eltoro_restaurante</span> Pasta fresca, salsa de la nona y un vino que abraza. ¿Reservas mesa para esta noche?
+              <span className="font-bold">tu_restorán</span> Pasta fresca, salsa de la nona y un vino que abraza. ¿Reservas mesa para esta noche?
             </div>
             <div className="flex flex-wrap gap-1 mt-1">
               <span className="text-[10px] text-pink-400">#pastafresca</span>
@@ -399,53 +314,209 @@ function LikeEatMockup() {
   )
 }
 
-function MaintainEatMockup() {
-  const assets = [
-    { name: 'Horno industrial', tech: 'PR', techBg: 'bg-primary-500', priority: 'OK', priorityClass: 'bg-primary-500/20 text-primary-300', progress: 30, progressColor: 'bg-primary-500', sub: 'Mantención en 28 días' },
-    { name: 'Cámara fría #1', tech: 'JC', techBg: 'bg-rose-500', priority: 'Urgente', priorityClass: 'bg-rose-500/25 text-rose-300 ring-1 ring-rose-500/40 animate-pulse', progress: 100, progressColor: 'bg-rose-500', sub: 'Revisión vencida hace 4 días', alert: true },
-    { name: 'Lavavajillas', tech: 'PR', techBg: 'bg-primary-500', priority: 'OK', priorityClass: 'bg-primary-500/20 text-primary-300', progress: 50, progressColor: 'bg-primary-500', sub: 'Mantención en 18 días' },
-    { name: 'Freidora', tech: 'MA', techBg: 'bg-amber-500', priority: 'Pronto', priorityClass: 'bg-amber-500/20 text-amber-300', progress: 80, progressColor: 'bg-amber-500', sub: 'Mantención en 5 días' },
-    { name: 'Vitrina caliente', tech: 'PR', techBg: 'bg-primary-500', priority: 'OK', priorityClass: 'bg-primary-500/20 text-primary-300', progress: 15, progressColor: 'bg-primary-500', sub: 'Mantención en 42 días' },
+function MenuEatMockup() {
+  const dishes = [
+    {
+      name: 'Pasta de la nona',
+      desc: 'Salsa pomodoro, albahaca fresca, parmesano',
+      price: '$12.500',
+      tags: ['🌱'],
+      grad: 'from-amber-300 via-orange-400 to-rose-500',
+      mark: 'P',
+    },
+    {
+      name: 'Asado tira',
+      desc: 'Cocción 14 horas · papas confit · chimichurri',
+      price: '$18.900',
+      tags: ['🔥'],
+      grad: 'from-rose-400 via-red-500 to-amber-700',
+      mark: 'A',
+      featured: true,
+    },
+    {
+      name: 'Empanada queso',
+      desc: 'Masa de manteca, queso mantecoso fundido',
+      price: '$3.500',
+      tags: ['❤️'],
+      grad: 'from-yellow-300 via-amber-400 to-orange-600',
+      mark: 'E',
+    },
   ]
 
   return (
-    <MockupFrame glow="bg-amber-500/30">
+    <MockupFrame glow="bg-orange-500/30">
+      <div className="p-5 bg-gradient-to-br from-brand-900 to-brand-950">
+        <div className="grid grid-cols-[auto_1fr] gap-4 items-start">
+          {/* QR card */}
+          <div className="relative w-32 flex flex-col items-center bg-gradient-to-br from-orange-500/15 to-brand-950 border border-orange-500/30 rounded-xl p-3 shadow-md shadow-orange-500/15">
+            <div className="text-[9px] font-bold uppercase tracking-wider text-orange-300 mb-2">Mesa 4</div>
+            <div className="w-24 h-24 rounded-md bg-white flex items-center justify-center shadow-inner relative">
+              <QrCode size={68} className="text-orange-900" strokeWidth={1.4} />
+              <div className="absolute -bottom-1 inset-x-2 text-center text-[7px] font-bold text-orange-900 bg-white rounded-sm leading-tight pt-px">
+                eatcorp.cl/m
+              </div>
+            </div>
+            <div className="mt-3 text-[8px] text-neutral-600 text-center leading-tight">
+              QR durable · el sticker de la mesa nunca cambia
+            </div>
+          </div>
+
+          {/* Menu list (mobile-like preview) */}
+          <div className="bg-brand-800/40 border border-brand-700 rounded-xl overflow-hidden">
+            <div className="px-3 py-2 border-b border-brand-700 flex items-center justify-between">
+              <div>
+                <div className="text-[11px] font-bold text-neutral-900 leading-tight">Carta</div>
+                <div className="text-[9px] text-neutral-600 mt-0.5">Cena · martes</div>
+              </div>
+              <div className="flex items-center gap-1 bg-brand-900 border border-brand-700 rounded-full p-0.5">
+                <span className="px-1.5 py-px rounded-full bg-orange-500 text-white text-[8px] font-bold">ES</span>
+                <span className="px-1.5 py-px rounded-full text-neutral-600 text-[8px] font-bold flex items-center gap-0.5">
+                  <Languages size={8} />
+                  EN
+                </span>
+              </div>
+            </div>
+
+            <div className="px-3 py-2 border-b border-brand-700 flex items-center gap-1.5 overflow-hidden">
+              {['Entradas', 'Principales', 'Postres', 'Bebidas'].map((cat, i) => (
+                <span
+                  key={cat}
+                  className={`text-[9px] font-semibold whitespace-nowrap px-2 py-0.5 rounded-full ${
+                    i === 1 ? 'bg-orange-600 text-white shadow-sm shadow-orange-500/40' : 'bg-brand-900 text-neutral-700 border border-brand-700'
+                  }`}
+                >
+                  {cat}
+                </span>
+              ))}
+            </div>
+
+            <div className="p-2 space-y-2">
+              {dishes.map((d, i) => (
+                <div
+                  key={d.name}
+                  className={`flex gap-2 p-2 rounded-lg border ${d.featured ? 'bg-orange-500/10 border-orange-500/40' : 'bg-brand-900/70 border-brand-700'}`}
+                  style={{ animation: `slide-up 0.5s ease-out ${i * 0.08}s backwards` }}
+                >
+                  <div className={`w-12 h-12 rounded-md bg-gradient-to-br ${d.grad} flex items-center justify-center flex-shrink-0 shadow-sm relative overflow-hidden`}>
+                    <span className="text-white font-bold text-base drop-shadow">{d.mark}</span>
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,rgba(255,255,255,0.4),transparent_60%)]"></div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="text-[10px] font-bold text-neutral-900 leading-tight truncate">
+                        {d.name} <span className="text-[9px]">{d.tags.join(' ')}</span>
+                      </div>
+                      <div className="text-[10px] font-bold text-orange-300 tabular-nums">{d.price}</div>
+                    </div>
+                    <div className="text-[9px] text-neutral-600 leading-snug mt-0.5 line-clamp-2">{d.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="px-3 py-2 border-t border-brand-700 flex items-center justify-between">
+              <div className="flex items-center gap-1 text-[9px] text-neutral-600">
+                <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse"></span>
+                <span>Precios actualizados al instante</span>
+              </div>
+              <span className="text-[9px] font-bold uppercase tracking-wide text-primary-300 bg-primary-500/20 border border-primary-500/30 px-1.5 py-0.5 rounded">
+                127 vistas hoy
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </MockupFrame>
+  )
+}
+
+function EventEatMockup() {
+  const events = [
+    { date: '12', month: 'MAY', name: 'Cumpleaños · Familia González', pax: 24, monto: '$960K', status: 'Confirmado', accent: 'bg-rose-500', tone: 'bg-primary-500/20 text-primary-300' },
+    { date: '17', month: 'MAY', name: 'Cierre fiscal · Constructora', pax: 60, monto: '$2.8M', status: 'Cotizando', accent: 'bg-rose-400', tone: 'bg-amber-500/20 text-amber-300', selected: true },
+    { date: '24', month: 'MAY', name: 'Privado · 12p', pax: 12, monto: '$540K', status: 'Pendiente', accent: 'bg-rose-300', tone: 'bg-brand-700 text-neutral-600' },
+  ]
+
+  const checklist = [
+    { label: 'Confirmar menú con cocina', done: true },
+    { label: 'Reservar barra de vinos', done: true },
+    { label: 'Confirmar floristería', done: false },
+    { label: 'Plan B lluvia', done: false },
+  ]
+
+  return (
+    <MockupFrame glow="bg-rose-500/30">
       <div className="p-4 bg-gradient-to-br from-brand-900 to-brand-950">
         <div className="flex items-center justify-between mb-3">
           <div>
-            <div className="text-sm font-semibold text-neutral-900">Activos críticos</div>
-            <div className="text-[10px] text-neutral-600 mt-0.5">Tigre · Vitacura</div>
+            <div className="text-sm font-semibold text-neutral-900">Eventos próximos</div>
+            <div className="text-[10px] text-neutral-600 mt-0.5">Mayo · 3 confirmados, 1 cotizando</div>
           </div>
-          <span className="text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">1 alerta</span>
+          <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-semibold border border-rose-500/30">
+            <CalendarClock size={10} />
+            Calendario
+          </div>
         </div>
-        <div className="space-y-1.5">
-          {assets.map((a, i) => (
-            <div key={i} className={`p-2.5 rounded-lg border ${a.alert ? 'bg-rose-500/10 border-rose-500/40' : 'bg-brand-800/60 border-brand-700'}`}>
-              <div className="flex items-center gap-2.5">
-                <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${a.alert ? 'bg-rose-500/20' : 'bg-brand-700'}`}>
-                  {a.alert ? <AlertTriangle size={14} className="text-rose-300 animate-pulse" /> : <Wrench size={14} className="text-neutral-600" />}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="text-[11px] font-semibold text-neutral-900 truncate">{a.name}</div>
-                    <span className={`text-[9px] font-bold uppercase px-1.5 py-0.5 rounded-full flex-shrink-0 ${a.priorityClass}`}>{a.priority}</span>
-                  </div>
-                  <div className="text-[9px] text-neutral-600 mt-0.5">{a.sub}</div>
-                  <div className="flex items-center gap-1.5 mt-1.5">
-                    <div className="flex-1 h-1 bg-brand-700 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full ${a.progressColor} rounded-full origin-left`}
-                        style={{ width: `${a.progress}%`, animation: `fill-bar 1.2s cubic-bezier(0.4,0,0.2,1) ${i * 0.15}s backwards` }}
-                      ></div>
-                    </div>
-                    <div className={`w-4 h-4 rounded-full ${a.techBg} flex items-center justify-center text-white text-[7px] font-bold`}>
-                      {a.tech}
-                    </div>
-                  </div>
+
+        <div className="space-y-1.5 mb-3">
+          {events.map((e, i) => (
+            <div
+              key={e.date}
+              className={`flex items-center gap-2.5 p-2 rounded-lg border ${e.selected ? 'bg-rose-500/15 border-rose-500/50' : 'bg-brand-800/60 border-brand-700'}`}
+              style={{ animation: `slide-up 0.5s ease-out ${i * 0.08}s backwards` }}
+            >
+              <div className={`w-10 h-10 rounded-md flex flex-col items-center justify-center flex-shrink-0 ${e.accent} text-white shadow-sm`}>
+                <span className="text-[14px] font-bold leading-none tabular-nums">{e.date}</span>
+                <span className="text-[7px] font-bold tracking-wider opacity-80 leading-none mt-0.5">{e.month}</span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[11px] font-semibold text-neutral-900 truncate">{e.name}</div>
+                <div className="flex items-center gap-2 mt-0.5">
+                  <span className="text-[9px] text-neutral-700 flex items-center gap-0.5">
+                    <Users size={9} />
+                    {e.pax}
+                  </span>
+                  <span className="text-[9px] font-bold text-neutral-700 tabular-nums">{e.monto}</span>
                 </div>
               </div>
+              <span className={`text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full ${e.tone}`}>
+                {e.status}
+              </span>
             </div>
           ))}
+        </div>
+
+        <div className="bg-rose-500/10 border border-rose-500/30 rounded-lg p-3">
+          <div className="flex items-center justify-between mb-2">
+            <div>
+              <div className="text-[11px] font-bold text-neutral-900">17 mayo · Cierre fiscal</div>
+              <div className="text-[9px] text-neutral-700 mt-0.5">Salón privado · open bar · cena 3 tiempos</div>
+            </div>
+            <div className="text-right">
+              <div className="text-[8px] text-neutral-600 uppercase tracking-wider font-bold">Cotización</div>
+              <div className="text-base font-bold text-rose-300 tabular-nums leading-none">$2.8M</div>
+            </div>
+          </div>
+
+          <div className="space-y-1 mb-2">
+            {checklist.map((item) => (
+              <div key={item.label} className="flex items-center gap-1.5 text-[9px]">
+                <div className={`w-3 h-3 rounded-sm border-2 flex items-center justify-center flex-shrink-0 ${item.done ? 'bg-primary-500 border-primary-500' : 'border-brand-600'}`}>
+                  {item.done && <Check size={7} className="text-white" strokeWidth={3} />}
+                </div>
+                <span className={item.done ? 'text-neutral-600 line-through' : 'text-neutral-800'}>{item.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex gap-1.5">
+            <button className="flex-1 py-1.5 bg-rose-600 text-white text-[10px] font-semibold rounded shadow-sm shadow-rose-500/40">
+              Enviar cotización
+            </button>
+            <button className="flex-1 py-1.5 bg-brand-900 text-neutral-800 text-[10px] font-semibold rounded border border-brand-700">
+              Ver detalle
+            </button>
+          </div>
         </div>
       </div>
     </MockupFrame>
