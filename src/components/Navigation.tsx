@@ -13,17 +13,13 @@ const navLinks = [
 
 export function Navigation() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession()
-      setIsLoggedIn(!!session)
-      setIsLoading(false)
-    }
-    checkSession()
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) setIsLoggedIn(true)
+    })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, session) => setIsLoggedIn(!!session),
@@ -72,10 +68,9 @@ export function Navigation() {
           ))}
           <button
             onClick={handleClick}
-            disabled={isLoading}
-            className="bg-primary-600 hover:bg-primary-500 text-white px-5 py-2 rounded-lg font-medium transition-colors disabled:opacity-50 shadow-sm shadow-primary-600/30"
+            className="bg-primary-600 hover:bg-primary-500 text-white px-5 py-2 rounded-lg font-medium transition-colors shadow-sm shadow-primary-600/30"
           >
-            {isLoading ? '...' : isLoggedIn ? 'Mi cuenta' : 'Entrar'}
+            {isLoggedIn ? 'Mi cuenta' : 'Entrar'}
           </button>
           <button
             type="button"
