@@ -6,9 +6,9 @@ import { supabase } from '@/lib/supabase'
 import { Logo } from './Logo'
 
 const navLinks = [
-  { href: '#features', label: 'Apps' },
-  { href: '#faq', label: 'FAQ' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '/productos', label: 'Productos' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/#contacto', label: 'Contacto' },
 ]
 
 export function Navigation() {

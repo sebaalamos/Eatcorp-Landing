@@ -20,8 +20,8 @@ export function Footer() {
           <div>
             <h4 className="text-neutral-900 font-semibold mb-4 text-xs uppercase tracking-[0.16em]">Producto</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#apps" className="hover:text-neutral-900 transition">Apps</a></li>
-              <li><a href="#faq" className="hover:text-neutral-900 transition">FAQ</a></li>
+              <li><a href="/productos" className="hover:text-neutral-900 transition">Todos los productos</a></li>
+              <li><a href="/#faq" className="hover:text-neutral-900 transition">FAQ</a></li>
               <li><a href="mailto:hola@eatcorp.cl" className="hover:text-neutral-900 transition">Contacto</a></li>
               <li><a href="https://app.eatcorp.cl" className="hover:text-neutral-900 transition">Iniciar sesión</a></li>
             </ul>

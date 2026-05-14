@@ -55,13 +55,7 @@ const accentClasses: Record<Accent, string> = {
 
 export function AppsGrid() {
   const handleAppClick = (app: AppDef) => {
-    if (app.external && app.externalUrl) {
-      window.open(app.externalUrl, '_blank', 'noopener,noreferrer')
-      return
-    }
-    if (!app.external) {
-      window.location.href = `https://app.eatcorp.cl/#/${app.id}`
-    }
+    window.location.href = `/productos/${app.id}`
   }
 
   return (

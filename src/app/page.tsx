@@ -5,7 +5,6 @@ import { Navigation } from '@/components/Navigation'
 import { Hero } from '@/components/Hero'
 import { LiveActivityBar } from '@/components/LiveActivityBar'
 import { ClientLogos } from '@/components/ClientLogos'
-import { Features } from '@/components/Features'
 import { HowItWorks } from '@/components/HowItWorks'
 import { AppsCatalog } from '@/components/AppsCatalog'
 import { ADayWithEatCorp } from '@/components/ADayWithEatCorp'
@@ -30,7 +29,6 @@ export default function Home() {
       <Hero />
       <LiveActivityBar />
       <ClientLogos />
-      <Features />
       <HowItWorks />
       <AppsCatalog />
       <ADayWithEatCorp />
