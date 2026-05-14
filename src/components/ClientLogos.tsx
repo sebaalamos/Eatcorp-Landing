@@ -20,7 +20,7 @@ const clients: Client[] = [
     logo: '/logo-eltoro.png',
     width: 820,
     height: 340,
-    logoBgClass: 'bg-[#1a0404]',
+    logoBgClass: 'bg-[#9d0615]',
   },
   {
     name: 'Tigre',

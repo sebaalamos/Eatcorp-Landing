@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { Logo } from './Logo'
@@ -55,7 +56,9 @@ export function Navigation() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <Logo size={36} />
+        <Link href="/" aria-label="Inicio EatCorp" className="rounded-lg hover:opacity-80 transition-opacity">
+          <Logo size={36} />
+        </Link>
         <div className="flex items-center gap-6">
           {navLinks.map((link) => (
             <a
