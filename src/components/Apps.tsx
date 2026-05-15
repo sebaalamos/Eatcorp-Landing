@@ -14,10 +14,11 @@ import {
   Sparkles,
   Check,
   QrCode,
+  Coins,
 } from 'lucide-react'
 
-type Accent = 'blue' | 'emerald' | 'pink' | 'amber' | 'cyan' | 'violet' | 'rose' | 'orange'
-type Preview = 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu'
+type Accent = 'blue' | 'emerald' | 'pink' | 'amber' | 'cyan' | 'violet' | 'rose' | 'orange' | 'yellow'
+type Preview = 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu' | 'tips'
 
 type AppDef = {
   id: string
@@ -38,6 +39,7 @@ const apps: AppDef[] = [
   { id: 'maintaineat', icon: Wrench, name: 'MaintainEat', description: 'Activos y mantención', metric: 'Cero parada sorpresa', accent: 'amber', external: false, preview: 'assets' },
   { id: 'eventeat', icon: PartyPopper, name: 'EventEat', description: 'Eventos y arriendos', metric: 'Cotiza y agenda', accent: 'rose', external: false, preview: 'events' },
   { id: 'menueat', icon: BookOpen, name: 'MenuEat', description: 'Carta digital con QR', metric: 'Bilingüe ES + EN', accent: 'orange', external: false, preview: 'menu' },
+  { id: 'tipeat', icon: Coins, name: 'TipEat', description: 'Reparto de propinas', metric: 'Link público compartible', accent: 'yellow', external: false, preview: 'tips' },
   { id: 'bookeat', icon: Calendar, name: 'BookEat', description: 'Reservas en línea', metric: 'Mesa al día', accent: 'cyan', external: true, externalUrl: 'https://bookeat.cl', preview: 'calendar' },
   { id: 'staffeat', icon: Users, name: 'StaffEat', description: 'Gestión de personal', metric: 'Vacaciones y ausencias', accent: 'violet', external: true, externalUrl: 'https://sistema-vacaciones-eight.vercel.app/admin', preview: 'roster' },
 ]
@@ -51,6 +53,7 @@ const accentClasses: Record<Accent, string> = {
   violet: 'bg-violet-500/10 text-violet-300 border-violet-500/30 hover:border-violet-400',
   rose: 'bg-rose-500/10 text-rose-300 border-rose-500/30 hover:border-rose-400',
   orange: 'bg-orange-500/10 text-orange-300 border-orange-500/30 hover:border-orange-400',
+  yellow: 'bg-yellow-500/10 text-yellow-300 border-yellow-500/30 hover:border-yellow-400',
 }
 
 export function AppsGrid() {
@@ -105,6 +108,7 @@ const previewBg: Record<Accent, string> = {
   violet: 'from-violet-500/40 via-violet-500/15 to-transparent',
   rose: 'from-rose-500/40 via-rose-500/15 to-transparent',
   orange: 'from-orange-500/40 via-orange-500/15 to-transparent',
+  yellow: 'from-yellow-500/40 via-yellow-500/15 to-transparent',
 }
 
 function AppPreview({ type, accent }: { type: Preview; accent: Accent }) {
@@ -119,7 +123,34 @@ function AppPreview({ type, accent }: { type: Preview; accent: Accent }) {
         {type === 'roster' && <RosterPreview />}
         {type === 'events' && <EventsPreview />}
         {type === 'menu' && <MenuPreview />}
+        {type === 'tips' && <TipsPreview />}
       </div>
+    </div>
+  )
+}
+
+function TipsPreview() {
+  const rows = [
+    { initials: 'JR', share: 'w-3/4' },
+    { initials: 'PC', share: 'w-3/5' },
+    { initials: 'MA', share: 'w-1/2' },
+  ]
+  return (
+    <div className="h-full flex flex-col gap-1">
+      <div className="flex items-center justify-between mb-0.5">
+        <span className="text-[8px] font-bold uppercase tracking-wider text-yellow-300">Ciclo · sem 19</span>
+        <span className="text-[8px] font-bold text-yellow-200 bg-yellow-500/30 border border-yellow-400/40 px-1 rounded tabular-nums">$752K</span>
+      </div>
+      {rows.map((r, i) => (
+        <div key={i} className="flex items-center gap-1.5 bg-brand-950/70 border border-yellow-500/20 rounded px-1.5 py-1">
+          <div className="w-4 h-4 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center text-white text-[7px] font-bold flex-shrink-0">
+            {r.initials}
+          </div>
+          <div className="flex-1 h-1 bg-brand-800 rounded-full overflow-hidden">
+            <div className={`h-full ${r.share} bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full`}></div>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

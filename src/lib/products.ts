@@ -1,6 +1,7 @@
 // Catálogo de productos para las páginas /productos y /productos/[slug].
 // Fuente de verdad para el landing — debe estar alineado con
-// /Users/sebastian/eatcorp/src/platform/home/moduleCatalog.ts del repo eatcorp.
+// /Users/sebastian/eatcorp/src/platform/home/moduleCatalog.ts del repo eatcorp
+// y con /Users/sebastian/eatcorp/docs/ROADMAP.md para las próximas funcionalidades.
 
 import {
   ShoppingCart,
@@ -11,6 +12,20 @@ import {
   BookOpen,
   Calendar,
   Users,
+  Coins,
+  CreditCard,
+  BarChart3,
+  Boxes,
+  ChefHat,
+  CalendarCheck,
+  Receipt,
+  Heart,
+  Gift,
+  Truck,
+  Star,
+  MessageSquare,
+  ShieldCheck,
+  Megaphone,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -21,6 +36,7 @@ export type ProductSlug =
   | 'maintaineat'
   | 'eventeat'
   | 'menueat'
+  | 'tipeat'
   | 'bookeat'
   | 'staffeat'
 
@@ -44,6 +60,12 @@ export type ProductFAQ = {
   a: string
 }
 
+export type UpcomingFeature = {
+  title: string
+  description: string
+  eta?: string
+}
+
 export type Product = {
   slug: ProductSlug
   name: string
@@ -62,14 +84,32 @@ export type Product = {
   gradient: string
   external: boolean
   externalUrl?: string
-  preview: 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu'
+  preview: 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu' | 'tips'
   oneLiner: string
   beneficios: Benefit[]
   features: FeatureBlock[]
   pasos: Step[]
   paraQuien: string[]
   faq: ProductFAQ[]
+  proximasFuncionalidades: UpcomingFeature[]
   integraciones?: string[]
+}
+
+export type UpcomingApp = {
+  slug: string
+  name: string
+  tagline: string
+  description: string
+  icon: LucideIcon
+  category: 'operations' | 'collaborators' | 'customer' | 'finanzas'
+  categoryLabel: string
+  eta: string
+  status: 'construyendo' | 'planeado' | 'evaluando'
+  gradient: string
+  accentDot: string
+  accentText: string
+  accentBg: string
+  accentBorder: string
 }
 
 export const PRODUCTS: Record<ProductSlug, Product> = {
@@ -196,6 +236,32 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         a: 'La línea se marca como discrepancia. Tú decides si la aceptas (queda registrada) o la rechazas (vuelve al proveedor). El audit log queda con quién aceptó qué y cuándo.',
       },
     ],
+    proximasFuncionalidades: [
+      {
+        title: 'SupplyEat — marketplace de proveedores',
+        description:
+          'Comparador histórico de precios contra otros restoranes (anónimo). Sabrás si estás pagando más caro que el promedio. Network effect.',
+        eta: 'Ago 2026',
+      },
+      {
+        title: 'ReportEat — dashboards de compras',
+        description:
+          'Visualización mensual de gastos por proveedor, categoría y local. Tendencias, alertas y exportables.',
+        eta: 'Jul 2026',
+      },
+      {
+        title: 'Conexión con InventoryEat',
+        description:
+          'Las facturas alimentan automáticamente el stock. Cero doble carga, costo real por plato accesible al instante.',
+        eta: 'Sep 2026',
+      },
+      {
+        title: 'PayEat — pago directo al proveedor',
+        description:
+          'Cuando tengas PayEat, podrás pagar el lote sin pasar por la cartola: BuyEat → PayEat → banco, todo desde la misma plataforma.',
+        eta: 'Dic 2026',
+      },
+    ],
   },
 
   taskeat: {
@@ -204,7 +270,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     tagline: 'Tareas que llegan, no que se olvidan',
     heroHeadline: 'Tu equipo coordinado sin grupo de WhatsApp',
     heroDescription:
-      'Tareas con categorías, comentarios, asignaciones y visibilidad híbrida — admins ven todo, staff solo ve lo suyo. Adiós al grupo de WhatsApp infinito.',
+      'Tareas con categorías, comentarios, asignaciones, subtareas y visibilidad híbrida — admins ven todo, staff solo ve lo suyo. Adiós al grupo de WhatsApp infinito.',
     category: 'operations',
     categoryLabel: 'Administración y operaciones',
     icon: CheckSquare,
@@ -216,7 +282,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     gradient: 'from-primary-500 to-teal-500',
     external: false,
     preview: 'kanban',
-    oneLiner: 'Kanban por categoría · visibilidad híbrida · audit log completo.',
+    oneLiner: 'Kanban por categoría · subtareas · visibilidad híbrida · audit log.',
     beneficios: [
       {
         title: 'Deja de ser el cuello de botella',
@@ -229,9 +295,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Los admins ven todas las tareas. Los staff solo ven las suyas, las que crearon, o las que pertenecen a sus categorías. Privacidad enforced en la base de datos, no en el cliente.',
       },
       {
-        title: 'Auditoría completa de cambios',
+        title: 'Subtareas con auto-cierre',
         description:
-          'Cada modificación queda registrada con quién, cuándo y qué cambió. Útil cuando algo no se hizo y nadie sabe por qué.',
+          'Una tarea madre con 5 subtareas — al marcar la última hija, la madre se cierra sola. Audit log con quién hizo qué y cuándo.',
       },
       {
         title: 'Comentarios y watchers',
@@ -249,6 +315,11 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         title: 'Kanban + lista',
         description:
           'Vista tablero o vista lista, ambas con filtros por categoría, asignado, estado y prioridad.',
+      },
+      {
+        title: 'Subtareas con 2 niveles',
+        description:
+          'Una tarea puede tener subtareas. Cierras todas las hijas → la madre se cierra sola. Útil para checklists complejas (apertura, cierre, eventos).',
       },
       {
         title: 'Asignación múltiple',
@@ -307,6 +378,26 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         a: 'Sí, completamente. La cocina marca tareas como hechas desde el celular sin volver al notebook.',
       },
     ],
+    proximasFuncionalidades: [
+      {
+        title: 'Templates de checklists pre-cargadas',
+        description:
+          'Apertura de local, cierre de cocina, cambio de turno, HACCP — listas listas para clonar.',
+        eta: '2026',
+      },
+      {
+        title: 'Auditoría operativa diaria',
+        description:
+          'Checklist de auditoría con scoring y reportes mensuales. Útil para grupos multi-local.',
+        eta: '2026',
+      },
+      {
+        title: 'Integración con ControlEat',
+        description:
+          'Asistencia → tareas asignadas automáticamente al turno que entra.',
+        eta: 'Q4 2026',
+      },
+    ],
   },
 
   likeeat: {
@@ -315,7 +406,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     tagline: 'Redes sociales con IA, sin pensar en qué publicar',
     heroHeadline: 'Tu Instagram al día sin contratar community manager',
     heroDescription:
-      'Magic Post: subes una foto y la IA escribe el caption en tu estilo. Plan mensual con efemérides locales. Brand Discovery aprende tu marca leyendo tus posts antiguos.',
+      'Magic Post: subes una foto y la IA escribe el caption en tu estilo. Plan mensual con efemérides locales. Brand Discovery aprende tu marca leyendo tus posts antiguos. Copilot proactivo que te sugiere qué publicar.',
     category: 'customer',
     categoryLabel: 'Experiencia del cliente',
     icon: Share2,
@@ -327,7 +418,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     gradient: 'from-pink-500 to-rose-500',
     external: false,
     preview: 'post',
-    oneLiner: 'Magic Post (3s) · Plan mensual con efemérides CL · Brand Discovery con IA.',
+    oneLiner: 'Magic Post · plan mensual con efemérides · Brand Discovery con IA.',
     beneficios: [
       {
         title: 'De foto a post listo en segundos',
@@ -367,6 +458,11 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Calendario de contenido con fechas chilenas (no de EE.UU.). Día de la Madre, 18, Día del Vino, Halloween, Navidad, Año Nuevo, etc.',
       },
       {
+        title: 'Copilot proactivo',
+        description:
+          'La IA te sugiere "Hoy es Día del Pisco — te armé estos 3 posts. ¿Cuál publicamos?" Sin tener que pedirle. Iniciativa, no espera.',
+      },
+      {
         title: 'Multi-plataforma',
         description:
           'Diseñado primero para Instagram (reels + feed + stories). También TikTok y Facebook.',
@@ -377,7 +473,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Sube logos, paletas, fotos de platos, fotos del equipo. Todo queda en un solo lugar disponible para reusar.',
       },
       {
-        title: 'Reviews y reputación',
+        title: 'Reviews y reputación asistida',
         description:
           'Responde reviews de Google y TripAdvisor con asistencia IA. Profesional y en tu voz, en segundos.',
       },
@@ -422,9 +518,25 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         q: '¿Puedo usar mi propio tono / restricciones?',
         a: 'Sí. Brand Discovery infiere automáticamente, pero también puedes agregar reglas explícitas ("no usar emojis", "no mencionar precios", "siempre cerrar con #santiagofoodie").',
       },
+    ],
+    proximasFuncionalidades: [
       {
-        q: '¿Qué pasa con los derechos de las imágenes?',
-        a: 'Subes fotos tuyas o autorizadas. Las imágenes nunca se usan para entrenar modelos ni se comparten con otros restoranes.',
+        title: 'AdsEat — gestión de pauta paga',
+        description:
+          'Meta Ads y Google Ads gestionados desde LikeEat. ROI por campaña, optimización automática.',
+        eta: '2026',
+      },
+      {
+        title: 'InboxEat — WhatsApp Business + DMs unificados',
+        description:
+          'Todas las conversaciones (WhatsApp, IG DM, Messenger) en una sola bandeja con asistencia IA.',
+        eta: '2027',
+      },
+      {
+        title: 'ReviewEat — monitoreo + NPS',
+        description:
+          'Captura reseñas internas antes que vayan a Google. NPS automático post-visita.',
+        eta: 'Dic 2026',
       },
     ],
   },
@@ -533,6 +645,26 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         a: 'Sí, generar reportes en PDF de las mantenciones hechas. Útil para arrendadores que piden mantención preventiva como cláusula.',
       },
     ],
+    proximasFuncionalidades: [
+      {
+        title: 'ComplianceEat — calendar legal',
+        description:
+          'Patente, sanitaria, SII, alcohol, ascensor — vencimientos y alertas para no comerte una multa.',
+        eta: '2026',
+      },
+      {
+        title: 'Protocolos HACCP / sanitarios',
+        description:
+          'Checklists sanitarias diarias/semanales/mensuales integradas con foto y firma.',
+        eta: '2026',
+      },
+      {
+        title: 'Marketplace de técnicos',
+        description:
+          'Encuentra técnicos cercanos con tu activo en su radar. Cuotaciones competitivas, historial transparente.',
+        eta: '2027',
+      },
+    ],
   },
 
   eventeat: {
@@ -639,6 +771,26 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         a: 'Solo admin y coordinador (permisos viewFinancials / manageFinancials). Tu equipo operativo ve la coordinación pero no los números.',
       },
     ],
+    proximasFuncionalidades: [
+      {
+        title: 'LoveEat — CRM de clientes B2B',
+        description:
+          'Historial de eventos por cliente. Cuentas corporativas (almuerzos empresa). Up-sell automático.',
+        eta: 'Dic 2026',
+      },
+      {
+        title: 'PayEat — abonos y señas',
+        description:
+          'Cobro de seña al confirmar el evento. Pagos parciales rastreados. Conciliación directa.',
+        eta: 'Dic 2026',
+      },
+      {
+        title: 'Marketing post-evento',
+        description:
+          'Trigger automático para LikeEat: foto del evento → post en RRSS con permiso del cliente.',
+        eta: '2027',
+      },
+    ],
   },
 
   menueat: {
@@ -647,7 +799,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     tagline: 'Carta digital con QR durable',
     heroHeadline: 'Una carta. Un QR. Mil cambios sin imprimir nada.',
     heroDescription:
-      'Carta digital bilingüe español + inglés. El QR de la mesa nunca cambia, los precios sí. Foto de cada plato, ediciones al instante, analítica de qué mira la gente más.',
+      'Carta digital bilingüe español + inglés. El QR de la mesa nunca cambia, los precios sí. Foto de cada plato, acompañamientos, pop-ups de campañas, analítica de qué mira la gente más.',
     category: 'customer',
     categoryLabel: 'Experiencia del cliente',
     icon: BookOpen,
@@ -659,7 +811,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     gradient: 'from-orange-500 to-amber-500',
     external: false,
     preview: 'menu',
-    oneLiner: 'QR durable · bilingüe ES + EN · analytics de qué mira la gente.',
+    oneLiner: 'QR durable · ES + EN · pop-ups de campañas · analítica.',
     beneficios: [
       {
         title: 'El sticker de la mesa nunca cambia',
@@ -672,21 +824,21 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Escribes el plato en español, MenuEat genera la traducción al inglés con IA. Tú revisas. El turista lo ve en su idioma con un toque.',
       },
       {
+        title: 'Pop-ups de campañas',
+        description:
+          'Promoción 2x1 de la noche del jueves? Activa una campaña con vigencia y se le muestra al cliente al escanear. Auto-cierre en segundos.',
+      },
+      {
         title: 'Analytics de qué llama la atención',
         description:
           'Sabes qué platos se miran más, qué categorías abandonan, en qué se demoran. Decisiones de menú con data, no con corazonadas.',
-      },
-      {
-        title: 'Cambios al instante, sin reimprimir',
-        description:
-          'Subiste el precio del wagyu? Lo cambias en MenuEat y todos los clientes que escaneen después lo ven. Cero costo, cero papel.',
       },
     ],
     features: [
       {
         title: 'QR durable por mesa',
         description:
-          'Cada mesa con su URL inmutable (`#/m/<slug>`). Cambias el menú, cambias precios, el QR sigue funcionando para siempre.',
+          'Cada mesa con su URL inmutable. Cambias el menú, cambias precios, el QR sigue funcionando para siempre.',
       },
       {
         title: 'Bilingüe ES + EN con fallback',
@@ -697,6 +849,16 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         title: 'Foto por plato',
         description:
           'Sube foto desde celular o pídele a la IA que la mejore. Importador desde URL para clonar fotos desde Instagram.',
+      },
+      {
+        title: 'Acompañamientos por plato',
+        description:
+          'Cada producto puede listar acompañamientos (papas fritas, ensalada, arroz). Sin lógica compleja de modificadores — útil para el formato de menú chileno.',
+      },
+      {
+        title: 'Pop-ups de campañas',
+        description:
+          'Toggle por campaña con vigencia, auto-cierre configurable, contenido bilingüe y CTA opcional.',
       },
       {
         title: 'Variantes y disponibilidad',
@@ -712,11 +874,6 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         title: 'Analytics de comportamiento',
         description:
           'Qué se mira más, qué se mira menos, en qué categoría se pierden, cuánto tiempo en el menú.',
-      },
-      {
-        title: 'Branding heredado del tenant',
-        description:
-          'Logo, colores, fuente — tu carta digital se ve como tu marca, no como una plantilla genérica.',
       },
     ],
     pasos: [
@@ -752,11 +909,178 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
       {
         q: '¿Los clientes pueden pedir desde MenuEat?',
-        a: 'Por ahora MenuEat es solo visualización. La toma de pedidos en mesa será ServiceEat (próximamente).',
+        a: 'Por ahora MenuEat es solo visualización. La toma de pedidos en mesa será parte de PayEat (POS + KDS).',
       },
       {
         q: '¿Funciona offline?',
         a: 'El cliente necesita internet para escanear. Si tu wifi del local funciona bien, perfecto. Si no, sigue cargando rápido en redes móviles 4G.',
+      },
+    ],
+    proximasFuncionalidades: [
+      {
+        title: 'CookEat — fichas técnicas conectadas',
+        description:
+          'Cada plato del menú con su ficha técnica (ingredientes, costo, margen). Cambios en CookEat se reflejan acá.',
+        eta: 'Sep 2026',
+      },
+      {
+        title: 'InventoryEat — disponibilidad live',
+        description:
+          'Stock bajo → producto se marca como agotado automáticamente en la carta digital. Cero "no hay" sorpresa.',
+        eta: 'Sep 2026',
+      },
+      {
+        title: 'PayEat — pedido + cobro desde la mesa',
+        description:
+          'Cliente escanea, pide y paga sin esperar al mesero. Compatible con QR existentes.',
+        eta: 'Dic 2026',
+      },
+    ],
+  },
+
+  tipeat: {
+    slug: 'tipeat',
+    name: 'TipEat',
+    tagline: 'Reparto de propinas justo, transparente y sin Excel',
+    heroHeadline: 'Distribuye propinas con un sistema que tu equipo puede ver y entender',
+    heroDescription:
+      'Define grupos (sala, cocina, barra), multiplicadores por rol, ciclos semanales o mensuales, asistencia y off-the-top. TipEat calcula, registra y publica el resultado con link público compartible — y guarda un historial inmutable.',
+    category: 'collaborators',
+    categoryLabel: 'Colaboradores',
+    icon: Coins,
+    accentClass: 'amber',
+    accentText: 'text-amber-300',
+    accentBg: 'bg-amber-500/15',
+    accentBorder: 'border-amber-500/40',
+    accentDot: 'bg-amber-500',
+    gradient: 'from-amber-500 to-yellow-500',
+    external: false,
+    preview: 'tips',
+    oneLiner: 'Grupos · multiplicadores · ciclos · link público compartible.',
+    beneficios: [
+      {
+        title: 'Cero conflicto sobre cuánto le toca a cada uno',
+        description:
+          'Las reglas están escritas y son auditables. El cocinero ve qué multiplicador tiene, el mesero ve qué share lleva, todos pueden chequear el cálculo si quieren.',
+      },
+      {
+        title: 'Link público para que el equipo lo vea',
+        description:
+          'Cada ciclo cerrado genera un link sharable con los resultados (sin exponer datos sensibles). Cero "mostrarme el Excel" — está en su celular.',
+      },
+      {
+        title: 'Audit log inmutable',
+        description:
+          'Cada apertura, cierre, ajuste y pago queda registrado con quién, cuándo y qué cambió. Cero ambigüedad cuando alguien reclama.',
+      },
+      {
+        title: 'Snapshot en el cierre',
+        description:
+          'Al cerrar un ciclo, los nombres, grupos y resultados quedan congelados. Si después editas un staff o un grupo, el ciclo histórico no cambia.',
+      },
+    ],
+    features: [
+      {
+        title: 'Grupos con multiplicadores',
+        description:
+          'Sala 1x, cocina 0.8x, lavavajillas 0.5x, gerente 1.5x — define los grupos y multiplicadores que apliquen a tu operación.',
+      },
+      {
+        title: 'Ciclos con estados',
+        description:
+          'Abierto → cerrado → pagado. Mientras está abierto, agregas montos. Al cerrar se calcula. Reabrir antes de pagar; tras pagar requiere unmark explícito.',
+      },
+      {
+        title: 'Asistencia por persona',
+        description:
+          'Modo share (participa del reparto proporcional) o modo fixed (turno fijo, paga monto exacto, no entra al pool).',
+      },
+      {
+        title: 'Off-the-top y ajustes',
+        description:
+          'Descuentos antes del reparto (servicios, comisiones) con quantity × unit. Ajustes manuales individuales con razón anotada.',
+      },
+      {
+        title: 'Algoritmo verificable (cross-check)',
+        description:
+          'Cálculo duplicado en TypeScript y PL/pgSQL con tests bit-a-bit. Si TS y SQL no calzan, el sistema falla — no entrega resultados ambiguos.',
+      },
+      {
+        title: 'Exportables — CSV + PDF',
+        description:
+          'Genera CSV (RFC 4180 + BOM, abre bien en Excel/Numbers chileno) y PDF profesional. Útil para liquidación o contabilidad.',
+      },
+      {
+        title: 'Link público de ciclo',
+        description:
+          'Slug aleatorio de 12 caracteres. El link muestra solo nombres y monto final — sin datos sensibles. Compartible con el equipo.',
+      },
+      {
+        title: 'Permisos granulares',
+        description:
+          'Admin (gestiona todo), gestor (opera ciclos sin cambiar config), visualizador (solo lectura).',
+      },
+    ],
+    pasos: [
+      {
+        title: 'Configura grupos y staff',
+        description:
+          'Define los grupos, asigna a cada persona su grupo y multiplicador, define las reglas off-the-top.',
+      },
+      {
+        title: 'Abre un ciclo y registra montos',
+        description:
+          'Al inicio del periodo (semana/quincena) abres el ciclo. Vas registrando los montos diarios y la asistencia.',
+      },
+      {
+        title: 'Cierra, comparte y paga',
+        description:
+          'Al final del periodo cierras el ciclo, generas el link público para tu equipo y descargas el CSV/PDF para pagarles.',
+      },
+    ],
+    paraQuien: [
+      'Restoranes con propinas que se reparten entre varias áreas (sala + cocina + barra)',
+      'Operaciones donde las reglas de reparto eran orales y nadie las tenía claras',
+      'Equipos donde alguna vez hubo reclamos sobre el reparto',
+    ],
+    faq: [
+      {
+        q: '¿Puedo reabrir un ciclo que ya cerré?',
+        a: 'Sí, mientras no esté marcado como "pagado". Una vez pagado, primero hay que desmarcarlo explícitamente (acción registrada en el audit log) y después se puede reabrir.',
+      },
+      {
+        q: '¿Cómo se comparte el link público?',
+        a: 'Genera un slug aleatorio de 12 caracteres impredecible. Lo mandas por WhatsApp al grupo y solo quien tenga el link puede verlo. Muestra solo nombres y montos — sin datos sensibles.',
+      },
+      {
+        q: '¿Se integra con la liquidación de sueldos?',
+        a: 'No directamente. TipEat reporta los montos; tu contadora o sistema de payroll (Talana, Buk, futuro PayrollEat) los suma a la liquidación correspondiente.',
+      },
+    ],
+    proximasFuncionalidades: [
+      {
+        title: 'Integración con StaffEat',
+        description:
+          'Staff se sincroniza desde StaffEat automáticamente. Cambios de equipo (entrada, salida) se reflejan sin doble carga.',
+        eta: '2026',
+      },
+      {
+        title: 'Asistencia desde ControlEat',
+        description:
+          'Los marcajes reales (clock-in/out) alimentan la asistencia del ciclo. Cero carga manual.',
+        eta: 'Q4 2026',
+      },
+      {
+        title: 'Propinas digitales desde PayEat',
+        description:
+          'Las propinas cobradas con tarjeta en PayEat alimentan directamente el pot del ciclo correspondiente.',
+        eta: 'Dic 2026',
+      },
+      {
+        title: 'Liquidación automática vía PayrollEat',
+        description:
+          'Los resultados del ciclo se suman a la liquidación del periodo en PayrollEat — fin del traspaso manual.',
+        eta: 'Nov 2026',
       },
     ],
   },
@@ -767,7 +1091,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     tagline: 'Reservas online sin telefonazos',
     heroHeadline: 'Mesa al día, sin llamadas',
     heroDescription:
-      'Tu sistema de reservas online integrado con EatCorp. Tus clientes reservan desde tu sitio o desde el directorio BookEat. Tu equipo ve el día completo de un vistazo.',
+      'Tu sistema de reservas online integrado con EatCorp. Tus clientes reservan desde tu sitio o desde el directorio BookEat. Tu equipo ve el día completo de un vistazo. Reemplazo directo a CoverManager.',
     category: 'customer',
     categoryLabel: 'Experiencia del cliente',
     icon: Calendar,
@@ -780,7 +1104,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     external: true,
     externalUrl: 'https://bookeat.cl',
     preview: 'calendar',
-    oneLiner: 'Reservas online · directorio público · vista del día.',
+    oneLiner: 'Reservas online · directorio público · reemplazo a CoverManager.',
     beneficios: [
       {
         title: 'Adiós al teléfono que no para',
@@ -840,11 +1164,31 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     faq: [
       {
         q: '¿BookEat es parte de EatCorp o independiente?',
-        a: 'BookEat es un servicio externo (bookeat.cl) con quien EatCorp integra el toggle de acceso. Si tienes EatCorp, activas BookEat con un click. Si quieres solo BookEat, también puedes.',
+        a: 'BookEat es un servicio (bookeat.cl) con quien EatCorp integra el toggle de acceso. Si tienes EatCorp, activas BookEat con un click. Si quieres solo BookEat, también puedes.',
       },
       {
-        q: '¿Cuesta extra?',
-        a: 'BookEat tiene su propio modelo de precios — conversémoslo en el onboarding.',
+        q: '¿Reemplaza a CoverManager?',
+        a: 'Sí, es un reemplazo directo. Si vienes de CoverManager te ayudamos a migrar la base de datos de clientes históricos.',
+      },
+    ],
+    proximasFuncionalidades: [
+      {
+        title: 'LoveEat — CRM conectado',
+        description:
+          'Historial cliente, segmentación, recompensas, emails automatizados — todo conectado a tus reservas.',
+        eta: 'Dic 2026',
+      },
+      {
+        title: 'GiftEat — tarjetas de regalo',
+        description:
+          'Vende tarjetas de regalo desde tu sitio. Se canjean directamente al hacer una reserva.',
+        eta: 'Dic 2026',
+      },
+      {
+        title: 'PayEat — pago de seña',
+        description:
+          'Pide seña en reservas de horario alta-demanda. Baja drásticamente el no-show.',
+        eta: 'Dic 2026',
       },
     ],
   },
@@ -855,9 +1199,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     tagline: 'Vacaciones y ausencias sin Excel paralelo',
     heroHeadline: 'Tu RR.HH. operativo, ordenado',
     heroDescription:
-      'Maneja vacaciones, ausencias y solicitudes del equipo en una sola plataforma. Tu admin sabe quién está dónde sin chasquear contra la cocina.',
-    category: 'operations',
-    categoryLabel: 'Administración y operaciones',
+      'Maneja vacaciones, ausencias y solicitudes del equipo en una sola plataforma. Tu admin sabe quién está dónde sin chasquear contra la cocina. Base para el próximo PayrollEat propio.',
+    category: 'collaborators',
+    categoryLabel: 'Colaboradores',
     icon: Users,
     accentClass: 'violet',
     accentText: 'text-violet-300',
@@ -928,14 +1272,300 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     faq: [
       {
         q: '¿StaffEat es parte de EatCorp?',
-        a: 'Es un servicio externo (staffeat) integrado al toggle de EatCorp. Si tienes EatCorp, lo activas con un click. Si solo necesitas StaffEat, también lo puedes contratar suelto.',
+        a: 'Es un servicio externo integrado al toggle de EatCorp. Si tienes EatCorp, lo activas con un click. Si solo necesitas StaffEat, también lo puedes contratar suelto.',
       },
       {
         q: '¿Calcula liquidaciones de sueldo?',
-        a: 'No. StaffEat maneja la parte operativa (vacaciones, ausencias, solicitudes). La liquidación la sigue haciendo tu contadora con su sistema (Defontana, Buk, etc).',
+        a: 'Aún no — para eso viene PayrollEat (Nov 2026) que reemplaza Talana/Buk con motor propio integrado a StaffEat.',
+      },
+    ],
+    proximasFuncionalidades: [
+      {
+        title: 'ControlEat — relojes de control',
+        description:
+          'Integración con Genera primero, después Geovictoria y otros. Marcaje automático que alimenta asistencia.',
+        eta: 'Oct 2026',
+      },
+      {
+        title: 'PayrollEat — motor propio',
+        description:
+          'Liquidación de sueldos integrada — reemplaza Talana/Buk. Conexión Previred. Te dejas de pagar el sistema de afuera.',
+        eta: 'Nov 2026',
+      },
+      {
+        title: 'BillEat — emisión de documentos',
+        description:
+          'Boleta de honorarios y documentos tributarios para colaboradores honorarios — todo desde el mismo sistema.',
+        eta: 'Nov 2026',
+      },
+      {
+        title: 'TipEat sync',
+        description:
+          'Sincronización bidireccional del staff entre StaffEat y TipEat. Una sola fuente de verdad.',
+        eta: '2026',
       },
     ],
   },
 }
 
 export const PRODUCTS_LIST: Product[] = Object.values(PRODUCTS)
+
+// Apps del roadmap — todavía no live, pero forman parte de la visión.
+// Fuente: /Users/sebastian/eatcorp/docs/ROADMAP.md
+export const UPCOMING_APPS: UpcomingApp[] = [
+  {
+    slug: 'payeat',
+    name: 'PayEat',
+    tagline: 'POS + KDS + cobro hardware-agnostic',
+    description:
+      'Punto de venta moderno con comanda a cocina (KDS), cobro con tarjeta (Getnet) y respaldo offline. Funciona en iPad, Android o móvil — sin atarte a una marca de POS.',
+    icon: CreditCard,
+    category: 'operations',
+    categoryLabel: 'Administración y operaciones',
+    eta: 'Jun 2026 piloto · Dic 2026 lanzamiento externo',
+    status: 'construyendo',
+    gradient: 'from-primary-500 via-teal-500 to-cyan-500',
+    accentDot: 'bg-primary-500',
+    accentText: 'text-primary-300',
+    accentBg: 'bg-primary-500/15',
+    accentBorder: 'border-primary-500/40',
+  },
+  {
+    slug: 'reporteat',
+    name: 'ReportEat',
+    tagline: 'Dashboards por app',
+    description:
+      'Visualización centralizada de la data del ecosistema EatCorp. Compras, ventas, eventos, propinas — gráficos por app sin BI cross-app inicial.',
+    icon: BarChart3,
+    category: 'operations',
+    categoryLabel: 'Administración y operaciones',
+    eta: 'Jul 2026',
+    status: 'planeado',
+    gradient: 'from-blue-500 to-indigo-500',
+    accentDot: 'bg-blue-500',
+    accentText: 'text-blue-300',
+    accentBg: 'bg-blue-500/15',
+    accentBorder: 'border-blue-500/40',
+  },
+  {
+    slug: 'supplyeat',
+    name: 'SupplyEat',
+    tagline: 'Marketplace de proveedores',
+    description:
+      'Catálogo maestro de proveedores chilenos, comparador histórico de precios (anónimo) y network effect. Conectado con BuyEat para sugerencias en cotización.',
+    icon: Truck,
+    category: 'operations',
+    categoryLabel: 'Administración y operaciones',
+    eta: 'Ago 2026',
+    status: 'planeado',
+    gradient: 'from-blue-500 to-sky-500',
+    accentDot: 'bg-blue-500',
+    accentText: 'text-blue-300',
+    accentBg: 'bg-blue-500/15',
+    accentBorder: 'border-blue-500/40',
+  },
+  {
+    slug: 'inventoryeat',
+    name: 'InventoryEat',
+    tagline: 'Stock multi-bodega',
+    description:
+      'Control de stock por local y bodega. Conecta BuyEat (entradas) ↔ CookEat (consumos) ↔ MenuEat (disponibilidad live). Vendido por separado.',
+    icon: Boxes,
+    category: 'operations',
+    categoryLabel: 'Administración y operaciones',
+    eta: 'Sep 2026',
+    status: 'planeado',
+    gradient: 'from-blue-500 to-violet-500',
+    accentDot: 'bg-blue-500',
+    accentText: 'text-blue-300',
+    accentBg: 'bg-blue-500/15',
+    accentBorder: 'border-blue-500/40',
+  },
+  {
+    slug: 'cookeat',
+    name: 'CookEat',
+    tagline: 'Recetario y costeo de plato',
+    description:
+      'Fichas técnicas con ingredientes, cantidades, costo y margen por plato. Costos vs inflación dinámica. Vendido por separado de InventoryEat.',
+    icon: ChefHat,
+    category: 'operations',
+    categoryLabel: 'Administración y operaciones',
+    eta: 'Oct 2026',
+    status: 'planeado',
+    gradient: 'from-orange-500 to-red-500',
+    accentDot: 'bg-orange-500',
+    accentText: 'text-orange-300',
+    accentBg: 'bg-orange-500/15',
+    accentBorder: 'border-orange-500/40',
+  },
+  {
+    slug: 'controleat',
+    name: 'ControlEat',
+    tagline: 'Asistencia con reloj control',
+    description:
+      'Integración con relojes de control (Genera primero, después Geovictoria y otros). Marcaje automático que alimenta StaffEat, TipEat y PayrollEat.',
+    icon: CalendarCheck,
+    category: 'collaborators',
+    categoryLabel: 'Colaboradores',
+    eta: 'Oct 2026',
+    status: 'planeado',
+    gradient: 'from-primary-500 to-teal-500',
+    accentDot: 'bg-primary-500',
+    accentText: 'text-primary-300',
+    accentBg: 'bg-primary-500/15',
+    accentBorder: 'border-primary-500/40',
+  },
+  {
+    slug: 'payrolleat',
+    name: 'PayrollEat',
+    tagline: 'Motor de sueldos propio',
+    description:
+      'Liquidación de sueldos integrada — reemplaza Talana/Buk. Conexión Previred. Te dejas de pagar el sistema de afuera y todo está sincronizado.',
+    icon: Receipt,
+    category: 'collaborators',
+    categoryLabel: 'Colaboradores',
+    eta: 'Nov 2026',
+    status: 'planeado',
+    gradient: 'from-violet-500 to-purple-500',
+    accentDot: 'bg-violet-500',
+    accentText: 'text-violet-300',
+    accentBg: 'bg-violet-500/15',
+    accentBorder: 'border-violet-500/40',
+  },
+  {
+    slug: 'billeat',
+    name: 'BillEat',
+    tagline: 'PSF híbrido',
+    description:
+      'Emisión de documentos tributarios (boletas, facturas, notas de crédito) con partner PSF inicial (Acepta/Sovos) → certificación propia año 2-3.',
+    icon: Receipt,
+    category: 'finanzas',
+    categoryLabel: 'Finanzas',
+    eta: 'Nov 2026',
+    status: 'planeado',
+    gradient: 'from-emerald-500 to-teal-500',
+    accentDot: 'bg-primary-500',
+    accentText: 'text-primary-300',
+    accentBg: 'bg-primary-500/15',
+    accentBorder: 'border-primary-500/40',
+  },
+  {
+    slug: 'reviewset',
+    name: 'ReviewEat',
+    tagline: 'Monitoreo + NPS asistido por IA',
+    description:
+      'Captura reseñas internas antes que vayan a Google. NPS automático post-visita. Respuestas con IA en tu voz. Cierra el loop antes de la mala review pública.',
+    icon: Star,
+    category: 'customer',
+    categoryLabel: 'Experiencia del cliente',
+    eta: 'Dic 2026',
+    status: 'planeado',
+    gradient: 'from-pink-500 to-rose-500',
+    accentDot: 'bg-pink-500',
+    accentText: 'text-pink-300',
+    accentBg: 'bg-pink-500/15',
+    accentBorder: 'border-pink-500/40',
+  },
+  {
+    slug: 'loveeat',
+    name: 'LoveEat',
+    tagline: 'CRM conectado a BookEat',
+    description:
+      'Base de datos de clientes, segmentación, automations email/push, recompensas. Cuentas corporativas B2B (almuerzos empresa). Sinergia cross-app fuerte.',
+    icon: Heart,
+    category: 'customer',
+    categoryLabel: 'Experiencia del cliente',
+    eta: 'Dic 2026',
+    status: 'planeado',
+    gradient: 'from-rose-500 to-pink-500',
+    accentDot: 'bg-rose-500',
+    accentText: 'text-rose-300',
+    accentBg: 'bg-rose-500/15',
+    accentBorder: 'border-rose-500/40',
+  },
+  {
+    slug: 'gifteat',
+    name: 'GiftEat',
+    tagline: 'Tarjetas de regalo B2C y B2B',
+    description:
+      'Vende gift cards desde tu sitio (B2C) y a empresas (portal B2B). Recurring revenue por temporadas — Navidad, Día de la Madre, fin de año.',
+    icon: Gift,
+    category: 'customer',
+    categoryLabel: 'Experiencia del cliente',
+    eta: 'Dic 2026',
+    status: 'planeado',
+    gradient: 'from-rose-500 to-red-500',
+    accentDot: 'bg-rose-500',
+    accentText: 'text-rose-300',
+    accentBg: 'bg-rose-500/15',
+    accentBorder: 'border-rose-500/40',
+  },
+  {
+    slug: 'deliveryeat',
+    name: 'DeliveryEat',
+    tagline: 'Canal propio + agregador',
+    description:
+      'Delivery propio sin comisiones abusivas (5% vs 28-35% PedidosYa/Uber/Rappi) más integración con los agregadores. Doble jugada.',
+    icon: Truck,
+    category: 'customer',
+    categoryLabel: 'Experiencia del cliente',
+    eta: '2027',
+    status: 'planeado',
+    gradient: 'from-cyan-500 to-blue-500',
+    accentDot: 'bg-cyan-500',
+    accentText: 'text-cyan-300',
+    accentBg: 'bg-cyan-500/15',
+    accentBorder: 'border-cyan-500/40',
+  },
+  {
+    slug: 'inboxeat',
+    name: 'InboxEat',
+    tagline: 'WhatsApp Business + DMs unificados',
+    description:
+      'Todas las conversaciones (WhatsApp, Instagram DM, Messenger) en una sola bandeja con asistencia IA. Pre-venta y atención no se mezclan ni se pierden.',
+    icon: MessageSquare,
+    category: 'customer',
+    categoryLabel: 'Experiencia del cliente',
+    eta: 'Evaluando 2027',
+    status: 'evaluando',
+    gradient: 'from-emerald-500 to-primary-500',
+    accentDot: 'bg-primary-500',
+    accentText: 'text-primary-300',
+    accentBg: 'bg-primary-500/15',
+    accentBorder: 'border-primary-500/40',
+  },
+  {
+    slug: 'complianceeat',
+    name: 'ComplianceEat',
+    tagline: 'Calendar legal y sanitario',
+    description:
+      'Patente, sanitaria, SII, alcohol, ascensor — calendar con alertas para no comerte una multa. HACCP integrado.',
+    icon: ShieldCheck,
+    category: 'operations',
+    categoryLabel: 'Administración y operaciones',
+    eta: 'Evaluando 2027',
+    status: 'evaluando',
+    gradient: 'from-amber-500 to-yellow-500',
+    accentDot: 'bg-amber-500',
+    accentText: 'text-amber-300',
+    accentBg: 'bg-amber-500/15',
+    accentBorder: 'border-amber-500/40',
+  },
+  {
+    slug: 'adseat',
+    name: 'AdsEat',
+    tagline: 'Pauta paga gestionada',
+    description:
+      'Meta Ads y Google Ads gestionados desde EatCorp con ROI por campaña y optimización automática. Se conecta a LikeEat para el contenido.',
+    icon: Megaphone,
+    category: 'customer',
+    categoryLabel: 'Experiencia del cliente',
+    eta: 'Evaluando 2027',
+    status: 'evaluando',
+    gradient: 'from-pink-500 to-fuchsia-500',
+    accentDot: 'bg-pink-500',
+    accentText: 'text-pink-300',
+    accentBg: 'bg-pink-500/15',
+    accentBorder: 'border-pink-500/40',
+  },
+]

@@ -1,4 +1,4 @@
-import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, UserCheck } from 'lucide-react'
+import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, UserCheck, Coins, Link2 } from 'lucide-react'
 import type { ProductSlug } from '@/lib/products'
 
 export function ProductMockup({ slug }: { slug: ProductSlug }) {
@@ -20,8 +20,84 @@ export function ProductMockup({ slug }: { slug: ProductSlug }) {
         {slug === 'maintaineat' && <MaintainEatM />}
         {slug === 'eventeat' && <EventEatM />}
         {slug === 'menueat' && <MenuEatM />}
+        {slug === 'tipeat' && <TipEatM />}
         {slug === 'bookeat' && <BookEatM />}
         {slug === 'staffeat' && <StaffEatM />}
+      </div>
+    </div>
+  )
+}
+
+function TipEatM() {
+  const groups = [
+    { label: 'Sala', mult: '1.0x', accent: 'bg-amber-500', count: 4, share: '$320.000' },
+    { label: 'Cocina', mult: '0.8x', accent: 'bg-orange-500', count: 3, share: '$192.000' },
+    { label: 'Barra', mult: '1.0x', accent: 'bg-yellow-500', count: 2, share: '$160.000' },
+    { label: 'Apoyo', mult: '0.5x', accent: 'bg-amber-400', count: 2, share: '$80.000' },
+  ]
+  const staff = [
+    { initials: 'JR', name: 'Javiera R.', group: 'Sala', amount: '$80.000', tag: 'Lleno' },
+    { initials: 'PC', name: 'Pedro C.', group: 'Cocina', amount: '$64.000', tag: 'Lleno' },
+    { initials: 'MA', name: 'Marcos A.', group: 'Barra', amount: '$80.000', tag: 'Parcial' },
+  ]
+  return (
+    <div className="p-5 bg-gradient-to-br from-brand-900 to-brand-950">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <div className="text-sm font-semibold text-neutral-900">Ciclo · semana 19</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">Pot total $752.000 · 11 personas</div>
+        </div>
+        <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30">
+          <Coins size={10} />
+          Cerrado
+        </div>
+      </div>
+
+      <div className="grid grid-cols-4 gap-1.5 mb-3">
+        {groups.map((g) => (
+          <div key={g.label} className="bg-brand-800/60 border border-brand-700 rounded-lg p-2">
+            <div className="flex items-center gap-1 mb-1">
+              <div className={`w-1.5 h-1.5 rounded-full ${g.accent}`}></div>
+              <div className="text-[9px] font-bold uppercase tracking-wider text-neutral-700 truncate">{g.label}</div>
+            </div>
+            <div className="text-[9px] font-bold text-amber-300">{g.mult}</div>
+            <div className="text-[9px] text-neutral-600">{g.count} pers.</div>
+            <div className="text-[10px] font-bold text-neutral-900 mt-1 tabular-nums">{g.share}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="space-y-1.5 mb-3">
+        {staff.map((s, i) => (
+          <div key={i} className="flex items-center gap-2.5 p-2 rounded-lg border bg-brand-800/60 border-brand-700">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0 shadow-sm">
+              {s.initials}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[11px] font-semibold text-neutral-900 truncate">{s.name}</span>
+                <span className="text-[8px] text-neutral-600">·</span>
+                <span className="text-[9px] text-neutral-600">{s.group}</span>
+              </div>
+              <span className="text-[9px] font-semibold text-neutral-700 bg-brand-900 border border-brand-700 px-1.5 py-0.5 rounded mt-0.5 inline-block">{s.tag}</span>
+            </div>
+            <span className="text-[11px] font-bold text-amber-300 tabular-nums">{s.amount}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3">
+        <div className="flex items-center justify-between mb-2">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-wider text-amber-300 mb-0.5">Link público</div>
+            <div className="text-[10px] text-neutral-700 font-mono">app.eatcorp.cl/share/tipeat/<span className="text-amber-200">a3f2k9pl0xqz</span></div>
+          </div>
+          <button className="px-2 py-1 bg-amber-600 text-white text-[10px] font-semibold rounded shadow-sm shadow-amber-500/40 flex items-center gap-1">
+            <Link2 size={11} />
+            Copiar
+          </button>
+        </div>
+        <div className="text-[9px] text-neutral-600">El equipo lo ve en su celular. Sin reclamos.</div>
       </div>
     </div>
   )

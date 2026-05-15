@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, Check, ExternalLink } from 'lucide-react'
+import { ArrowRight, Check, ChevronRight, ExternalLink, Sparkles, ArrowLeft } from 'lucide-react'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
+import { ProductsSubNav } from '@/components/ProductsSubNav'
 import { PRODUCTS, PRODUCTS_LIST, type ProductSlug } from '@/lib/products'
 import { ProductPageCTA } from './ProductPageCTA'
 import { ProductFAQ } from './ProductFAQ'
@@ -32,25 +33,38 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
   if (!product) notFound()
 
   const Icon = product.icon
-  const otherProducts = PRODUCTS_LIST.filter((p) => p.slug !== product.slug).slice(0, 3)
+  const currentIndex = PRODUCTS_LIST.findIndex((p) => p.slug === product.slug)
+  const prevProduct = currentIndex > 0 ? PRODUCTS_LIST[currentIndex - 1] : PRODUCTS_LIST[PRODUCTS_LIST.length - 1]
+  const nextProduct = currentIndex < PRODUCTS_LIST.length - 1 ? PRODUCTS_LIST[currentIndex + 1] : PRODUCTS_LIST[0]
 
   return (
     <main className="flex flex-col">
       <Navigation />
+      <ProductsSubNav activeSlug={product.slug} />
+
+      {/* Breadcrumb */}
+      <div className="bg-brand-950 border-b border-brand-900">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-1.5 text-xs text-neutral-600">
+          <Link href="/" className="hover:text-neutral-900 transition">
+            Inicio
+          </Link>
+          <ChevronRight size={12} className="text-neutral-700" />
+          <Link href="/productos" className="hover:text-neutral-900 transition">
+            Productos
+          </Link>
+          <ChevronRight size={12} className="text-neutral-700" />
+          <span className="text-neutral-800 font-semibold flex items-center gap-1">
+            <Icon size={11} className={product.accentText} />
+            {product.name}
+          </span>
+        </div>
+      </div>
 
       {/* Hero */}
-      <section className="pt-28 pb-16 px-4 relative overflow-hidden">
-        <div aria-hidden className={`absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-br ${product.gradient} opacity-[0.08] rounded-full blur-3xl`}></div>
+      <section className="pt-12 pb-16 px-4 relative overflow-hidden">
+        <div aria-hidden className={`absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-br ${product.gradient} opacity-[0.08] rounded-full blur-3xl`}></div>
 
         <div className="max-w-6xl mx-auto relative">
-          <Link
-            href="/productos"
-            className="inline-flex items-center gap-1.5 text-sm text-neutral-600 hover:text-neutral-800 mb-6 transition"
-          >
-            <span aria-hidden>←</span>
-            Todos los productos
-          </Link>
-
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className={`inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full ${product.accentBg} ${product.accentBorder} border`}>
@@ -197,9 +211,53 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         </div>
       </section>
 
+      {/* Próximas funcionalidades */}
+      {product.proximasFuncionalidades.length > 0 && (
+        <section className="py-20 px-4 bg-brand-950 border-y border-brand-800">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full bg-primary-500/15 text-primary-300 text-xs font-semibold uppercase tracking-wide border border-primary-500/30">
+                <Sparkles size={12} />
+                Roadmap
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4 leading-tight">
+                Próximas funcionalidades
+              </h2>
+              <p className="text-base text-neutral-700 max-w-xl mx-auto">
+                Lo que viene para {product.name} y cómo se conectará con el resto del ecosistema.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {product.proximasFuncionalidades.map((f) => (
+                <div
+                  key={f.title}
+                  className={`relative bg-brand-900/60 border ${product.accentBorder} rounded-2xl p-5 overflow-hidden`}
+                >
+                  <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${product.gradient}`}></div>
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="text-base font-bold text-neutral-900 leading-snug">{f.title}</h3>
+                    {f.eta && (
+                      <span className={`flex-shrink-0 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${product.accentBg} ${product.accentText} ${product.accentBorder} border`}>
+                        {f.eta}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-neutral-700 leading-relaxed">{f.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-center text-xs text-neutral-500 mt-8">
+              Roadmap sujeto a cambios. Las fechas son objetivos internos, no compromisos contractuales.
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* FAQ */}
       {product.faq.length > 0 && (
-        <section className="py-20 px-4 bg-brand-950 border-y border-brand-800">
+        <section className="py-20 px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-10">
               <div className="inline-block px-3 py-1 mb-3 rounded-full bg-primary-500/15 text-primary-300 text-xs font-semibold uppercase tracking-wide border border-primary-500/30">
@@ -215,7 +273,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
       )}
 
       {/* CTA */}
-      <section className="py-20 px-4">
+      <section className="py-20 px-4 bg-brand-950 border-t border-brand-800">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-5 leading-tight">
             ¿Activamos {product.name} en tu restorán?
@@ -227,39 +285,51 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
         </div>
       </section>
 
-      {/* Otras apps */}
-      <section className="py-20 px-4 bg-brand-900 border-t border-brand-800">
+      {/* Navegación prev/next */}
+      <section className="py-12 px-4 bg-brand-900 border-y border-brand-800">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-2">
-              Otras apps que tal vez te interesen
-            </h2>
-            <p className="text-neutral-600">Toda la suite EatCorp.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-4">
-            {otherProducts.map((p) => {
-              const POtherIcon = p.icon
-              return (
-                <Link
-                  key={p.slug}
-                  href={`/productos/${p.slug}`}
-                  className="group bg-brand-800/50 border border-brand-700 rounded-xl p-4 flex items-center gap-3 hover:border-primary-500/40 hover:bg-brand-800 transition"
-                >
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${p.gradient} flex items-center justify-center text-white shadow-sm flex-shrink-0`}>
-                    <POtherIcon size={18} />
+          <div className="grid md:grid-cols-2 gap-4">
+            <Link
+              href={`/productos/${prevProduct.slug}`}
+              className="group flex items-center gap-4 bg-brand-800/50 border border-brand-700 hover:border-primary-500/40 rounded-2xl p-5 transition"
+            >
+              <ArrowLeft size={20} className="text-neutral-600 group-hover:text-primary-400 group-hover:-translate-x-0.5 transition flex-shrink-0" />
+              <div className="flex-1 min-w-0">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">Anterior</div>
+                <div className="flex items-center gap-2">
+                  <div className={`w-7 h-7 rounded-md bg-gradient-to-br ${prevProduct.gradient} flex items-center justify-center text-white flex-shrink-0`}>
+                    <prevProduct.icon size={14} />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="font-bold text-neutral-900">{p.name}</div>
-                    <div className="text-xs text-neutral-600 truncate">{p.tagline}</div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-neutral-900 truncate">{prevProduct.name}</div>
+                    <div className="text-[11px] text-neutral-600 truncate">{prevProduct.tagline}</div>
                   </div>
-                  <ArrowRight size={14} className="text-neutral-600 group-hover:text-primary-400 group-hover:translate-x-0.5 transition flex-shrink-0" />
-                </Link>
-              )
-            })}
+                </div>
+              </div>
+            </Link>
+            <Link
+              href={`/productos/${nextProduct.slug}`}
+              className="group flex items-center gap-4 bg-brand-800/50 border border-brand-700 hover:border-primary-500/40 rounded-2xl p-5 transition md:text-right"
+            >
+              <div className="flex-1 min-w-0 md:order-1">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">Siguiente</div>
+                <div className="flex items-center gap-2 md:flex-row-reverse">
+                  <div className={`w-7 h-7 rounded-md bg-gradient-to-br ${nextProduct.gradient} flex items-center justify-center text-white flex-shrink-0`}>
+                    <nextProduct.icon size={14} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-neutral-900 truncate">{nextProduct.name}</div>
+                    <div className="text-[11px] text-neutral-600 truncate">{nextProduct.tagline}</div>
+                  </div>
+                </div>
+              </div>
+              <ArrowRight size={20} className="text-neutral-600 group-hover:text-primary-400 group-hover:translate-x-0.5 transition flex-shrink-0 md:order-2" />
+            </Link>
           </div>
-          <div className="mt-8 text-center">
-            <Link href="/productos" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-400 hover:text-primary-300">
-              Ver todas las apps
+
+          <div className="mt-6 text-center">
+            <Link href="/productos" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-400 hover:text-primary-300 transition">
+              Ver todos los productos
               <ArrowRight size={14} />
             </Link>
           </div>
