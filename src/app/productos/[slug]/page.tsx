@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArrowRight, Check, ChevronRight, ExternalLink, Sparkles, ArrowLeft } from 'lucide-react'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
-import { ProductsSubNav } from '@/components/ProductsSubNav'
+import { ProductsContextNav } from '@/components/ProductsContextNav'
 import { PRODUCTS, PRODUCTS_LIST, type ProductSlug } from '@/lib/products'
 import { ProductPageCTA } from './ProductPageCTA'
 import { ProductFAQ } from './ProductFAQ'
@@ -40,7 +40,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
   return (
     <main className="flex flex-col">
       <Navigation />
-      <ProductsSubNav activeSlug={product.slug} />
+      <ProductsContextNav activeSlug={product.slug} />
 
       {/* Breadcrumb */}
       <div className="bg-brand-950 border-b border-brand-900">

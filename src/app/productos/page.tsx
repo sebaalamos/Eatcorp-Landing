@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { ArrowRight, Sparkles, ChevronRight, Clock, Rocket, FlaskConical } from 'lucide-react'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
-import { ProductsSubNav } from '@/components/ProductsSubNav'
 import { PRODUCTS_LIST, UPCOMING_APPS, type UpcomingApp } from '@/lib/products'
 
 export const metadata: Metadata = {
@@ -56,7 +55,6 @@ export default function ProductosIndex() {
   return (
     <main className="flex flex-col">
       <Navigation />
-      <ProductsSubNav activeSlug="index" />
 
       {/* Breadcrumb */}
       <div className="bg-brand-950 border-b border-brand-900">

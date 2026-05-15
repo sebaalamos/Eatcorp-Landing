@@ -139,6 +139,27 @@ export function HeroAppCarousel() {
   )
 }
 
+function KpiStrip({ items, accent }: { items: { label: string; value: string; sub?: string; trend?: 'up' | 'down' }[]; accent: string }) {
+  return (
+    <div className="grid grid-cols-3 gap-2 mb-4">
+      {items.map((kpi, i) => (
+        <div
+          key={i}
+          className="bg-brand-800/40 border border-brand-700 rounded-lg px-3 py-2"
+        >
+          <div className="text-[9px] font-bold uppercase tracking-wider text-neutral-600">{kpi.label}</div>
+          <div className="flex items-baseline gap-1 mt-0.5">
+            <div className="text-lg md:text-xl font-bold text-neutral-900 tabular-nums leading-none">{kpi.value}</div>
+          </div>
+          {kpi.sub && (
+            <div className={`text-[10px] mt-1 ${kpi.trend === 'up' ? accent : 'text-neutral-600'}`}>{kpi.sub}</div>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 function BuyEatSlide() {
   const invoices = [
     { name: 'Distribuidora Central', amount: '$1.240.000', tag: 'Vence hoy', urgent: true, selected: true },
@@ -149,9 +170,17 @@ function BuyEatSlide() {
   ]
   return (
     <div className="p-6 bg-gradient-to-br from-brand-900 to-brand-950 min-h-[400px]">
-      <div className="flex items-center justify-between mb-4">
+      <KpiStrip
+        accent="text-blue-300"
+        items={[
+          { label: 'Por pagar mes', value: '$14,8M', sub: '47 facturas', trend: 'up' },
+          { label: 'Pronto pago capturado', value: '$284k', sub: '+12% vs mes ant.', trend: 'up' },
+          { label: 'Discrepancias', value: '3', sub: 'auto-resueltas hoy' },
+        ]}
+      />
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <div className="text-base font-semibold text-neutral-900">Pagos pendientes — Lote del día</div>
+          <div className="text-sm font-semibold text-neutral-900">Lote del día · pagos pendientes</div>
           <div className="text-xs text-neutral-600 mt-0.5">5 facturas · 3 seleccionadas</div>
         </div>
         <div className="flex gap-1">
@@ -162,11 +191,11 @@ function BuyEatSlide() {
           ))}
         </div>
       </div>
-      <div className="space-y-2 mb-4">
+      <div className="space-y-1.5 mb-3">
         {invoices.map((p, i) => (
           <div
             key={i}
-            className={`flex items-center gap-3 p-3 rounded-lg border ${p.selected ? 'bg-blue-500/10 border-blue-500/40' : 'bg-brand-800/60 border-brand-700'}`}
+            className={`flex items-center gap-3 p-2.5 rounded-lg border ${p.selected ? 'bg-blue-500/10 border-blue-500/40' : 'bg-brand-800/60 border-brand-700'}`}
             style={{ animation: `slide-up 0.5s ease-out ${i * 0.06}s backwards` }}
           >
             <div className={`w-4 h-4 rounded-sm border-2 flex-shrink-0 ${p.selected ? 'bg-blue-500 border-blue-500' : 'border-brand-600'}`}>
@@ -184,7 +213,7 @@ function BuyEatSlide() {
           </div>
         ))}
       </div>
-      <div className="flex items-center justify-between pt-4 border-t border-brand-800">
+      <div className="flex items-center justify-between pt-3 border-t border-brand-800">
         <div className="text-xs text-neutral-600">
           <span className="font-bold text-neutral-900">3 seleccionadas</span> · Total{' '}
           <span className="font-bold text-neutral-900 tabular-nums">$2.640.500</span>
@@ -201,9 +230,17 @@ function BuyEatSlide() {
 function LikeEatSlide() {
   return (
     <div className="p-6 bg-gradient-to-br from-brand-900 to-brand-950 min-h-[400px]">
-      <div className="flex items-center justify-between mb-4">
+      <KpiStrip
+        accent="text-pink-300"
+        items={[
+          { label: 'Posts esta semana', value: '12', sub: '+3 vs sem. ant.', trend: 'up' },
+          { label: 'Alcance acumulado', value: '24,8K', sub: 'IG + TikTok' },
+          { label: 'Brand fit IA', value: '94%', sub: 'voz consistente', trend: 'up' },
+        ]}
+      />
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <div className="text-base font-semibold text-neutral-900">Plan de la semana</div>
+          <div className="text-sm font-semibold text-neutral-900">Plan de la semana</div>
           <div className="text-xs text-neutral-600 mt-0.5">9 posts agendados</div>
         </div>
         <div className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full bg-pink-500/20 text-pink-300 font-semibold border border-pink-500/30">
@@ -291,6 +328,14 @@ function MenuEatSlide() {
   ]
   return (
     <div className="p-6 bg-gradient-to-br from-brand-900 to-brand-950 min-h-[400px]">
+      <KpiStrip
+        accent="text-orange-300"
+        items={[
+          { label: 'Vistas hoy', value: '127', sub: 'desde 14 mesas', trend: 'up' },
+          { label: 'Plato más visto', value: 'Asado', sub: '38% del scroll' },
+          { label: 'Idiomas activos', value: 'ES + EN', sub: 'fallback elegante' },
+        ]}
+      />
       <div className="grid grid-cols-[auto_1fr] gap-4 items-start">
         <div className="relative w-36 flex flex-col items-center bg-gradient-to-br from-orange-500/15 to-brand-950 border border-orange-500/30 rounded-xl p-3 shadow-md shadow-orange-500/15">
           <div className="text-[10px] font-bold uppercase tracking-wider text-orange-300 mb-2">Mesa 4</div>
@@ -371,6 +416,14 @@ function EventEatSlide() {
   ]
   return (
     <div className="p-6 bg-gradient-to-br from-brand-900 to-brand-950 min-h-[400px]">
+      <KpiStrip
+        accent="text-rose-300"
+        items={[
+          { label: 'Eventos del mes', value: '8', sub: '3 confirmados', trend: 'up' },
+          { label: 'Cotizado activo', value: '$4,3M', sub: '4 en pipeline' },
+          { label: 'Margen prom.', value: '38%', sub: 'sobre costo real', trend: 'up' },
+        ]}
+      />
       <div className="flex items-center justify-between mb-3">
         <div>
           <div className="text-base font-semibold text-neutral-900">Eventos próximos</div>

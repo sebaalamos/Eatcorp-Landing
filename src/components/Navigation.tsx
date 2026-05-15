@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { Logo } from './Logo'
+import { ProductsMegaMenu } from './ProductsMegaMenu'
 
-const navLinks = [
-  { href: '/productos', label: 'Productos' },
+const simpleLinks = [
   { href: '/#faq', label: 'FAQ' },
   { href: '/#contacto', label: 'Contacto' },
 ]
@@ -59,8 +59,9 @@ export function Navigation() {
         <Link href="/" aria-label="Inicio EatCorp" className="rounded-lg hover:opacity-80 transition-opacity">
           <Logo size={36} />
         </Link>
-        <div className="flex items-center gap-6">
-          {navLinks.map((link) => (
+        <div className="flex items-center gap-3 md:gap-5">
+          <ProductsMegaMenu />
+          {simpleLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -88,9 +89,10 @@ export function Navigation() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-brand-950 border-b border-brand-800 shadow-2xl">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-brand-950 border-b border-brand-800 shadow-2xl max-h-[calc(100vh-60px)] overflow-y-auto">
           <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col">
-            {navLinks.map((link) => (
+            <ProductsMegaMenu inMobileSheet onNavigate={() => setMenuOpen(false)} />
+            {simpleLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
