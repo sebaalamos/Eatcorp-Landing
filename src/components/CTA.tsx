@@ -37,8 +37,8 @@ export function CTA() {
           </span>
         </h2>
         <p className="text-lg md:text-xl text-neutral-700 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Súmate a los restoranes que ya operan con EatCorp. Sin tarjeta, sin instalación,
-          activo en 30 minutos.
+          Súmate a los restoranes que ya operan con EatCorp. Demo personalizada,
+          piloto antes del contrato, activo el mismo día.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
@@ -61,7 +61,7 @@ export function CTA() {
           </button>
         </div>
         <p className="mt-5 text-xs text-neutral-500">
-          Sin tarjeta de crédito · sin instalación · todo en español
+          Demo personalizada · piloto antes del contrato · activo en 30 minutos
         </p>
       </div>
 

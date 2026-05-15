@@ -80,7 +80,7 @@ export function Hero() {
         </div>
 
         <p className="text-xs text-neutral-500 mb-14">
-          Sin instalación · sin tarjeta de crédito · todo en español
+          Demo en una llamada · piloto sin compromiso · activo el mismo día
         </p>
 
         <HeroAppCarousel />
