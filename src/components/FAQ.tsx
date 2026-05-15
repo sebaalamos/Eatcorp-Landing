@@ -28,6 +28,10 @@ const faqs = [
     q: '¿Cuántos usuarios puedo tener?',
     a: 'No hay un tope rígido. Cada usuario tiene distintos roles y accesos por app — el cocinero solo ve TaskEat, el admin ve todo. Puedes agregar y quitar usuarios cuando quieras.',
   },
+  {
+    q: '¿Cómo se paga? ¿Hay contratos largos?',
+    a: 'Suscripción mensual con tarjeta de crédito. Sin contratos largos, sin letra chica. Cancelas cuando quieras desde tu cuenta y no se cobra el mes siguiente. Aceptamos tarjeta de crédito y débito; para cuentas Enterprise también transferencia.',
+  },
 ]
 
 export function FAQ() {
