@@ -397,7 +397,7 @@ function LikeEatSlide() {
                 <div className="flex items-center gap-1.5 px-2.5 pt-5 pb-1.5">
                   <div className="w-6 h-6 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-[8px] font-bold shadow-sm">R</div>
                   <div className="flex items-center gap-0.5 flex-1 min-w-0">
-                    <span className="text-[10px] font-bold text-neutral-900 truncate">tu_restorán</span>
+                    <span className="text-[10px] font-bold text-slate-900 truncate">tu_restorán</span>
                     <BadgeCheck size={10} className="text-blue-400 flex-shrink-0 fill-blue-400 stroke-white" />
                   </div>
                 </div>
@@ -439,13 +439,13 @@ function LikeEatSlide() {
                   <div className="flex items-center justify-between mb-1">
                     <div className="flex items-center gap-2">
                       <Heart size={14} className="text-rose-500 fill-rose-500" />
-                      <MessageCircle size={14} className="text-neutral-700" />
-                      <Send size={14} className="text-neutral-700" />
+                      <MessageCircle size={14} className="text-slate-700" />
+                      <Send size={14} className="text-slate-700" />
                     </div>
-                    <Bookmark size={14} className="text-neutral-700" />
+                    <Bookmark size={14} className="text-slate-700" />
                   </div>
-                  <div className="text-[9px] font-bold text-neutral-900">312 me gusta</div>
-                  <div className="text-[8.5px] text-neutral-700 leading-snug mt-0.5 line-clamp-2">
+                  <div className="text-[9px] font-bold text-slate-900">312 me gusta</div>
+                  <div className="text-[8.5px] text-slate-700 leading-snug mt-0.5 line-clamp-2">
                     <span className="font-bold">tu_restorán</span> Pasta fresca, salsa de la nona y un vino que abraza.
                   </div>
                 </div>
@@ -530,7 +530,7 @@ function MenuEatSlide() {
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-[8px] font-bold uppercase tracking-wider text-orange-700">Tu restorán</div>
-                      <div className="text-xs font-bold text-neutral-900">Carta · Cena</div>
+                      <div className="text-xs font-bold text-slate-900">Carta · Cena</div>
                     </div>
                     <div className="flex items-center gap-0.5 bg-orange-100 border border-orange-200 rounded-full p-0.5">
                       <span className="px-1.5 py-0.5 rounded-full bg-orange-500 text-white text-[8px] font-bold">ES</span>
@@ -543,9 +543,9 @@ function MenuEatSlide() {
                 </div>
 
                 {/* Categories */}
-                <div className="px-3 py-1.5 flex gap-1 overflow-hidden border-b border-neutral-100">
+                <div className="px-3 py-1.5 flex gap-1 overflow-hidden border-b border-slate-100">
                   {['Entradas', 'Principales', 'Postres'].map((cat, i) => (
-                    <span key={cat} className={`text-[8px] font-bold whitespace-nowrap px-1.5 py-0.5 rounded-full ${i === 1 ? 'bg-orange-500 text-white' : 'bg-neutral-100 text-neutral-700'}`}>
+                    <span key={cat} className={`text-[8px] font-bold whitespace-nowrap px-1.5 py-0.5 rounded-full ${i === 1 ? 'bg-orange-500 text-white' : 'bg-slate-100 text-slate-700'}`}>
                       {cat}
                     </span>
                   ))}
@@ -560,7 +560,7 @@ function MenuEatSlide() {
                   ].map((d, i) => (
                     <div
                       key={d.name}
-                      className={`flex gap-2 p-1.5 rounded-lg ${d.featured ? 'bg-orange-50 ring-1 ring-orange-300' : 'bg-neutral-50'}`}
+                      className={`flex gap-2 p-1.5 rounded-lg ${d.featured ? 'bg-orange-50 ring-1 ring-orange-300' : 'bg-slate-50'}`}
                       style={{ animation: `slide-up 0.5s ease-out ${i * 0.08}s backwards` }}
                     >
                       <div className={`w-10 h-10 rounded bg-gradient-to-br ${d.grad} flex items-center justify-center flex-shrink-0 shadow-sm`}>
@@ -568,17 +568,17 @@ function MenuEatSlide() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
-                          <div className="text-[10px] font-bold text-neutral-900 leading-tight truncate">{d.name}</div>
+                          <div className="text-[10px] font-bold text-slate-900 leading-tight truncate">{d.name}</div>
                           <div className="text-[10px] font-bold text-orange-600 tabular-nums">{d.price}</div>
                         </div>
-                        <div className="text-[8px] text-neutral-600 leading-snug truncate">{d.desc}</div>
+                        <div className="text-[8px] text-slate-600 leading-snug truncate">{d.desc}</div>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="px-3 py-1.5 bg-neutral-50 border-t border-neutral-100 flex items-center justify-between">
-                  <div className="text-[8px] text-neutral-600 flex items-center gap-1">
+                <div className="px-3 py-1.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+                  <div className="text-[8px] text-slate-600 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
                     Precios al instante
                   </div>
@@ -683,26 +683,26 @@ function EventEatSlide() {
               Borrador
             </div>
 
-            <div className="px-5 pt-5 pb-3 border-b border-neutral-200">
+            <div className="px-5 pt-5 pb-3 border-b border-slate-200">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-md bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center text-white shadow-sm">
                     <PartyPopper size={12} />
                   </div>
                   <div>
-                    <div className="text-[8px] font-bold uppercase tracking-wider text-neutral-500">Cotización</div>
-                    <div className="text-[10px] font-mono text-neutral-700">#EV-042 · 17 mayo</div>
+                    <div className="text-[8px] font-bold uppercase tracking-wider text-slate-600">Cotización</div>
+                    <div className="text-[10px] font-mono text-slate-700">#EV-042 · 17 mayo</div>
                   </div>
                 </div>
-                <FileText size={14} className="text-neutral-400" />
+                <FileText size={14} className="text-slate-500" />
               </div>
 
-              <div className="text-base font-bold text-neutral-900">Cierre fiscal · Constructora ACME</div>
-              <div className="text-[11px] text-neutral-600 mt-0.5">Salón privado · cena 3 tiempos · open bar · 60 personas</div>
+              <div className="text-base font-bold text-slate-900">Cierre fiscal · Constructora ACME</div>
+              <div className="text-[11px] text-slate-600 mt-0.5">Salón privado · cena 3 tiempos · open bar · 60 personas</div>
             </div>
 
             {/* Items */}
-            <div className="px-5 py-3 space-y-1.5 border-b border-neutral-200">
+            <div className="px-5 py-3 space-y-1.5 border-b border-slate-200">
               {[
                 { label: 'Menú degustación', qty: '60 px', amount: '$1.080.000' },
                 { label: 'Open bar 3h', qty: '60 px', amount: '$720.000' },
@@ -715,10 +715,10 @@ function EventEatSlide() {
                   className="flex items-center justify-between text-[11px]"
                   style={{ animation: `slide-up 0.4s ease-out ${i * 0.05}s backwards` }}
                 >
-                  <span className="text-neutral-800">{item.label}</span>
+                  <span className="text-slate-800">{item.label}</span>
                   <div className="flex items-center gap-2">
-                    <span className="text-neutral-500 text-[10px]">{item.qty}</span>
-                    <span className="font-bold text-neutral-900 tabular-nums w-20 text-right">{item.amount}</span>
+                    <span className="text-slate-500 text-[10px]">{item.qty}</span>
+                    <span className="font-bold text-slate-900 tabular-nums w-20 text-right">{item.amount}</span>
                   </div>
                 </div>
               ))}
@@ -742,20 +742,20 @@ function EventEatSlide() {
             </div>
 
             {/* Footer with checklist */}
-            <div className="px-5 py-2.5 bg-white border-t border-neutral-200">
+            <div className="px-5 py-2.5 bg-white border-t border-slate-200">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-700">Checklist</span>
-                <span className="text-[10px] font-bold text-primary-500">2/4 hecho</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700">Checklist</span>
+                <span className="text-[10px] font-bold text-primary-600">2/4 hecho</span>
               </div>
               <div className="flex gap-1">
                 {[true, true, false, false].map((done, i) => (
-                  <div key={i} className={`flex-1 h-1 rounded-full ${done ? 'bg-primary-500' : 'bg-neutral-200'}`}></div>
+                  <div key={i} className={`flex-1 h-1 rounded-full ${done ? 'bg-primary-500' : 'bg-slate-200'}`}></div>
                 ))}
               </div>
             </div>
 
-            <div className="px-5 py-3 bg-neutral-50 flex items-center justify-between gap-2">
-              <button className="text-[10px] font-bold text-neutral-700 px-3 py-1.5 bg-white border border-neutral-300 rounded">
+            <div className="px-5 py-3 bg-slate-50 flex items-center justify-between gap-2">
+              <button className="text-[10px] font-bold text-slate-700 px-3 py-1.5 bg-white border border-slate-300 rounded">
                 Ver PDF
               </button>
               <button className="flex-1 text-[10px] font-bold text-white px-3 py-1.5 bg-gradient-to-r from-rose-600 to-red-600 rounded shadow-sm shadow-rose-500/40 flex items-center justify-center gap-1.5">
