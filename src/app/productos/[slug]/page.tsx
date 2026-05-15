@@ -38,7 +38,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
   const nextProduct = currentIndex < PRODUCTS_LIST.length - 1 ? PRODUCTS_LIST[currentIndex + 1] : PRODUCTS_LIST[0]
 
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col pt-16">
       <Navigation />
       <ProductsContextNav activeSlug={product.slug} />
 

@@ -53,7 +53,7 @@ const ROADMAP_GROUPS: { label: string; status: UpcomingApp['status']; icon: type
 
 export default function ProductosIndex() {
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col pt-16">
       <Navigation />
 
       {/* Breadcrumb */}
