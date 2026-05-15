@@ -7,8 +7,10 @@ import { LiveActivityBar } from '@/components/LiveActivityBar'
 import { ClientLogos } from '@/components/ClientLogos'
 import { HowItWorks } from '@/components/HowItWorks'
 import { AppsCatalog } from '@/components/AppsCatalog'
+import { RestaurantPersonas } from '@/components/RestaurantPersonas'
 import { ADayWithEatCorp } from '@/components/ADayWithEatCorp'
 import { ROICalculator } from '@/components/ROICalculator'
+import { ConnectedStack } from '@/components/ConnectedStack'
 import { Comparison } from '@/components/Comparison'
 import { Testimonials } from '@/components/Testimonials'
 import { FAQ } from '@/components/FAQ'
@@ -31,8 +33,10 @@ export default function Home() {
       <ClientLogos />
       <HowItWorks />
       <AppsCatalog />
+      <RestaurantPersonas />
       <ADayWithEatCorp />
       <ROICalculator />
+      <ConnectedStack />
       <Comparison />
       <Testimonials />
       <FAQ />
