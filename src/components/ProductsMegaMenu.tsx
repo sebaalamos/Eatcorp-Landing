@@ -123,7 +123,7 @@ export function ProductsMegaMenu({ inMobileSheet = false, onNavigate }: Props) {
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-brand-800">
               <div className="flex items-center gap-2">
                 <Sparkles size={14} className="text-primary-300" />
-                <span className="text-xs font-bold uppercase tracking-wider text-primary-300">9 apps activas</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-primary-300">12 apps activas</span>
               </div>
               <Link
                 href="/productos"

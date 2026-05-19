@@ -15,12 +15,12 @@ type Category = {
 
 const categories: Category[] = [
   {
-    id: 'payment',
-    title: 'Cobro con tarjeta',
-    description: 'PayEat trabaja sobre el procesador que ya conoces. Hardware-agnostic, sin atarte a un POS específico.',
+    id: 'pos',
+    title: 'POS y ventas',
+    description: 'PayEat lee tus ventas de Toteat hoy o las cargas manualmente. POS propio + cobro Getnet en construcción para Dic 2026.',
     icon: CreditCard,
-    partners: ['Getnet', 'Transbank', 'Iziplay'],
-    via: 'PayEat (Jun 2026)',
+    partners: ['Toteat', 'Getnet (Dic 2026)', 'POS propio (Dic 2026)'],
+    via: 'PayEat',
     gradient: 'from-primary-500 to-teal-500',
     accentText: 'text-primary-300',
     accentBg: 'bg-primary-500/15',

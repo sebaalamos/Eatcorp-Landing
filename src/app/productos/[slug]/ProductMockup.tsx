@@ -1,4 +1,4 @@
-import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, UserCheck, Coins, Link2 } from 'lucide-react'
+import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, UserCheck, Coins, Link2, Boxes, ChefHat, TrendingDown, TrendingUp, ArrowRight as ArrowR, Package } from 'lucide-react'
 import type { ProductSlug } from '@/lib/products'
 
 export function ProductMockup({ slug }: { slug: ProductSlug }) {
@@ -21,6 +21,9 @@ export function ProductMockup({ slug }: { slug: ProductSlug }) {
         {slug === 'eventeat' && <EventEatM />}
         {slug === 'menueat' && <MenuEatM />}
         {slug === 'tipeat' && <TipEatM />}
+        {slug === 'inventeat' && <InventEatM />}
+        {slug === 'recipeat' && <RecipEatM />}
+        {slug === 'payeat' && <PayEatM />}
         {slug === 'bookeat' && <BookEatM />}
         {slug === 'staffeat' && <StaffEatM />}
       </div>
@@ -645,6 +648,254 @@ function StaffEatM() {
       <div className="mt-3 pt-3 border-t border-brand-800 flex items-center justify-between text-[10px]">
         <span className="text-neutral-600">9/12 colaboradores activos esta semana</span>
         <span className="text-violet-300 font-semibold">Ver calendario</span>
+      </div>
+    </div>
+  )
+}
+
+function InventEatM() {
+  const items = [
+    { name: 'Aceite de oliva 5L', cat: 'Bodega central', stock: 8, min: 12, status: 'low', icon: Package },
+    { name: 'Filete de res 1kg', cat: 'Cámara fría', stock: 24, min: 15, status: 'ok', icon: Package },
+    { name: 'Vino tinto cabernet', cat: 'Cava', stock: 2, min: 6, status: 'critical', icon: Package },
+    { name: 'Harina 25kg', cat: 'Bodega central', stock: 7, min: 4, status: 'ok', icon: Package },
+    { name: 'Queso parmesano 500g', cat: 'Cámara fría', stock: 0, min: 3, status: 'critical', icon: Package },
+  ]
+  return (
+    <div className="p-5 bg-gradient-to-br from-brand-900 to-brand-950">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <div className="text-sm font-semibold text-neutral-900">Stock por ubicación</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">3 bodegas · 124 SKUs · 2 alertas</div>
+        </div>
+        <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 font-semibold border border-teal-500/30">
+          <Boxes size={10} />
+          InventEat
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-1.5 mb-3">
+        {[
+          { label: 'Bodega central', value: '67', sub: 'SKUs', dot: 'bg-teal-500' },
+          { label: 'Cámara fría', value: '42', sub: 'SKUs', dot: 'bg-cyan-500' },
+          { label: 'Cava', value: '15', sub: 'SKUs · 1 crítico', dot: 'bg-rose-500' },
+        ].map((b) => (
+          <div key={b.label} className="bg-brand-800/60 border border-brand-700 rounded-lg p-2">
+            <div className="flex items-center gap-1 mb-0.5">
+              <div className={`w-1.5 h-1.5 rounded-full ${b.dot}`}></div>
+              <div className="text-[9px] font-bold uppercase tracking-wider text-neutral-700 truncate">{b.label}</div>
+            </div>
+            <div className="text-base font-bold text-neutral-900 tabular-nums leading-none">{b.value}</div>
+            <div className="text-[9px] text-neutral-600 mt-0.5">{b.sub}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="space-y-1.5 mb-3">
+        {items.map((it, i) => {
+          const Icon = it.icon
+          const tone =
+            it.status === 'critical'
+              ? 'bg-rose-500/15 border-rose-500/40 text-rose-300'
+              : it.status === 'low'
+                ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
+                : 'bg-brand-800/60 border-brand-700 text-neutral-700'
+          const stockColor =
+            it.status === 'critical' ? 'text-rose-300' : it.status === 'low' ? 'text-amber-300' : 'text-primary-300'
+          return (
+            <div key={i} className={`flex items-center gap-2.5 p-2 rounded-lg border ${tone.includes('rose') || tone.includes('amber') ? tone.split(' ').slice(0, 2).join(' ') : 'bg-brand-800/60 border-brand-700'}`}>
+              <div className="w-7 h-7 rounded-md bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-white flex-shrink-0 shadow-sm">
+                <Icon size={12} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[11px] font-semibold text-neutral-900 truncate">{it.name}</div>
+                <div className="text-[9px] text-neutral-600">{it.cat}</div>
+              </div>
+              <div className="text-right flex-shrink-0">
+                <div className={`text-[11px] font-bold tabular-nums ${stockColor}`}>{it.stock}</div>
+                <div className="text-[9px] text-neutral-600">min {it.min}</div>
+              </div>
+              {it.status === 'critical' && <AlertTriangle size={12} className="text-rose-300 flex-shrink-0" />}
+            </div>
+          )
+        })}
+      </div>
+
+      <div className="bg-teal-500/10 border border-teal-500/30 rounded-lg p-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-full bg-teal-500/20 border border-teal-500/40 flex items-center justify-center flex-shrink-0">
+            <Sparkles size={13} className="text-teal-300" />
+          </div>
+          <div>
+            <div className="text-[11px] font-bold text-neutral-900">2 productos bajo mínimo</div>
+            <div className="text-[10px] text-neutral-600">Lista de compra lista para enviar a BuyEat</div>
+          </div>
+        </div>
+        <button className="px-2.5 py-1 bg-teal-600 text-white text-[10px] font-semibold rounded shadow-sm shadow-teal-500/40 flex items-center gap-1">
+          <ArrowR size={10} />
+          BuyEat
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function RecipEatM() {
+  const ingredients = [
+    { name: 'Pasta fresca', qty: '180g', cost: '$540', impact: '$540' },
+    { name: 'Tomate concassé', qty: '120g', cost: '$280', impact: '$280' },
+    { name: 'Aceite oliva extra', qty: '15ml', cost: '$190', impact: '$190' },
+    { name: 'Parmesano 24m', qty: '20g', cost: '$420', impact: '$420' },
+    { name: 'Albahaca fresca', qty: '5g', cost: '$80', impact: '$80' },
+  ]
+  return (
+    <div className="p-5 bg-gradient-to-br from-brand-900 to-brand-950">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <div className="text-sm font-semibold text-neutral-900">Ficha técnica</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">Pasta de la nona · receta v3 · vigente</div>
+        </div>
+        <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-300 font-semibold border border-orange-500/30">
+          <ChefHat size={10} />
+          RecipEat
+        </div>
+      </div>
+
+      <div className="flex gap-3 mb-3">
+        <div className="w-20 h-20 rounded-lg bg-gradient-to-br from-amber-300 via-orange-400 to-rose-500 flex items-center justify-center text-white font-bold text-3xl shadow-md flex-shrink-0">
+          P
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="grid grid-cols-3 gap-1.5">
+            <div className="bg-brand-800/60 border border-brand-700 rounded-md p-1.5">
+              <div className="text-[8px] uppercase tracking-wider text-neutral-600">Precio venta</div>
+              <div className="text-sm font-bold text-neutral-900 tabular-nums leading-none mt-0.5">$12.500</div>
+            </div>
+            <div className="bg-brand-800/60 border border-brand-700 rounded-md p-1.5">
+              <div className="text-[8px] uppercase tracking-wider text-neutral-600">Costo</div>
+              <div className="text-sm font-bold text-neutral-900 tabular-nums leading-none mt-0.5">$1.510</div>
+            </div>
+            <div className="bg-primary-500/10 border border-primary-500/30 rounded-md p-1.5">
+              <div className="text-[8px] uppercase tracking-wider text-primary-300">Margen</div>
+              <div className="text-sm font-bold text-primary-300 tabular-nums leading-none mt-0.5">87.9%</div>
+            </div>
+          </div>
+          <div className="mt-1.5 text-[9px] text-neutral-600 flex items-center gap-1">
+            <TrendingUp size={9} className="text-primary-400" />
+            Costo bajó $80 vs receta v2 (mejor proveedor)
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-brand-800/40 border border-brand-700 rounded-lg p-2.5 mb-3">
+        <div className="text-[9px] font-bold uppercase tracking-wider text-neutral-700 mb-1.5">Insumos consumidos por venta</div>
+        <div className="space-y-1">
+          {ingredients.map((ing, i) => (
+            <div key={i} className="flex items-center gap-2 text-[10px]">
+              <div className="w-1 h-1 rounded-full bg-orange-400 flex-shrink-0"></div>
+              <span className="flex-1 text-neutral-700 truncate">{ing.name}</span>
+              <span className="text-neutral-600 tabular-nums">{ing.qty}</span>
+              <span className="text-orange-300 font-bold tabular-nums w-12 text-right">{ing.cost}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-primary-500/10 border border-primary-500/30 rounded-lg p-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-full bg-primary-500/20 border border-primary-500/40 flex items-center justify-center flex-shrink-0">
+            <ArrowR size={13} className="text-primary-300" />
+          </div>
+          <div>
+            <div className="text-[11px] font-bold text-neutral-900">Vinculada con MenuEat</div>
+            <div className="text-[10px] text-neutral-600">Venta dispara descuento auto en InventEat</div>
+          </div>
+        </div>
+        <div className="text-right">
+          <div className="text-[9px] uppercase tracking-wider text-neutral-600 font-bold">Mes</div>
+          <div className="text-[11px] font-bold text-primary-300 tabular-nums">142 ventas</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function PayEatM() {
+  const sales = [
+    { time: '13:42', table: 'Mesa 4', items: 'Pasta x2 · Vino', total: '$32.400', flow: true },
+    { time: '13:38', table: 'Mesa 7', items: 'Asado · Empanada · Agua', total: '$23.900' },
+    { time: '13:30', table: 'Mesa 2', items: 'Pasta · Postre · Café', total: '$18.800' },
+    { time: '13:25', table: 'Mesa 9', items: '2x Asado · Vino', total: '$41.800' },
+  ]
+  return (
+    <div className="p-5 bg-gradient-to-br from-brand-900 to-brand-950">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <div className="text-sm font-semibold text-neutral-900">Ventas de hoy</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">Lectura desde Toteat · 47 tickets</div>
+        </div>
+        <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-300 font-semibold border border-primary-500/30">
+          <Coins size={10} />
+          PayEat
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-1.5 mb-3">
+        {[
+          { label: 'Ventas día', value: '$842k', sub: '47 tickets', dot: 'bg-primary-500' },
+          { label: 'Ticket prom.', value: '$17.9k', sub: '+8% vs ayer', dot: 'bg-blue-500' },
+          { label: 'Margen est.', value: '62%', sub: 'data real', dot: 'bg-emerald-500' },
+        ].map((b) => (
+          <div key={b.label} className="bg-brand-800/60 border border-brand-700 rounded-lg p-2">
+            <div className="flex items-center gap-1 mb-0.5">
+              <div className={`w-1.5 h-1.5 rounded-full ${b.dot}`}></div>
+              <div className="text-[9px] font-bold uppercase tracking-wider text-neutral-700 truncate">{b.label}</div>
+            </div>
+            <div className="text-base font-bold text-neutral-900 tabular-nums leading-none">{b.value}</div>
+            <div className="text-[9px] text-neutral-600 mt-0.5">{b.sub}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="space-y-1.5 mb-3">
+        {sales.map((s, i) => (
+          <div key={i} className={`flex items-center gap-2.5 p-2 rounded-lg border ${s.flow ? 'bg-primary-500/10 border-primary-500/40' : 'bg-brand-800/60 border-brand-700'}`}>
+            <div className="w-12 text-[10px] font-bold text-neutral-700 tabular-nums">{s.time}</div>
+            <div className="flex-1 min-w-0">
+              <div className="text-[11px] font-semibold text-neutral-900">{s.table}</div>
+              <div className="text-[9px] text-neutral-600 truncate">{s.items}</div>
+            </div>
+            <div className="text-right flex-shrink-0">
+              <div className="text-[11px] font-bold text-neutral-900 tabular-nums">{s.total}</div>
+              {s.flow && (
+                <div className="text-[8px] font-semibold text-primary-300 uppercase tracking-wider flex items-center gap-0.5 justify-end">
+                  <ArrowR size={8} />
+                  Stock −
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-primary-500/10 border border-primary-500/30 rounded-lg p-3">
+        <div className="flex items-center justify-between mb-1">
+          <div className="text-[10px] font-bold uppercase tracking-wider text-primary-300 flex items-center gap-1">
+            <Sparkles size={11} />
+            Flujo completo activado
+          </div>
+          <div className="text-[9px] font-bold uppercase tracking-wider text-neutral-600">Dic 2026</div>
+        </div>
+        <div className="text-[10px] text-neutral-700 leading-snug">
+          POS propio con KDS + cobro Getnet en construcción. Por ahora, lectura Toteat o carga manual.
+        </div>
+        <div className="flex gap-1 mt-2">
+          {['Comanda KDS', 'Cobro Getnet', 'Recibos', 'Offline'].map((f) => (
+            <span key={f} className="text-[8px] font-bold uppercase tracking-wider text-primary-300 bg-primary-500/15 border border-primary-500/30 px-1.5 py-0.5 rounded">
+              {f}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   )

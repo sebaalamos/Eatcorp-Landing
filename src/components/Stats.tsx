@@ -6,9 +6,9 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    number: '9',
+    number: '12',
     label: 'Apps disponibles',
-    description: 'BuyEat, TaskEat, LikeEat, MaintainEat, EventEat, MenuEat, TipEat, BookEat y StaffEat — todo conectado.',
+    description: 'BuyEat, TaskEat, LikeEat, MaintainEat, EventEat, MenuEat, TipEat, InventEat, RecipEat, PayEat, BookEat y StaffEat — todo conectado.',
   },
   {
     number: 'Multi-local',

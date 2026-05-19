@@ -35,8 +35,8 @@ const personas: Persona[] = [
     label: 'Cadena en crecimiento',
     vibe: '3–8 locales · 20–80 colaboradores',
     description:
-      'Estás abriendo el tercer local y el Excel se quebró. Necesitas visibilidad consolidada de compras, equipo distribuido, mantención preventiva en todos los locales y RR.HH. al día.',
-    apps: ['buyeat', 'taskeat', 'maintaineat', 'staffeat'],
+      'Estás abriendo el tercer local y el Excel se quebró. Necesitas visibilidad consolidada de compras, stock multi-bodega cuadrado, equipo distribuido y mantención preventiva en todos los locales.',
+    apps: ['buyeat', 'inventeat', 'taskeat', 'maintaineat'],
     gradient: 'from-blue-500 to-cyan-500',
     accentBg: 'bg-blue-500/15',
     accentBorder: 'border-blue-500/40',
@@ -48,8 +48,8 @@ const personas: Persona[] = [
     label: 'Fine dining / alta gama',
     vibe: 'Un local o pocos · ticket alto · eventos',
     description:
-      'Cuidas mucho cada experiencia. Recibes eventos privados grandes, tienes una carta cuidada (a veces bilingüe) y tu marca importa en RRSS. Necesitas margen real por evento y narrativa impecable.',
-    apps: ['buyeat', 'eventeat', 'menueat', 'likeeat'],
+      'Cuidas mucho cada experiencia. Recibes eventos privados grandes, tu carta tiene fichas técnicas con costo real, tu marca importa en RRSS. Necesitas margen real por evento y por plato.',
+    apps: ['recipeat', 'eventeat', 'menueat', 'likeeat'],
     gradient: 'from-rose-500 to-amber-500',
     accentBg: 'bg-rose-500/15',
     accentBorder: 'border-rose-500/40',

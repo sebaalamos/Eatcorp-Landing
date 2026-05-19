@@ -72,7 +72,7 @@ export default function ProductosIndex() {
         <div className="max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full bg-primary-500/15 border border-primary-500/30">
             <Sparkles size={12} className="text-primary-300" />
-            <span className="text-xs font-semibold uppercase tracking-wide text-primary-300">9 apps live · 15+ en roadmap</span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-primary-300">12 apps live · 12+ en roadmap</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 mb-5 leading-[1.05] tracking-tight">
             Una plataforma,

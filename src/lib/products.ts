@@ -37,6 +37,9 @@ export type ProductSlug =
   | 'eventeat'
   | 'menueat'
   | 'tipeat'
+  | 'inventeat'
+  | 'recipeat'
+  | 'payeat'
   | 'bookeat'
   | 'staffeat'
 
@@ -84,7 +87,7 @@ export type Product = {
   gradient: string
   external: boolean
   externalUrl?: string
-  preview: 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu' | 'tips'
+  preview: 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu' | 'tips' | 'inventory' | 'recipes' | 'sales'
   oneLiner: string
   beneficios: Benefit[]
   features: FeatureBlock[]
@@ -811,7 +814,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     gradient: 'from-orange-500 to-amber-500',
     external: false,
     preview: 'menu',
-    oneLiner: 'QR durable · ES + EN · pop-ups de campañas · analítica.',
+    oneLiner: 'QR durable · ES + EN · maridajes · campañas · analítica.',
     beneficios: [
       {
         title: 'El sticker de la mesa nunca cambia',
@@ -871,6 +874,11 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Vegano, sin gluten, picante, novedad — los clientes filtran por lo que les importa.',
       },
       {
+        title: 'Maridajes "Recomendado con"',
+        description:
+          'Sugerencias por plato (vinos, postres, side dishes) con la lógica asimétrica que tú decides: el cabernet sugiere al asado, pero no al revés. Sube ticket promedio sin esfuerzo.',
+      },
+      {
         title: 'Analytics de comportamiento',
         description:
           'Qué se mira más, qué se mira menos, en qué categoría se pierden, cuánto tiempo en el menú.',
@@ -918,21 +926,21 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     ],
     proximasFuncionalidades: [
       {
-        title: 'CookEat — fichas técnicas conectadas',
+        title: 'Maridajes con ficha técnica RecipEat',
         description:
-          'Cada plato del menú con su ficha técnica (ingredientes, costo, margen). Cambios en CookEat se reflejan acá.',
-        eta: 'Sep 2026',
+          'Las recetas de RecipEat alimentan las sugerencias de maridaje — ingredientes alergénicos, calorías y disponibilidad reflejados al instante.',
+        eta: 'Q3 2026',
       },
       {
-        title: 'InventoryEat — disponibilidad live',
+        title: 'Disponibilidad live con InventEat',
         description:
           'Stock bajo → producto se marca como agotado automáticamente en la carta digital. Cero "no hay" sorpresa.',
-        eta: 'Sep 2026',
+        eta: 'Q3 2026',
       },
       {
-        title: 'PayEat — pedido + cobro desde la mesa',
+        title: 'Pedido en mesa con PayEat',
         description:
-          'Cliente escanea, pide y paga sin esperar al mesero. Compatible con QR existentes.',
+          'Cliente escanea, pide y paga sin esperar al mesero. Compatible con QR existentes — cuando PayEat tenga POS completo.',
         eta: 'Dic 2026',
       },
     ],
@@ -1081,6 +1089,421 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         description:
           'Los resultados del ciclo se suman a la liquidación del periodo en PayrollEat — fin del traspaso manual.',
         eta: 'Nov 2026',
+      },
+    ],
+  },
+
+  inventeat: {
+    slug: 'inventeat',
+    name: 'InventEat',
+    tagline: 'Stock al día sin contar de noche',
+    heroHeadline: 'Tu inventario cuadrado solo, con cada compra y venta',
+    heroDescription:
+      'Inventario multi-bodega con cuadre automático: cada recepción de BuyEat suma stock, cada venta vía PayEat o Toteat con receta de RecipEat lo descuenta. Conteos físicos, alertas de mínimo y detección de anomalías.',
+    category: 'operations',
+    categoryLabel: 'Administración y operaciones',
+    icon: Boxes,
+    accentClass: 'teal',
+    accentText: 'text-teal-300',
+    accentBg: 'bg-teal-500/15',
+    accentBorder: 'border-teal-500/40',
+    accentDot: 'bg-teal-500',
+    gradient: 'from-teal-500 to-cyan-600',
+    external: false,
+    preview: 'inventory',
+    oneLiner: 'Stock multi-ubicación · alertas · cuadre · anomalías auto.',
+    beneficios: [
+      {
+        title: 'Cero conteos nocturnos de fin de mes',
+        description:
+          'El stock vive sincronizado con compras y ventas. El conteo físico pasa a ser una verificación, no un recálculo desde cero.',
+      },
+      {
+        title: 'Detección automática de anomalías',
+        description:
+          'Si una merma sale de los rangos esperados, el sistema te avisa. Si un insumo desaparece sin venta que lo justifique, lo marca. Pérdidas detectadas antes de que se acumulen.',
+      },
+      {
+        title: 'Cuadre con workflow de aprobación',
+        description:
+          'Conteo físico → discrepancias → revisión por el responsable → ajuste aprobado. Cada movimiento queda con audit log. Trazabilidad completa.',
+      },
+      {
+        title: 'Stock por ubicación real',
+        description:
+          'Cocina, bodega central, barra, frigorífico, cámara de frío — cada lugar con su stock independiente y transferencias entre ellos rastreadas.',
+      },
+    ],
+    features: [
+      {
+        title: 'Catálogo de productos con unidades',
+        description:
+          'Cada producto con su unidad de venta (botella, caja, kg) y sus equivalencias. Útil cuando compras por caja y consumes por unidad.',
+      },
+      {
+        title: 'Stock por ubicación',
+        description:
+          'Define cocina, bodega, barra, frigorífico — cada uno con su stock. Transferencias entre ubicaciones quedan registradas.',
+      },
+      {
+        title: 'Movimientos auditables',
+        description:
+          'Cada entrada (compra, traspaso, ajuste) y salida (venta, merma, transferencia) queda con quién, cuándo y por qué.',
+      },
+      {
+        title: 'Conteos físicos con flujo de aprobación',
+        description:
+          'Programa conteos por ubicación, asigna responsable, captura diferencias y aprueba ajustes. Workflow estructurado, no Excel.',
+      },
+      {
+        title: 'Dashboard de cuadre',
+        description:
+          'Visualización del estado del inventario: cuánto vale tu stock, qué productos están bajo mínimo, qué movimientos pendientes hay.',
+      },
+      {
+        title: 'Anomalías y alertas',
+        description:
+          'Sistema de detección automática para mermas anómalas, stock negativo, productos sin movimiento por X días.',
+      },
+      {
+        title: 'Conexión BuyEat → InventEat',
+        description:
+          'Cada recepción de orden de compra suma stock en la ubicación correspondiente. Sin doble carga.',
+      },
+      {
+        title: 'Conexión RecipEat + PayEat → InventEat',
+        description:
+          'Cada venta de un plato con receta definida descuenta los insumos del stock al instante. Cuadre automático.',
+      },
+      {
+        title: 'Lista de compra sugerida',
+        description:
+          'Productos bajo mínimo se acumulan en una lista lista para enviar a BuyEat como orden de compra.',
+      },
+      {
+        title: 'Importador masivo',
+        description:
+          'Carga inicial de productos y stock desde planillas. Te ayudamos en el setup.',
+      },
+    ],
+    pasos: [
+      {
+        title: 'Carga tu catálogo y bodegas',
+        description:
+          'Importas productos con unidades y conversiones, defines tus ubicaciones (cocina, bodega, barra), entras stock inicial.',
+      },
+      {
+        title: 'Compras y ventas alimentan stock solas',
+        description:
+          'BuyEat recepciona → stock sube. RecipEat + PayEat venden → stock baja. Tú solo apruebas ajustes excepcionales.',
+      },
+      {
+        title: 'Conteo físico programado',
+        description:
+          'Periódicamente (semanal, quincenal) corres conteos por ubicación. Las diferencias salen como discrepancias, las revisas, las apruebas.',
+      },
+    ],
+    paraQuien: [
+      'Restoranes con cocina pesada y rotación alta (mucha entrada y salida)',
+      'Operaciones que pierden 5–10% del costo en mermas no detectadas',
+      'Equipos que cuentan inventario a mano cada mes y se quiebra solo',
+      'Cadenas con varias bodegas que necesitan visibilidad consolidada',
+    ],
+    faq: [
+      {
+        q: '¿Necesito PayEat o RecipEat para usar InventEat?',
+        a: 'No. InventEat funciona standalone: cargas stock, registras entradas y salidas manuales. Pero el valor crece exponencialmente cuando lo conectas: BuyEat recepción → stock automático, RecipEat + PayEat venta → descuento automático.',
+      },
+      {
+        q: '¿Cómo detecta las anomalías?',
+        a: 'Compara el consumo real (de salidas registradas) con el consumo esperado (ventas vía receta) y con tu histórico. Si una merma supera tu umbral configurado, queda flagged para revisión.',
+      },
+      {
+        q: '¿Soporta multi-local?',
+        a: 'Sí. Cada local con sus bodegas, su stock, sus reportes. La visión consolidada de la cadena está en ReportEat (Jul 2026).',
+      },
+      {
+        q: '¿Cómo migro mi inventario actual?',
+        a: 'Importamos tu catálogo desde Excel. Para el stock inicial, programas un conteo físico al activar y eso establece tu baseline.',
+      },
+    ],
+    proximasFuncionalidades: [
+      {
+        title: 'Sugerencias de compra con histórico',
+        description:
+          'La lista de compra se enriquece con IA: predicción de consumo según ventas pasadas y eventos agendados.',
+        eta: 'Q3 2026',
+      },
+      {
+        title: 'SupplyEat — comparador de precios',
+        description:
+          'Marketplace de proveedores con comparador histórico anónimo entre restoranes. Cuando un insumo sube de precio, sabes si es el mercado o solo tu proveedor.',
+        eta: 'Ago 2026',
+      },
+      {
+        title: 'Dashboards en ReportEat',
+        description:
+          'Visualización ejecutiva del inventario consolidado y por local. Rotación, capital inmovilizado, productos muertos.',
+        eta: 'Jul 2026',
+      },
+    ],
+  },
+
+  recipeat: {
+    slug: 'recipeat',
+    name: 'RecipEat',
+    tagline: 'Fichas técnicas que conectan stock y ventas',
+    heroHeadline: 'Cada plato con su receta. Cada venta descuenta stock real.',
+    heroDescription:
+      'Define los insumos y cantidades de cada plato. Cuando se vende, RecipEat le dice a InventEat exactamente qué descontar. Costo real por plato, margen visible, stock cuadrado — todo sin Excel.',
+    category: 'collaborators',
+    categoryLabel: 'Colaboradores',
+    icon: ChefHat,
+    accentClass: 'orange',
+    accentText: 'text-orange-300',
+    accentBg: 'bg-orange-500/15',
+    accentBorder: 'border-orange-500/40',
+    accentDot: 'bg-orange-500',
+    gradient: 'from-orange-500 to-red-500',
+    external: false,
+    preview: 'recipes',
+    oneLiner: 'Fichas técnicas · costo real por plato · stock automático.',
+    beneficios: [
+      {
+        title: 'Costo real de cada plato, no estimado',
+        description:
+          'El costo del plato se calcula desde el costo real del stock al momento de la venta. Cuando sube el precio de un insumo, tu margen real se actualiza al instante.',
+      },
+      {
+        title: 'Stock cuadra solo con cada venta',
+        description:
+          'Tu cocinero no apunta consumos. La venta es la fuente de verdad: PayEat registra → RecipEat sabe la receta → InventEat descuenta exactamente lo que debía salir.',
+      },
+      {
+        title: 'Margen visible en tiempo real',
+        description:
+          'Sabes cuánto te queda libre por cada plato vendido. Decisiones de precio basadas en data, no en intuición.',
+      },
+      {
+        title: 'Mermas dentro de la receta',
+        description:
+          'Configura rendimientos reales por insumo (no es lo mismo el kilo bruto de filete que el rendido en el plato). RecipEat lo descuenta como corresponde.',
+      },
+    ],
+    features: [
+      {
+        title: 'Fichas técnicas con ingredientes y cantidades',
+        description:
+          'Cada plato del menú con su lista de insumos y cuánto se usa de cada uno. Variantes (chico/grande) tienen sus propias fichas o multiplicadores.',
+      },
+      {
+        title: 'Costo calculado desde stock real',
+        description:
+          'No es un costo estimado en un Excel paralelo — es el costo del último ingreso de stock de cada insumo, en cada momento.',
+      },
+      {
+        title: 'Rendimientos y mermas',
+        description:
+          'Define el factor de rendimiento por insumo. Un filete de 1kg rinde 700g en plato — RecipEat descuenta el 1kg de stock.',
+      },
+      {
+        title: 'Conexión MenuEat → RecipEat',
+        description:
+          'Cada plato del menú digital se vincula a su receta. Cuando vendes, ya está claro qué descontar.',
+      },
+      {
+        title: 'Conexión PayEat / Toteat → RecipEat',
+        description:
+          'Las ventas vienen de PayEat o se importan de Toteat. RecipEat las procesa y dispara los descuentos en InventEat.',
+      },
+      {
+        title: 'Versionado de recetas',
+        description:
+          'Cuando cambias una receta, queda histórico. Tu informe del mes anterior sigue usando la receta que estaba vigente entonces.',
+      },
+    ],
+    pasos: [
+      {
+        title: 'Carga las recetas de tu carta',
+        description:
+          'Por cada plato, lista insumos y cantidades. Te apoyamos con un template inicial basado en tu menú actual.',
+      },
+      {
+        title: 'Vincula MenuEat ↔ RecipEat',
+        description:
+          'Cada plato del menú digital se conecta a su ficha técnica. Solo se hace una vez por plato.',
+      },
+      {
+        title: 'Vende y deja que el sistema haga el resto',
+        description:
+          'PayEat (o Toteat) registra la venta → RecipEat lee la receta → InventEat descuenta stock. Todo automático.',
+      },
+    ],
+    paraQuien: [
+      'Restoranes que no saben el margen real de cada plato',
+      'Operaciones donde la merma se descubre solo en el conteo de fin de mes',
+      'Cocinas con menú estable y volumen alto',
+      'Cadenas con receta estandarizada entre locales',
+    ],
+    faq: [
+      {
+        q: '¿Necesito InventEat y PayEat para usar RecipEat?',
+        a: 'Sí, RecipEat es la pieza intermedia. Sin InventEat no hay stock que descontar. Sin PayEat (o integración con Toteat) no hay venta que dispare el descuento. Los tres juntos son el flujo completo.',
+      },
+      {
+        q: '¿Y si vendo el mismo plato a precios distintos según menú?',
+        a: 'El precio vive en MenuEat (con sus variantes), el costo vive en RecipEat. Son ortogonales — puedes tener variaciones de precio sin tocar la receta.',
+      },
+      {
+        q: '¿Cómo manejo platos con guarnición elegible?',
+        a: 'Cada acompañamiento puede tener su propia ficha. RecipEat suma el descuento del plato base + el descuento del acompañamiento elegido.',
+      },
+    ],
+    proximasFuncionalidades: [
+      {
+        title: 'Costeo histórico para análisis',
+        description:
+          'Curva de costo por plato mes a mes. Sabes qué plato te empezó a salir más caro y cuándo.',
+        eta: 'Q3 2026',
+      },
+      {
+        title: 'Sugerencia de precio con margen objetivo',
+        description:
+          'Le dices el margen que quieres mantener y RecipEat te sugiere el precio nuevo cuando el costo del plato cambia.',
+        eta: 'Q4 2026',
+      },
+      {
+        title: 'Integración con MenuEat para reflejar alergénicos',
+        description:
+          'Los ingredientes de la receta alimentan los tags de alergénicos automáticamente en la carta digital.',
+        eta: 'Q3 2026',
+      },
+    ],
+  },
+
+  payeat: {
+    slug: 'payeat',
+    name: 'PayEat',
+    tagline: 'Ventas conectadas a stock y recetas',
+    heroHeadline: 'Tus ventas son la fuente de toda la operación',
+    heroDescription:
+      'Hoy lo cargas manual o lo lees desde Toteat. Mañana (Q4 2026) tendrás POS completo, comanda a cocina y cobro con tarjeta. En cualquier caso, cada venta vinculada a su receta descuenta stock al instante.',
+    category: 'customer',
+    categoryLabel: 'Experiencia del cliente',
+    icon: Coins,
+    accentClass: 'emerald',
+    accentText: 'text-primary-300',
+    accentBg: 'bg-primary-500/15',
+    accentBorder: 'border-primary-500/40',
+    accentDot: 'bg-primary-500',
+    gradient: 'from-emerald-500 to-teal-500',
+    external: false,
+    preview: 'sales',
+    oneLiner: 'Ventas · stock automático · Toteat hoy, POS propio Q4 2026.',
+    beneficios: [
+      {
+        title: 'Cada venta cuadra la operación entera',
+        description:
+          'Una venta no es solo dinero — es un consumo de stock real, un plato descontado, una receta validada. PayEat conecta todo.',
+      },
+      {
+        title: 'Toteat hoy, POS propio mañana',
+        description:
+          'Si ya usas Toteat, lo conectamos. Si no, cargas ventas manualmente. En Dic 2026 el POS completo entra en producción y migras sin perder data.',
+      },
+      {
+        title: 'Hardware-agnostic',
+        description:
+          'PayEat (cuando esté el POS) corre en iPad, Android, tablet o caja registradora. Sin atarte a un fabricante específico.',
+      },
+      {
+        title: 'Análisis costo vs precio por plato',
+        description:
+          'Con InventEat + RecipEat detrás, sabes cuánto rinde realmente cada plato — no el margen teórico, el margen verdadero.',
+      },
+    ],
+    features: [
+      {
+        title: 'Importador manual de ventas',
+        description:
+          'Modo simple: cargas las ventas del día desde una planilla o un sistema de POS existente.',
+      },
+      {
+        title: 'Integración Toteat',
+        description:
+          'Lectura de ventas desde Toteat. Las ventas se asocian automáticamente con la receta correspondiente.',
+      },
+      {
+        title: 'Vínculo venta ↔ receta ↔ stock',
+        description:
+          'Cada venta dispara la cascada: lee la receta en RecipEat, descuenta el stock en InventEat, registra el ingreso.',
+      },
+      {
+        title: 'Reportes diarios y mensuales',
+        description:
+          'Ventas por canal, por plato, por hora, por día — con costo real y margen calculado.',
+      },
+    ],
+    pasos: [
+      {
+        title: 'Eliges cómo cargar ventas',
+        description:
+          'Modo manual (Excel diario) o integración Toteat. El setup tarda 30 minutos.',
+      },
+      {
+        title: 'Cada venta dispara el flujo',
+        description:
+          'Venta cargada → busca la receta → descuenta el stock → registra costo y margen real.',
+      },
+      {
+        title: 'Cuando esté el POS, migras',
+        description:
+          'Q4 2026 entra POS completo con comanda a cocina y cobro con tarjeta. Toda tu data histórica se mantiene.',
+      },
+    ],
+    paraQuien: [
+      'Restoranes que ya usan Toteat y quieren stock automático',
+      'Operaciones que cargan ventas manualmente en Excel y quieren empezar a conectarlo todo',
+      'Equipos que esperan el POS completo y quieren ir armando la base de data desde ya',
+    ],
+    faq: [
+      {
+        q: '¿Cuándo está el POS completo?',
+        a: 'Piloto en El Toro Junio 2026. Lanzamiento externo Diciembre 2026. Hardware-agnostic (Getnet, iPad, Android, móvil), comanda por impresora térmica o KDS, respaldo offline.',
+      },
+      {
+        q: '¿Reemplaza a Toteat?',
+        a: 'A futuro sí, pero la transición es opcional. PayEat puede leer Toteat por tiempo indefinido. Cuando decidas migrar, los datos vienen con vos.',
+      },
+      {
+        q: '¿Cobro con tarjeta funciona desde el día 1?',
+        a: 'No. Hoy registras la venta y el cobro se hace donde lo hagas habitualmente. El cobro integrado con Getnet es parte del POS completo (Dic 2026).',
+      },
+    ],
+    proximasFuncionalidades: [
+      {
+        title: 'POS completo en El Toro',
+        description:
+          'Punto de venta operativo en El Toro como piloto. Funcionalidad core: comanda + cobro + recibos.',
+        eta: 'Jun 2026',
+      },
+      {
+        title: 'KDS (Kitchen Display System)',
+        description:
+          'Pantalla en cocina recibe las comandas en tiempo real. La impresora térmica deja de ser obligatoria.',
+        eta: 'Q3 2026',
+      },
+      {
+        title: 'Cobro con tarjeta vía Getnet',
+        description:
+          'Integración con Getnet para procesar pagos sin salir de PayEat.',
+        eta: 'Q4 2026',
+      },
+      {
+        title: 'Lanzamiento externo',
+        description:
+          'PayEat completo disponible para clientes externos tras 6 meses de battle-testing en El Toro y Tigre.',
+        eta: 'Dic 2026',
       },
     ],
   },
@@ -1314,23 +1737,6 @@ export const PRODUCTS_LIST: Product[] = Object.values(PRODUCTS)
 // Fuente: /Users/sebastian/eatcorp/docs/ROADMAP.md
 export const UPCOMING_APPS: UpcomingApp[] = [
   {
-    slug: 'payeat',
-    name: 'PayEat',
-    tagline: 'POS + KDS + cobro hardware-agnostic',
-    description:
-      'Punto de venta moderno con comanda a cocina (KDS), cobro con tarjeta (Getnet) y respaldo offline. Funciona en iPad, Android o móvil — sin atarte a una marca de POS.',
-    icon: CreditCard,
-    category: 'operations',
-    categoryLabel: 'Administración y operaciones',
-    eta: 'Jun 2026 piloto · Dic 2026 lanzamiento externo',
-    status: 'construyendo',
-    gradient: 'from-primary-500 via-teal-500 to-cyan-500',
-    accentDot: 'bg-primary-500',
-    accentText: 'text-primary-300',
-    accentBg: 'bg-primary-500/15',
-    accentBorder: 'border-primary-500/40',
-  },
-  {
     slug: 'reporteat',
     name: 'ReportEat',
     tagline: 'Dashboards por app',
@@ -1363,40 +1769,6 @@ export const UPCOMING_APPS: UpcomingApp[] = [
     accentText: 'text-blue-300',
     accentBg: 'bg-blue-500/15',
     accentBorder: 'border-blue-500/40',
-  },
-  {
-    slug: 'inventoryeat',
-    name: 'InventoryEat',
-    tagline: 'Stock multi-bodega',
-    description:
-      'Control de stock por local y bodega. Conecta BuyEat (entradas) ↔ CookEat (consumos) ↔ MenuEat (disponibilidad live). Vendido por separado.',
-    icon: Boxes,
-    category: 'operations',
-    categoryLabel: 'Administración y operaciones',
-    eta: 'Sep 2026',
-    status: 'planeado',
-    gradient: 'from-blue-500 to-violet-500',
-    accentDot: 'bg-blue-500',
-    accentText: 'text-blue-300',
-    accentBg: 'bg-blue-500/15',
-    accentBorder: 'border-blue-500/40',
-  },
-  {
-    slug: 'cookeat',
-    name: 'CookEat',
-    tagline: 'Recetario y costeo de plato',
-    description:
-      'Fichas técnicas con ingredientes, cantidades, costo y margen por plato. Costos vs inflación dinámica. Vendido por separado de InventoryEat.',
-    icon: ChefHat,
-    category: 'operations',
-    categoryLabel: 'Administración y operaciones',
-    eta: 'Oct 2026',
-    status: 'planeado',
-    gradient: 'from-orange-500 to-red-500',
-    accentDot: 'bg-orange-500',
-    accentText: 'text-orange-300',
-    accentBg: 'bg-orange-500/15',
-    accentBorder: 'border-orange-500/40',
   },
   {
     slug: 'controleat',
