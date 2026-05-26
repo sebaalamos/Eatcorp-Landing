@@ -10,11 +10,6 @@ export function CTA() {
 
   const handlePrimary = () => {
     trackCTA('cta_final_primary')
-    window.location.href = 'https://app.eatcorp.cl/#/'
-  }
-
-  const handleSecondary = () => {
-    trackCTA('cta_final_secondary')
     setModalOpen(true)
   }
 
@@ -26,7 +21,7 @@ export function CTA() {
       <div className="signature-corner signature-corner-lg max-w-5xl mx-auto relative z-10 rounded-3xl border border-brand-800 bg-brand-950/60 backdrop-blur p-10 md:p-16 text-center overflow-hidden">
         <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full bg-accent-500/10 border border-accent-500/30">
           <span className="w-1.5 h-1.5 rounded-full bg-accent-400 animate-pulse"></span>
-          <span className="text-xs font-semibold uppercase tracking-wider text-accent-300">Empieza esta semana</span>
+          <span className="text-xs font-semibold uppercase tracking-wider text-accent-300">Cupos limitados · Early access</span>
         </div>
 
         <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 mb-6 leading-[1.05] tracking-tight">
@@ -37,8 +32,8 @@ export function CTA() {
           </span>
         </h2>
         <p className="text-lg md:text-xl text-neutral-700 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Súmate a los restoranes que ya operan con EatCorp. Suscripción mensual,
-          cancela cuando quieras, sin instalación.
+          Estamos sumando restoranes en early access. Cuéntanos sobre tu operación
+          y te activamos las apps que necesitas.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
@@ -48,30 +43,23 @@ export function CTA() {
             style={{ boxShadow: 'var(--shadow-wow)' }}
           >
             <span className="flex items-center gap-2">
-              Activar mi restorán
+              Solicitar early access
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />
             </span>
           </button>
-          <button
-            type="button"
-            onClick={handleSecondary}
-            className="text-neutral-700 hover:text-primary-300 px-6 py-4 rounded-lg font-medium text-base transition-colors underline-offset-4 hover:underline"
-          >
-            Hablar con nosotros
-          </button>
         </div>
         <p className="mt-5 text-xs text-neutral-500">
-          Pago mes a mes · cancela cuando quieras · activo en 30 minutos
+          Te respondemos en 24 horas hábiles · sin compromiso · cancela cuando quieras
         </p>
       </div>
 
       <LeadModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
-        source="contact"
-        ctaTrack="cta_final_secondary"
-        title="Hablemos"
-        description="Cuéntanos sobre tu restorán y te contactamos en menos de 24 horas hábiles."
+        source="early_access"
+        ctaTrack="cta_final_primary"
+        title="Solicita tu early access"
+        description="Cuéntanos sobre tu restorán y qué apps te interesan. Te contactamos en menos de 24 horas hábiles."
         withMessage
       />
     </section>
