@@ -70,12 +70,21 @@ export function Navigation() {
               {link.label}
             </a>
           ))}
-          <button
-            onClick={handleClick}
-            className="bg-primary-600 hover:bg-primary-500 text-white px-5 py-2 rounded-lg font-medium transition-colors shadow-sm shadow-primary-600/30"
-          >
-            {isLoggedIn ? 'Mi cuenta' : 'Entrar'}
-          </button>
+          {isLoggedIn ? (
+            <button
+              onClick={handleClick}
+              className="bg-primary-600 hover:bg-primary-500 text-white px-5 py-2 rounded-lg font-medium transition-colors shadow-sm shadow-primary-600/30"
+            >
+              Mi cuenta
+            </button>
+          ) : (
+            <button
+              onClick={handleClick}
+              className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition px-2 py-2"
+            >
+              Iniciar sesión
+            </button>
+          )}
           <button
             type="button"
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}

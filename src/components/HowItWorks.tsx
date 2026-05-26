@@ -7,7 +7,7 @@ const steps = [
     title: 'Activa las apps que necesitas',
     description:
       'Sin instalación. Elige solo las apps que tu restorán usa. Activa más cuando quieras.',
-    detail: '6 apps disponibles · más en camino',
+    detail: '9 apps disponibles · más en camino',
   },
   {
     n: '02',

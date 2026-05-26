@@ -6,12 +6,17 @@ export type LeadSource =
   | 'pricing_pro'
   | 'pricing_enterprise'
   | 'contact'
+  | 'early_access'
 
 export type LeadInput = {
   email: string
   source: LeadSource
   plan?: string
   message?: string
+  restaurant_name?: string
+  contact_name?: string
+  phone?: string
+  apps_interest?: string[]
 }
 
 const ENDPOINT = process.env.NEXT_PUBLIC_LEAD_ENDPOINT

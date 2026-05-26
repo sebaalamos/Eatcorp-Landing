@@ -4,13 +4,16 @@ import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { trackCTA } from '@/lib/track'
 import { HeroAppCarousel } from './HeroAppCarousel'
+import { LeadModal } from './LeadModal'
 
 const ROTATING_WORDS = ['restorán', 'cocina', 'barra', 'bistró', 'pastelería']
 
 export function Hero() {
+  const [modalOpen, setModalOpen] = useState(false)
+
   const handlePrimary = () => {
     trackCTA('cta_hero_primary')
-    window.location.href = 'https://app.eatcorp.cl/#/'
+    setModalOpen(true)
   }
 
   const [wordIndex, setWordIndex] = useState(0)
@@ -38,7 +41,7 @@ export function Hero() {
             <span className="absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75 animate-ping"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-400"></span>
           </span>
-          <span className="text-sm font-medium text-primary-200">Hecho para restoranes en Chile y LatAm</span>
+          <span className="text-sm font-medium text-primary-200">Early access · Chile y LatAm</span>
         </div>
 
         <h1 className="font-bold text-neutral-900 mb-6 leading-[1.05] tracking-[-0.025em] text-5xl md:text-7xl">
@@ -66,7 +69,7 @@ export function Hero() {
             style={{ boxShadow: 'var(--shadow-wow)' }}
           >
             <span className="flex items-center gap-2">
-              Activar mi restorán
+              Solicitar early access
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />
             </span>
           </button>
@@ -80,12 +83,21 @@ export function Hero() {
         </div>
 
         <p className="text-xs text-neutral-500 mb-14">
-          Pago mensual · cancela cuando quieras · sin instalación
+          Cupos limitados · te respondemos en 24 horas hábiles · sin compromiso
         </p>
 
         <HeroAppCarousel />
       </div>
+
+      <LeadModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        source="early_access"
+        ctaTrack="cta_hero_primary"
+        title="Solicita tu early access"
+        description="Cuéntanos sobre tu restorán y qué apps te interesan. Te contactamos en menos de 24 horas hábiles."
+        withMessage
+      />
     </section>
   )
 }
-
