@@ -172,12 +172,12 @@ function InvoicesPreview() {
           <div className="w-3 h-3 rounded-sm bg-blue-500 flex items-center justify-center flex-shrink-0">
             <Check size={8} className="text-white" strokeWidth={3} />
           </div>
-          <span className="text-[9px] text-neutral-200 flex-1 truncate font-medium">{r.name}</span>
+          <span className="text-[9px] text-neutral-800 flex-1 truncate font-medium">{r.name}</span>
           <span className="text-[9px] font-bold text-blue-200 tabular-nums">{r.amount}</span>
         </div>
       ))}
       <div className="mt-auto flex items-center justify-between text-[8px] pt-0.5">
-        <span className="text-neutral-300">Total <span className="font-bold text-white">$2.6M</span></span>
+        <span className="text-neutral-700">Total <span className="font-bold text-white">$2.6M</span></span>
         <span className="font-bold uppercase tracking-wide text-white bg-blue-600 px-1.5 py-0.5 rounded shadow-sm shadow-blue-500/40">Aprobar</span>
       </div>
     </div>
@@ -195,8 +195,8 @@ function KanbanPreview() {
       {cols.map((c) => (
         <div key={c.name} className={`rounded p-1 border ${c.accent} flex flex-col gap-0.5`}>
           <div className="flex items-center justify-between">
-            <span className="text-[7px] font-bold uppercase tracking-wider text-neutral-200 truncate">{c.name}</span>
-            <span className="text-[7px] font-bold text-neutral-300">{c.count}</span>
+            <span className="text-[7px] font-bold uppercase tracking-wider text-neutral-800 truncate">{c.name}</span>
+            <span className="text-[7px] font-bold text-neutral-700">{c.count}</span>
           </div>
           {Array.from({ length: Math.min(c.count, 3) }).map((_, j) => (
             <div key={j} className="h-2 rounded-sm bg-brand-950/70 border border-white/10"></div>
@@ -221,7 +221,7 @@ function PostPreview() {
       <div className="flex-1 flex flex-col gap-1 min-w-0">
         <div className="flex items-center gap-1">
           <div className="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-amber-400 to-orange-500"></div>
-          <span className="text-[8px] font-bold text-neutral-200 truncate">tu_restorán</span>
+          <span className="text-[8px] font-bold text-neutral-800 truncate">tu_restorán</span>
         </div>
         <div className="space-y-0.5">
           <div className="h-1 bg-pink-300/70 rounded-full"></div>
@@ -251,7 +251,7 @@ function AssetsPreview() {
             {it.icon ? <AlertTriangle size={10} className="animate-pulse" /> : <Wrench size={10} />}
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-[9px] font-medium text-neutral-200 truncate">{it.name}</div>
+            <div className="text-[9px] font-medium text-neutral-800 truncate">{it.name}</div>
             <div className="h-1 bg-brand-800 rounded-full overflow-hidden mt-0.5">
               <div className={`h-full ${it.barColor} rounded-full ${it.w}`}></div>
             </div>
@@ -286,7 +286,7 @@ function CalendarPreview() {
           ></div>
         ))}
       </div>
-      <div className="flex items-center gap-1 text-[8px] text-neutral-300 mt-auto">
+      <div className="flex items-center gap-1 text-[8px] text-neutral-700 mt-auto">
         <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
         <span>20:30 · Mesa 4 · 6 pax</span>
       </div>
@@ -338,7 +338,7 @@ function EventsPreview() {
             <span className="text-[10px] font-bold leading-none tabular-nums">{e.date}</span>
             <span className="text-[6px] font-bold tracking-wider opacity-80 leading-none mt-px">{e.month}</span>
           </div>
-          <div className="text-[9px] text-neutral-200 truncate flex-1">{e.name}</div>
+          <div className="text-[9px] text-neutral-800 truncate flex-1">{e.name}</div>
         </div>
       ))}
     </div>
@@ -363,7 +363,7 @@ function MenuPreview() {
         <span className="text-[8px] font-bold uppercase tracking-wider text-orange-300">Carta · ES</span>
         {items.map((it) => (
           <div key={it.name} className="flex items-center justify-between gap-1 bg-brand-950/70 border border-orange-500/20 rounded px-1.5 py-0.5">
-            <span className="text-[8px] text-neutral-200 truncate">{it.name}</span>
+            <span className="text-[8px] text-neutral-800 truncate">{it.name}</span>
             <span className="text-[8px] font-bold text-orange-300 tabular-nums">{it.price}</span>
           </div>
         ))}

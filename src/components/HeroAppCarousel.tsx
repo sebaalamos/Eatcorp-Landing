@@ -158,13 +158,13 @@ function BuyEatSlide() {
     { initials: 'BP', name: 'Bebidas premium', cat: 'Bebidas', amount: '$720.000', status: 'normal', tag: 'En 5 días', icon: Building2 },
   ]
   return (
-    <div className="p-6 bg-gradient-to-br from-brand-900 via-brand-900 to-blue-950/40 min-h-[440px] relative overflow-hidden">
+    <div className="p-4 md:p-6 bg-gradient-to-br from-brand-900 via-brand-900 to-blue-950/40 md:min-h-[440px] relative overflow-hidden">
       {/* Backdrop dots */}
       <div aria-hidden className="absolute inset-0 opacity-[0.05] [background-image:radial-gradient(circle,white_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
-      <div className="relative grid grid-cols-5 gap-5">
+      <div className="relative flex flex-col gap-4 md:grid md:grid-cols-5 md:gap-5">
         {/* Left — provider list */}
-        <div className="col-span-3">
+        <div className="md:col-span-3">
           <div className="flex items-center justify-between mb-3">
             <div>
               <div className="text-base font-bold text-neutral-900">Lote del día</div>
@@ -225,7 +225,7 @@ function BuyEatSlide() {
         </div>
 
         {/* Right — Approval card */}
-        <div className="col-span-2">
+        <div className="md:col-span-2">
           <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-5 shadow-2xl shadow-blue-500/30 relative overflow-hidden">
             <div aria-hidden className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
             <div className="relative">
@@ -309,13 +309,13 @@ function Sparkline() {
 
 function LikeEatSlide() {
   return (
-    <div className="p-6 bg-gradient-to-br from-brand-900 via-brand-900 to-pink-950/40 min-h-[440px] relative overflow-hidden">
+    <div className="p-4 md:p-6 bg-gradient-to-br from-brand-900 via-brand-900 to-pink-950/40 md:min-h-[440px] relative overflow-hidden">
       <div aria-hidden className="absolute -top-20 -right-20 w-64 h-64 bg-pink-500/20 rounded-full blur-3xl"></div>
       <div aria-hidden className="absolute -bottom-20 -left-20 w-64 h-64 bg-rose-500/15 rounded-full blur-3xl"></div>
 
-      <div className="relative grid grid-cols-5 gap-5 items-center">
+      <div className="relative flex flex-col gap-5 md:grid md:grid-cols-5 md:gap-5 md:items-center">
         {/* Brand DNA panel */}
-        <div className="col-span-3 space-y-3">
+        <div className="md:col-span-3 space-y-3">
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-pink-300 mb-1">
@@ -385,7 +385,7 @@ function LikeEatSlide() {
         </div>
 
         {/* Phone with IG post */}
-        <div className="col-span-2 relative">
+        <div className="md:col-span-2 relative">
           <div className="relative mx-auto" style={{ maxWidth: '200px' }}>
             {/* Phone frame */}
             <div className="bg-brand-950 rounded-[28px] p-2 shadow-2xl shadow-pink-500/20 border border-brand-700">
@@ -470,12 +470,12 @@ function LikeEatSlide() {
 
 function MenuEatSlide() {
   return (
-    <div className="p-6 bg-gradient-to-br from-brand-900 via-brand-900 to-orange-950/40 min-h-[440px] relative overflow-hidden">
+    <div className="p-4 md:p-6 bg-gradient-to-br from-brand-900 via-brand-900 to-orange-950/40 md:min-h-[440px] relative overflow-hidden">
       <div aria-hidden className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-64 bg-orange-500/20 rounded-full blur-3xl"></div>
 
-      <div className="relative grid grid-cols-5 gap-5 items-center">
+      <div className="relative flex flex-col gap-5 md:grid md:grid-cols-5 md:gap-5 md:items-center">
         {/* Left — QR sticker */}
-        <div className="col-span-2 space-y-3">
+        <div className="md:col-span-2 space-y-3">
           <div>
             <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-orange-300 mb-1">
               <QrCode size={11} />
@@ -518,7 +518,7 @@ function MenuEatSlide() {
         </div>
 
         {/* Phone with carta */}
-        <div className="col-span-3 flex justify-center">
+        <div className="md:col-span-3 flex justify-center">
           <div className="relative" style={{ maxWidth: '260px' }}>
             <div className="bg-brand-950 rounded-[28px] p-2 shadow-2xl shadow-orange-500/20 border border-brand-700">
               <div className="relative bg-white rounded-[20px] overflow-hidden">
@@ -610,12 +610,12 @@ function EventEatSlide() {
     { label: 'Realizado', count: 12, color: 'bg-primary-500', active: false },
   ]
   return (
-    <div className="p-6 bg-gradient-to-br from-brand-900 via-brand-900 to-rose-950/40 min-h-[440px] relative overflow-hidden">
+    <div className="p-4 md:p-6 bg-gradient-to-br from-brand-900 via-brand-900 to-rose-950/40 md:min-h-[440px] relative overflow-hidden">
       <div aria-hidden className="absolute -top-20 -right-20 w-80 h-64 bg-rose-500/20 rounded-full blur-3xl"></div>
 
-      <div className="relative grid grid-cols-5 gap-5">
+      <div className="relative flex flex-col gap-5 md:grid md:grid-cols-5 md:gap-5">
         {/* Left — pipeline + KPIs */}
-        <div className="col-span-2 space-y-3">
+        <div className="md:col-span-2 space-y-3">
           <div>
             <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-rose-300 mb-1">
               <PartyPopper size={11} />
@@ -676,7 +676,7 @@ function EventEatSlide() {
         </div>
 
         {/* Right — Quote document */}
-        <div className="col-span-3">
+        <div className="md:col-span-3">
           <div className="bg-white rounded-xl shadow-2xl shadow-rose-500/15 overflow-hidden border border-rose-200 relative">
             {/* Document corner stamp */}
             <div className="absolute -top-2 -right-2 bg-amber-400 text-amber-900 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md rotate-12 z-10">
