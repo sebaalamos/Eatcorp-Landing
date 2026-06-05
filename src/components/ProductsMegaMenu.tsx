@@ -98,11 +98,11 @@ export function ProductsMegaMenu({ inMobileSheet = false, onNavigate }: Props) {
       }}
       onMouseLeave={scheduleClose}
     >
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
+      <Link
+        href="/productos"
+        onClick={() => setOpen(false)}
         aria-haspopup="true"
+        aria-expanded={open}
         className={`hidden md:inline-flex items-center gap-1 text-sm font-semibold transition rounded-full px-3 py-1.5 border ${
           open
             ? 'bg-primary-500/15 text-primary-300 border-primary-500/40'
@@ -111,7 +111,7 @@ export function ProductsMegaMenu({ inMobileSheet = false, onNavigate }: Props) {
       >
         Productos
         <ChevronDown size={14} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
-      </button>
+      </Link>
 
       {open && (
         <div
