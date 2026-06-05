@@ -49,7 +49,7 @@ export function CTA() {
           </button>
         </div>
         <p className="mt-5 text-xs text-neutral-500">
-          Te respondemos en 24 horas hábiles · sin compromiso · cancela cuando quieras
+          Te respondemos en 24 horas hábiles · sin compromiso · sin contratos largos
         </p>
       </div>
 

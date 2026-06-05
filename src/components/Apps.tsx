@@ -1,48 +1,49 @@
 'use client'
 
 import {
-  ShoppingCart,
-  CheckSquare,
-  Share2,
-  Wrench,
-  Calendar,
-  Users,
-  Camera,
-  PartyPopper,
-  BookOpen,
   AlertTriangle,
   Sparkles,
   Check,
   QrCode,
+  Camera,
+  Wrench,
   Coins,
+  Boxes,
+  ChefHat,
+  Gift,
 } from 'lucide-react'
+import { PRODUCTS_LIST, type Product, type ProductSlug } from '@/lib/products'
 
-type Accent = 'blue' | 'emerald' | 'pink' | 'amber' | 'cyan' | 'violet' | 'rose' | 'orange' | 'yellow'
-type Preview = 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu' | 'tips'
+type Accent = 'blue' | 'emerald' | 'pink' | 'amber' | 'cyan' | 'violet' | 'rose' | 'orange' | 'yellow' | 'teal'
+type Preview = Product['preview']
 
 type AppDef = {
-  id: string
-  icon: typeof ShoppingCart
+  id: ProductSlug
+  icon: Product['icon']
   name: string
   description: string
   metric: string
   accent: Accent
   external: boolean
   externalUrl?: string
+  pilot?: boolean
   preview: Preview
 }
 
-const apps: AppDef[] = [
-  { id: 'buyeat', icon: ShoppingCart, name: 'BuyEat', description: 'Compras a proveedores', metric: 'Lotes en 5 min', accent: 'blue', external: false, preview: 'invoices' },
-  { id: 'taskeat', icon: CheckSquare, name: 'TaskEat', description: 'Tareas y equipos', metric: 'Visibilidad híbrida', accent: 'emerald', external: false, preview: 'kanban' },
-  { id: 'likeeat', icon: Share2, name: 'LikeEat', description: 'RRSS con IA', metric: 'Captions en 3s', accent: 'pink', external: false, preview: 'post' },
-  { id: 'maintaineat', icon: Wrench, name: 'MaintainEat', description: 'Activos y mantención', metric: 'Cero parada sorpresa', accent: 'amber', external: false, preview: 'assets' },
-  { id: 'eventeat', icon: PartyPopper, name: 'EventEat', description: 'Eventos y arriendos', metric: 'Cotiza y agenda', accent: 'rose', external: false, preview: 'events' },
-  { id: 'menueat', icon: BookOpen, name: 'MenuEat', description: 'Carta digital con QR', metric: 'Bilingüe ES + EN', accent: 'orange', external: false, preview: 'menu' },
-  { id: 'tipeat', icon: Coins, name: 'TipEat', description: 'Reparto de propinas', metric: 'Link público compartible', accent: 'yellow', external: false, preview: 'tips' },
-  { id: 'bookeat', icon: Calendar, name: 'BookEat', description: 'Reservas en línea', metric: 'Mesa al día', accent: 'cyan', external: true, externalUrl: 'https://bookeat.cl', preview: 'calendar' },
-  { id: 'staffeat', icon: Users, name: 'StaffEat', description: 'Gestión de personal', metric: 'Vacaciones y ausencias', accent: 'violet', external: true, externalUrl: 'https://sistema-vacaciones-eight.vercel.app/admin', preview: 'roster' },
-]
+// Fuente de verdad única: la grilla se deriva del catálogo (PRODUCTS_LIST),
+// para que la home nunca se desincronice de /productos ni del mega-menú.
+const apps: AppDef[] = PRODUCTS_LIST.map((p) => ({
+  id: p.slug,
+  icon: p.icon,
+  name: p.name,
+  description: p.tagline,
+  metric: p.oneLiner.split('·')[0].trim(),
+  accent: p.accentClass as Accent,
+  external: p.external,
+  externalUrl: p.externalUrl,
+  pilot: p.pilot,
+  preview: p.preview,
+}))
 
 const accentClasses: Record<Accent, string> = {
   blue: 'bg-blue-500/10 text-blue-300 border-blue-500/30 hover:border-blue-400',
@@ -54,6 +55,7 @@ const accentClasses: Record<Accent, string> = {
   rose: 'bg-rose-500/10 text-rose-300 border-rose-500/30 hover:border-rose-400',
   orange: 'bg-orange-500/10 text-orange-300 border-orange-500/30 hover:border-orange-400',
   yellow: 'bg-yellow-500/10 text-yellow-300 border-yellow-500/30 hover:border-yellow-400',
+  teal: 'bg-teal-500/10 text-teal-300 border-teal-500/30 hover:border-teal-400',
 }
 
 export function AppsGrid() {
@@ -73,9 +75,9 @@ export function AppsGrid() {
           >
             <AppPreview type={app.preview} accent={app.accent} />
             <div className="p-4 relative bg-brand-950/40 backdrop-blur-[2px]">
-              {app.external && (
+              {(app.external || app.pilot) && (
                 <span className="absolute top-2 right-2 text-[9px] font-semibold uppercase tracking-wide text-neutral-600 bg-brand-950/80 border border-brand-700 px-1.5 py-0.5 rounded-full">
-                  Externa
+                  {app.external ? 'Externa' : 'Piloto'}
                 </span>
               )}
               <div className="flex items-center gap-2.5 mb-2">
@@ -109,6 +111,7 @@ const previewBg: Record<Accent, string> = {
   rose: 'from-rose-500/40 via-rose-500/15 to-transparent',
   orange: 'from-orange-500/40 via-orange-500/15 to-transparent',
   yellow: 'from-yellow-500/40 via-yellow-500/15 to-transparent',
+  teal: 'from-teal-500/40 via-teal-500/15 to-transparent',
 }
 
 function AppPreview({ type, accent }: { type: Preview; accent: Accent }) {
@@ -124,6 +127,10 @@ function AppPreview({ type, accent }: { type: Preview; accent: Accent }) {
         {type === 'events' && <EventsPreview />}
         {type === 'menu' && <MenuPreview />}
         {type === 'tips' && <TipsPreview />}
+        {type === 'inventory' && <InventoryPreview />}
+        {type === 'recipes' && <RecipesPreview />}
+        {type === 'sales' && <SalesPreview />}
+        {type === 'gift' && <GiftPreview />}
       </div>
     </div>
   )
@@ -367,6 +374,112 @@ function MenuPreview() {
             <span className="text-[8px] font-bold text-orange-300 tabular-nums">{it.price}</span>
           </div>
         ))}
+      </div>
+    </div>
+  )
+}
+
+function InventoryPreview() {
+  const rows = [
+    { name: 'Aceite oliva', w: 'w-1/3', bar: 'bg-amber-400' },
+    { name: 'Filete de res', w: 'w-full', bar: 'bg-teal-400' },
+    { name: 'Vino cabernet', w: 'w-1/4', bar: 'bg-rose-500' },
+  ]
+  return (
+    <div className="h-full flex flex-col gap-1">
+      <div className="flex items-center justify-between mb-0.5">
+        <span className="text-[8px] font-bold uppercase tracking-wider text-teal-300">Stock · bodegas</span>
+        <span className="text-[8px] font-bold text-teal-200 bg-teal-500/30 border border-teal-400/40 px-1 rounded">2 alertas</span>
+      </div>
+      {rows.map((r) => (
+        <div key={r.name} className="flex items-center gap-1.5 bg-brand-950/70 border border-teal-500/20 rounded px-1.5 py-1">
+          <Boxes size={10} className="text-teal-300 flex-shrink-0" />
+          <span className="text-[9px] text-neutral-800 flex-1 truncate">{r.name}</span>
+          <div className="w-10 h-1 bg-brand-800 rounded-full overflow-hidden">
+            <div className={`h-full ${r.w} ${r.bar} rounded-full`}></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function RecipesPreview() {
+  return (
+    <div className="h-full flex flex-col gap-1">
+      <div className="flex items-center justify-between mb-0.5">
+        <span className="text-[8px] font-bold uppercase tracking-wider text-orange-300">Ficha técnica</span>
+        <span className="text-[8px] font-bold text-orange-200 bg-orange-500/30 border border-orange-400/40 px-1 rounded">v3</span>
+      </div>
+      <div className="flex gap-1.5">
+        <div className="w-10 h-10 rounded-md bg-gradient-to-br from-amber-300 via-orange-400 to-rose-500 flex items-center justify-center text-white font-bold text-base shadow-sm flex-shrink-0">
+          P
+        </div>
+        <div className="grid grid-cols-2 gap-1 flex-1 min-w-0">
+          <div className="bg-brand-950/70 border border-orange-500/20 rounded px-1 py-0.5">
+            <div className="text-[7px] uppercase text-neutral-600">Costo</div>
+            <div className="text-[9px] font-bold text-neutral-900 tabular-nums">$1.510</div>
+          </div>
+          <div className="bg-primary-500/10 border border-primary-500/30 rounded px-1 py-0.5">
+            <div className="text-[7px] uppercase text-primary-300">Margen</div>
+            <div className="text-[9px] font-bold text-primary-300 tabular-nums">87.9%</div>
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center gap-1 bg-brand-950/70 border border-orange-500/20 rounded px-1.5 py-1 mt-auto">
+        <ChefHat size={10} className="text-orange-300 flex-shrink-0" />
+        <span className="text-[8px] text-neutral-700 truncate">Venta descuenta stock auto</span>
+      </div>
+    </div>
+  )
+}
+
+function SalesPreview() {
+  const kpis = [
+    { label: 'Ventas', value: '$842K' },
+    { label: 'Ticket', value: '$17.9K' },
+    { label: 'Margen', value: '62%' },
+  ]
+  return (
+    <div className="h-full flex flex-col gap-1">
+      <div className="flex items-center justify-between mb-0.5">
+        <span className="text-[8px] font-bold uppercase tracking-wider text-primary-300">Ventas de hoy</span>
+        <span className="text-[8px] font-bold text-primary-200 bg-primary-500/30 border border-primary-400/40 px-1 rounded">47</span>
+      </div>
+      <div className="grid grid-cols-3 gap-1">
+        {kpis.map((k) => (
+          <div key={k.label} className="bg-brand-950/70 border border-primary-500/20 rounded px-1 py-1 text-center">
+            <div className="text-[9px] font-bold text-neutral-900 tabular-nums leading-none">{k.value}</div>
+            <div className="text-[7px] uppercase tracking-wider text-neutral-600 mt-0.5">{k.label}</div>
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center gap-1 bg-brand-950/70 border border-primary-500/20 rounded px-1.5 py-1 mt-auto">
+        <Coins size={10} className="text-primary-300 flex-shrink-0" />
+        <span className="text-[8px] text-neutral-700 truncate">Cada venta descuenta stock</span>
+      </div>
+    </div>
+  )
+}
+
+function GiftPreview() {
+  return (
+    <div className="h-full flex flex-col gap-1">
+      <div className="flex items-center justify-between mb-0.5">
+        <span className="text-[8px] font-bold uppercase tracking-wider text-rose-300">Gift card</span>
+        <span className="text-[8px] font-bold text-rose-200 bg-rose-500/30 border border-rose-400/40 px-1 rounded">PIN</span>
+      </div>
+      <div className="relative rounded-md bg-gradient-to-br from-rose-500 to-red-600 p-2 shadow-sm shadow-rose-500/30 overflow-hidden flex-1 flex flex-col justify-between">
+        <div aria-hidden className="absolute -top-3 -right-3 w-12 h-12 rounded-full bg-white/10"></div>
+        <div className="flex items-center justify-between relative">
+          <span className="text-[7px] font-bold uppercase tracking-widest text-white/80">Gift card</span>
+          <Gift size={11} className="text-white/90" />
+        </div>
+        <div className="relative">
+          <div className="text-[7px] text-white/70 uppercase tracking-wider">Saldo</div>
+          <div className="text-sm font-bold text-white tabular-nums leading-none">$18.000</div>
+        </div>
+        <span className="text-[7px] font-mono text-white/80 tracking-widest relative">GIFT-7QK2-····</span>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, UserCheck, Coins, Link2, Boxes, ChefHat, TrendingDown, TrendingUp, ArrowRight as ArrowR, Package } from 'lucide-react'
+import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, UserCheck, Coins, Link2, Boxes, ChefHat, TrendingDown, TrendingUp, ArrowRight as ArrowR, Package, Gift, Lock } from 'lucide-react'
 import type { ProductSlug } from '@/lib/products'
 
 export function ProductMockup({ slug }: { slug: ProductSlug }) {
@@ -7,9 +7,9 @@ export function ProductMockup({ slug }: { slug: ProductSlug }) {
       <div aria-hidden className="absolute -inset-3 bg-primary-500/20 rounded-3xl blur-2xl opacity-30"></div>
       <div className="relative bg-brand-900 rounded-2xl shadow-2xl border border-brand-700 overflow-hidden">
         <div className="bg-brand-950 px-3 py-2 flex items-center gap-1.5 border-b border-brand-800">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-danger-500/70"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-warning-500/80"></div>
+          <div className="w-2.5 h-2.5 rounded-full bg-primary-500/80"></div>
           <div className="flex-1 mx-3 h-5 rounded bg-brand-900 border border-brand-800 px-2 flex items-center text-[10px] text-neutral-600 font-mono">
             app.eatcorp.cl/#/{slug}
           </div>
@@ -26,6 +26,69 @@ export function ProductMockup({ slug }: { slug: ProductSlug }) {
         {slug === 'payeat' && <PayEatM />}
         {slug === 'bookeat' && <BookEatM />}
         {slug === 'staffeat' && <StaffEatM />}
+        {slug === 'gifteat' && <GiftEatM />}
+      </div>
+    </div>
+  )
+}
+
+function GiftEatM() {
+  const movimientos = [
+    { label: 'Emitida', detail: 'Certificado PDF enviado', amount: '+$50.000', tone: 'text-neutral-700' },
+    { label: 'Canje · Mesa 6', detail: 'Cena · 14 may', amount: '−$23.400', tone: 'text-rose-300' },
+    { label: 'Canje · Barra', detail: 'Tragos · 22 may', amount: '−$8.600', tone: 'text-rose-300' },
+  ]
+  return (
+    <div className="p-5 bg-gradient-to-br from-brand-900 to-brand-950">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <div className="text-sm font-semibold text-neutral-900">Tarjeta de regalo</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">Código GIFT-7QK2 · vigente</div>
+        </div>
+        <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-semibold border border-rose-500/30">
+          <Gift size={10} />
+          GiftEat
+        </div>
+      </div>
+
+      <div className="relative rounded-xl bg-gradient-to-br from-rose-500 to-red-600 p-4 shadow-lg shadow-rose-500/30 overflow-hidden mb-3">
+        <div aria-hidden className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-white/10"></div>
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-white/80">Gift Card</span>
+          <Gift size={16} className="text-white/90" />
+        </div>
+        <div className="text-[10px] text-white/70 uppercase tracking-wider">Saldo disponible</div>
+        <div className="text-2xl font-bold text-white tabular-nums leading-none mt-0.5">$18.000</div>
+        <div className="mt-3 flex items-center justify-between">
+          <span className="text-[9px] font-mono text-white/80 tracking-widest">GIFT-7QK2-····</span>
+          <span className="text-[9px] text-white/70">de $50.000</span>
+        </div>
+      </div>
+
+      <div className="space-y-1.5 mb-3">
+        {movimientos.map((m, i) => (
+          <div key={i} className="flex items-center gap-2.5 p-2 rounded-lg border bg-brand-800/60 border-brand-700">
+            <div className="flex-1 min-w-0">
+              <div className="text-[11px] font-semibold text-neutral-900 truncate">{m.label}</div>
+              <div className="text-[9px] text-neutral-600">{m.detail}</div>
+            </div>
+            <span className={`text-[11px] font-bold tabular-nums ${m.tone}`}>{m.amount}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-rose-500/10 border border-rose-500/30 rounded-lg p-3">
+        <div className="flex items-center justify-between mb-2">
+          <div className="min-w-0">
+            <div className="text-[10px] font-bold uppercase tracking-wider text-rose-300 mb-0.5">Canje público</div>
+            <div className="text-[10px] text-neutral-700 font-mono truncate">app.eatcorp.cl/#/gift/<span className="text-rose-200">7qk2</span></div>
+          </div>
+          <div className="flex items-center gap-1 text-[9px] font-bold text-rose-300 bg-rose-500/15 border border-rose-500/30 px-1.5 py-0.5 rounded-full flex-shrink-0">
+            <Lock size={9} />
+            PIN
+          </div>
+        </div>
+        <div className="text-[9px] text-neutral-600">El cliente consulta su saldo y canjea solo.</div>
       </div>
     </div>
   )

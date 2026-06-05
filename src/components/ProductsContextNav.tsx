@@ -23,7 +23,7 @@ export function ProductsContextNav({ activeSlug }: Props) {
               <span>Toda la suite</span>
             </div>
             <p className="text-sm text-neutral-700">
-              12 apps activas · activas solo las que necesites · {' '}
+              {PRODUCTS_LIST.length} apps activas · activas solo las que necesites · {' '}
               <Link href="/productos" className="text-primary-300 hover:text-primary-200 font-semibold underline-offset-4 hover:underline">
                 ver índice
               </Link>

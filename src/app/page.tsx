@@ -15,7 +15,6 @@ import { Comparison } from '@/components/Comparison'
 import { Testimonials } from '@/components/Testimonials'
 import { FAQ } from '@/components/FAQ'
 import { Stats } from '@/components/Stats'
-import { TrustBar } from '@/components/TrustBar'
 import { CTA } from '@/components/CTA'
 import { Footer } from '@/components/Footer'
 import { JsonLd } from '@/components/JsonLd'
@@ -29,19 +28,18 @@ export default function Home() {
       <UtmCapture />
       <Navigation />
       <Hero />
-      <LiveActivityBar />
       <ClientLogos />
+      <LiveActivityBar />
       <HowItWorks />
       <AppsCatalog />
+      <Comparison />
       <RestaurantPersonas />
       <ADayWithEatCorp />
-      <ROICalculator />
       <ConnectedStack />
-      <Comparison />
+      <ROICalculator />
       <Testimonials />
       <FAQ />
       <Stats />
-      <TrustBar />
       <CTA />
       <Footer />
     </main>

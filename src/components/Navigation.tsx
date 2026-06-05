@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
+import { trackCTA } from '@/lib/track'
 import { Logo } from './Logo'
 import { ProductsMegaMenu } from './ProductsMegaMenu'
 
@@ -78,12 +79,21 @@ export function Navigation() {
               Mi cuenta
             </button>
           ) : (
-            <button
-              onClick={handleClick}
-              className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition px-2 py-2"
-            >
-              Iniciar sesión
-            </button>
+            <>
+              <button
+                onClick={handleClick}
+                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition px-2 py-2"
+              >
+                Iniciar sesión
+              </button>
+              <a
+                href="/#contacto"
+                onClick={() => trackCTA('cta_nav')}
+                className="hidden sm:inline-flex items-center bg-primary-600 hover:bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm shadow-primary-600/30"
+              >
+                Solicitar early access
+              </a>
+            </>
           )}
           <button
             type="button"

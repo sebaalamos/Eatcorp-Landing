@@ -8,6 +8,7 @@ export type CtaName =
   | 'cta_pricing_enterprise'
   | 'cta_final_primary'
   | 'cta_final_secondary'
+  | 'cta_nav'
   | 'cta_apps_card'
   | 'cta_newsletter_submit'
   | 'cta_client_logos'

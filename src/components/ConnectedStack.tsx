@@ -7,6 +7,7 @@ type Category = {
   icon: LucideIcon
   partners: string[]
   via: string
+  live: boolean
   gradient: string
   accentText: string
   accentBg: string
@@ -21,6 +22,7 @@ const categories: Category[] = [
     icon: CreditCard,
     partners: ['Toteat', 'Getnet (Dic 2026)', 'POS propio (Dic 2026)'],
     via: 'PayEat',
+    live: true,
     gradient: 'from-primary-500 to-teal-500',
     accentText: 'text-primary-300',
     accentBg: 'bg-primary-500/15',
@@ -33,10 +35,24 @@ const categories: Category[] = [
     icon: Landmark,
     partners: ['Banco de Chile', 'BCI', 'Santander', 'Itaú', 'Banco Estado'],
     via: 'BuyEat',
+    live: true,
     gradient: 'from-blue-500 to-cyan-500',
     accentText: 'text-blue-300',
     accentBg: 'bg-blue-500/15',
     accentBorder: 'border-blue-500/40',
+  },
+  {
+    id: 'ai',
+    title: 'Inteligencia artificial',
+    description: 'Magic Post, Brand Discovery y traducción del menú usan los mejores modelos del mercado, no IA genérica.',
+    icon: Sparkles,
+    partners: ['Anthropic Claude', 'OpenAI GPT', 'Google Gemini'],
+    via: 'LikeEat + MenuEat',
+    live: true,
+    gradient: 'from-pink-500 to-rose-500',
+    accentText: 'text-pink-300',
+    accentBg: 'bg-pink-500/15',
+    accentBorder: 'border-pink-500/40',
   },
   {
     id: 'control',
@@ -45,6 +61,7 @@ const categories: Category[] = [
     icon: Clock,
     partners: ['Genera', 'Geovictoria', 'Otros'],
     via: 'ControlEat (Oct 2026)',
+    live: false,
     gradient: 'from-primary-500 to-emerald-500',
     accentText: 'text-primary-300',
     accentBg: 'bg-primary-500/15',
@@ -57,6 +74,7 @@ const categories: Category[] = [
     icon: FileText,
     partners: ['SII', 'Acepta', 'Sovos'],
     via: 'BillEat (Nov 2026)',
+    live: false,
     gradient: 'from-emerald-500 to-teal-500',
     accentText: 'text-primary-300',
     accentBg: 'bg-primary-500/15',
@@ -69,22 +87,11 @@ const categories: Category[] = [
     icon: Wallet,
     partners: ['Previred', 'Reemplaza Talana', 'Reemplaza Buk'],
     via: 'PayrollEat (Nov 2026)',
+    live: false,
     gradient: 'from-violet-500 to-purple-500',
     accentText: 'text-violet-300',
     accentBg: 'bg-violet-500/15',
     accentBorder: 'border-violet-500/40',
-  },
-  {
-    id: 'ai',
-    title: 'Inteligencia artificial',
-    description: 'Magic Post, Brand Discovery y traducción del menú usan los mejores modelos del mercado, no IA genérica.',
-    icon: Sparkles,
-    partners: ['Anthropic Claude', 'OpenAI GPT', 'Google Gemini'],
-    via: 'LikeEat + MenuEat',
-    gradient: 'from-pink-500 to-rose-500',
-    accentText: 'text-pink-300',
-    accentBg: 'bg-pink-500/15',
-    accentBorder: 'border-pink-500/40',
   },
 ]
 
@@ -128,7 +135,16 @@ export function ConnectedStack() {
                   <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${cat.gradient} flex items-center justify-center text-white shadow-md shadow-black/20`}>
                     <CatIcon size={18} />
                   </div>
-                  <h3 className="text-base font-bold text-neutral-900 leading-tight">{cat.title}</h3>
+                  <h3 className="text-base font-bold text-neutral-900 leading-tight flex-1">{cat.title}</h3>
+                  <span
+                    className={`flex-shrink-0 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                      cat.live
+                        ? 'bg-primary-500/15 text-primary-300 border-primary-500/40'
+                        : 'bg-brand-900 text-neutral-600 border-brand-700'
+                    }`}
+                  >
+                    {cat.live ? 'Disponible hoy' : 'Roadmap'}
+                  </span>
                 </div>
 
                 <p className="text-xs text-neutral-700 leading-relaxed mb-4">{cat.description}</p>
@@ -168,9 +184,8 @@ export function ConnectedStack() {
         </div>
 
         <p className="text-center text-xs text-neutral-500 mt-8">
-          Algunas integraciones están live, otras forman parte del roadmap del
-          ecosistema. Las apps marcadas con fecha indican cuándo entran al
-          ecosistema EatCorp.
+          Las integraciones marcadas <span className="text-primary-300 font-semibold">Disponible hoy</span> ya
+          funcionan; las de <span className="text-neutral-400 font-semibold">Roadmap</span> entran con la fecha indicada.
         </p>
       </div>
     </section>

@@ -58,8 +58,8 @@ export function Hero() {
         </h1>
 
         <p className="text-lg md:text-xl text-neutral-700 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Compras, tareas, redes sociales con IA y mantención en una sola plataforma.
-          En español, lista en 30 minutos.
+          Compras, inventario, recetas, propinas, redes con IA, mantención y más —
+          en una sola plataforma. En español, con acompañamiento real en la activación.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4 px-6 sm:px-0">

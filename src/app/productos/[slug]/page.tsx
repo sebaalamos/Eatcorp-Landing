@@ -6,6 +6,7 @@ import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import { ProductsContextNav } from '@/components/ProductsContextNav'
 import { PRODUCTS, PRODUCTS_LIST, type ProductSlug } from '@/lib/products'
+import { productSchema, faqPageSchema, breadcrumbSchema } from '@/lib/jsonld'
 import { ProductPageCTA } from './ProductPageCTA'
 import { ProductFAQ } from './ProductFAQ'
 import { ProductMockup } from './ProductMockup'
@@ -37,8 +38,19 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
   const prevProduct = currentIndex > 0 ? PRODUCTS_LIST[currentIndex - 1] : PRODUCTS_LIST[PRODUCTS_LIST.length - 1]
   const nextProduct = currentIndex < PRODUCTS_LIST.length - 1 ? PRODUCTS_LIST[currentIndex + 1] : PRODUCTS_LIST[0]
 
+  const jsonLd = [
+    productSchema(product),
+    ...(product.faq.length > 0 ? [faqPageSchema(product.faq)] : []),
+    breadcrumbSchema([
+      { name: 'Inicio', path: '/' },
+      { name: 'Productos', path: '/productos' },
+      { name: product.name, path: `/productos/${product.slug}` },
+    ]),
+  ]
+
   return (
     <main className="flex flex-col pt-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navigation />
       <ProductsContextNav activeSlug={product.slug} />
 

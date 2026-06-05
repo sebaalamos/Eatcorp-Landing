@@ -42,6 +42,7 @@ export type ProductSlug =
   | 'payeat'
   | 'bookeat'
   | 'staffeat'
+  | 'gifteat'
 
 export type Benefit = {
   title: string
@@ -87,7 +88,9 @@ export type Product = {
   gradient: string
   external: boolean
   externalUrl?: string
-  preview: 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu' | 'tips' | 'inventory' | 'recipes' | 'sales'
+  /** App disponible pero todavía en piloto (ej: PayEat). Muestra badge "Piloto". */
+  pilot?: boolean
+  preview: 'invoices' | 'kanban' | 'post' | 'assets' | 'calendar' | 'roster' | 'events' | 'menu' | 'tips' | 'inventory' | 'recipes' | 'sales' | 'gift'
   oneLiner: string
   beneficios: Benefit[]
   features: FeatureBlock[]
@@ -1398,6 +1401,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     accentDot: 'bg-primary-500',
     gradient: 'from-emerald-500 to-teal-500',
     external: false,
+    pilot: true,
     preview: 'sales',
     oneLiner: 'Ventas · stock automático · Toteat hoy, POS propio Q4 2026.',
     beneficios: [
@@ -1729,6 +1733,141 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
     ],
   },
+
+  gifteat: {
+    slug: 'gifteat',
+    name: 'GiftEat',
+    tagline: 'Tarjetas de regalo que se canjean solas',
+    heroHeadline: 'Gift cards que tu cliente canjea sin pasar por caja',
+    heroDescription:
+      'Emite tarjetas de regalo en segundos, entrégalas con un certificado PDF listo para imprimir o enviar, y deja que tu cliente consulte su saldo y canjee online — con PIN opcional. El saldo se descuenta parcial, sin papelitos ni planillas.',
+    category: 'customer',
+    categoryLabel: 'Experiencia del cliente',
+    icon: Gift,
+    accentClass: 'rose',
+    accentText: 'text-rose-300',
+    accentBg: 'bg-rose-500/15',
+    accentBorder: 'border-rose-500/40',
+    accentDot: 'bg-rose-500',
+    gradient: 'from-rose-500 to-red-500',
+    external: false,
+    preview: 'gift',
+    oneLiner: 'Emisión · certificado PDF · saldo y canje público con PIN.',
+    beneficios: [
+      {
+        title: 'De la idea a la gift card en segundos',
+        description:
+          'Generas una tarjeta con monto, vigencia y mensaje. Sale un código único y un certificado PDF minimalista listo para imprimir o mandar por WhatsApp. Cero diseño, cero imprenta.',
+      },
+      {
+        title: 'El cliente se autogestiona',
+        description:
+          'Cada tarjeta tiene un link público donde el cliente ve su saldo y la canjea solo. Con PIN opcional para que nadie use una tarjeta ajena. Tu equipo no tiene que consultar nada en caja.',
+      },
+      {
+        title: 'Canje parcial, sin perder el resto',
+        description:
+          'Una gift card de $50.000 se puede usar en varias visitas. GiftEat descuenta lo consumido y deja el saldo restante disponible. El cliente vuelve — y tú lo sabes.',
+      },
+      {
+        title: 'Ingreso por adelantado',
+        description:
+          'Cada tarjeta vendida es plata en caja hoy por consumo futuro. Ideal para Navidad, Día de la Madre y fin de año, cuando la gente regala experiencias.',
+      },
+    ],
+    features: [
+      {
+        title: 'Emisión interna de tarjetas',
+        description:
+          'Crea gift cards con monto, vigencia, destinatario y mensaje. Cada una con código único e historial de movimientos.',
+      },
+      {
+        title: 'Certificado PDF para regalar',
+        description:
+          'Documento minimalista y prolijo, con el código y el monto, listo para imprimir o enviar digital. Sin pasar por un diseñador.',
+      },
+      {
+        title: 'Saldo público consultable',
+        description:
+          'Una página pública por tarjeta muestra el saldo vigente. El cliente entra con el código y ve cuánto le queda.',
+      },
+      {
+        title: 'Canje autoservicio con PIN opcional',
+        description:
+          'El cliente canjea desde el link público. Activas un PIN por tarjeta cuando quieres una capa extra de seguridad.',
+      },
+      {
+        title: 'Canje parcial con saldo restante',
+        description:
+          'Cada canje descuenta lo usado y mantiene el saldo. Una tarjeta sirve para varias visitas hasta agotarse o vencer.',
+      },
+      {
+        title: 'Historial y trazabilidad',
+        description:
+          'Quién emitió cada tarjeta, cuándo se canjeó y por cuánto. Todo queda registrado para cuadrar caja sin dudas.',
+      },
+    ],
+    pasos: [
+      {
+        title: 'Activa GiftEat en tu tenant',
+        description:
+          'Quedas listo para emitir tarjetas en minutos. Defines vigencias por defecto y si quieres PIN obligatorio.',
+      },
+      {
+        title: 'Emite y entrega',
+        description:
+          'Generas la tarjeta, descargas el certificado PDF y se lo das al cliente impreso o por WhatsApp.',
+      },
+      {
+        title: 'El cliente canjea solo',
+        description:
+          'Entra al link público, ve su saldo y canjea — total o parcial. Tú lo ves reflejado al instante.',
+      },
+    ],
+    paraQuien: [
+      'Restoranes que reciben pedidos de "¿venden gift cards?" en fechas especiales',
+      'Operaciones que quieren ingreso por adelantado sin montar un e-commerce',
+      'Equipos que hoy llevan las tarjetas de regalo en una libreta o un Excel',
+    ],
+    faq: [
+      {
+        q: '¿Qué incluye GiftEat hoy?',
+        a: 'La Fase 1 ya está viva: emisión interna de tarjetas, certificado PDF, consulta de saldo público y canje autoservicio (total o parcial) con PIN opcional. La venta online con pasarela de pago es la Fase 2, en camino.',
+      },
+      {
+        q: '¿El cliente puede comprar la gift card solo desde mi sitio?',
+        a: 'Todavía no. Hoy las tarjetas se emiten desde tu panel (tú o tu admin) y se las entregas al cliente. La compra online B2C con pago integrado es la próxima fase.',
+      },
+      {
+        q: '¿Cómo evito que usen una tarjeta que no es suya?',
+        a: 'Activas un PIN por tarjeta. El canje en el link público pide ese PIN antes de descontar saldo.',
+      },
+      {
+        q: '¿Se puede usar la misma tarjeta varias veces?',
+        a: 'Sí. El canje es parcial: cada uso descuenta lo consumido y deja el saldo restante disponible hasta agotarse o vencer.',
+      },
+    ],
+    proximasFuncionalidades: [
+      {
+        title: 'Venta online B2C con pasarela',
+        description:
+          'Tus clientes compran gift cards desde tu sitio y pagan online. La tarjeta se emite y se envía sola por email. Recurring revenue por temporadas.',
+        eta: 'Fase 2',
+      },
+      {
+        title: 'Portal de empresas (B2B)',
+        description:
+          'Compras corporativas de tarjetas en lote para regalos de fin de año o incentivos. Facturación y carga masiva.',
+        eta: 'Fase 2',
+      },
+      {
+        title: 'Canje al reservar con BookEat',
+        description:
+          'El cliente aplica su gift card al confirmar una reserva. Cierra el loop entre regalo y visita.',
+        eta: 'Dic 2026',
+      },
+    ],
+  },
 }
 
 export const PRODUCTS_LIST: Product[] = Object.values(PRODUCTS)
@@ -1822,7 +1961,7 @@ export const UPCOMING_APPS: UpcomingApp[] = [
     accentBorder: 'border-primary-500/40',
   },
   {
-    slug: 'reviewset',
+    slug: 'revieweat',
     name: 'ReviewEat',
     tagline: 'Monitoreo + NPS asistido por IA',
     description:
@@ -1850,23 +1989,6 @@ export const UPCOMING_APPS: UpcomingApp[] = [
     eta: 'Dic 2026',
     status: 'planeado',
     gradient: 'from-rose-500 to-pink-500',
-    accentDot: 'bg-rose-500',
-    accentText: 'text-rose-300',
-    accentBg: 'bg-rose-500/15',
-    accentBorder: 'border-rose-500/40',
-  },
-  {
-    slug: 'gifteat',
-    name: 'GiftEat',
-    tagline: 'Tarjetas de regalo B2C y B2B',
-    description:
-      'Vende gift cards desde tu sitio (B2C) y a empresas (portal B2B). Recurring revenue por temporadas — Navidad, Día de la Madre, fin de año.',
-    icon: Gift,
-    category: 'customer',
-    categoryLabel: 'Experiencia del cliente',
-    eta: 'Dic 2026',
-    status: 'planeado',
-    gradient: 'from-rose-500 to-red-500',
     accentDot: 'bg-rose-500',
     accentText: 'text-rose-300',
     accentBg: 'bg-rose-500/15',

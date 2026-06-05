@@ -1,4 +1,7 @@
 import { Sparkles, Users, Rocket } from 'lucide-react'
+import { PRODUCTS_LIST } from '@/lib/products'
+
+const APP_COUNT = PRODUCTS_LIST.length
 
 const steps = [
   {
@@ -7,7 +10,7 @@ const steps = [
     title: 'Activa las apps que necesitas',
     description:
       'Sin instalación. Elige solo las apps que tu restorán usa. Activa más cuando quieras.',
-    detail: '9 apps disponibles · más en camino',
+    detail: `${APP_COUNT} apps disponibles · más en camino`,
   },
   {
     n: '02',
@@ -23,7 +26,7 @@ const steps = [
     title: 'Opera mejor desde el día 1',
     description:
       'Datos integrados entre apps. Lo que pasa en BuyEat se refleja en tu dashboard. Tu equipo trabaja en lo que importa.',
-    detail: 'Setup completo en menos de 30 minutos',
+    detail: 'Te acompañamos en la activación, paso a paso',
   },
 ]
 

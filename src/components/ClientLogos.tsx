@@ -1,8 +1,4 @@
-'use client'
-
-import { useState } from 'react'
 import Image from 'next/image'
-import { LeadModal } from './LeadModal'
 
 type Client = {
   name: string
@@ -33,8 +29,6 @@ const clients: Client[] = [
 ]
 
 export function ClientLogos() {
-  const [modalOpen, setModalOpen] = useState(false)
-
   return (
     <section aria-label="Restoranes que operan con EatCorp" className="py-14 px-4 bg-brand-900/60 border-y border-brand-800">
       <div className="max-w-6xl mx-auto">
@@ -67,31 +61,8 @@ export function ClientLogos() {
               </div>
             </div>
           ))}
-          <button
-            type="button"
-            onClick={() => setModalOpen(true)}
-            className="group flex items-center gap-3 px-5 py-4 rounded-xl border border-dashed border-brand-700 hover:border-primary-500/60 text-neutral-600 hover:text-primary-300 hover:bg-brand-800/40 transition-all"
-          >
-            <div className="w-9 h-9 rounded-full border-2 border-dashed border-brand-700 group-hover:border-primary-500/60 flex items-center justify-center text-neutral-500 group-hover:text-primary-300 text-lg leading-none transition">
-              +
-            </div>
-            <div className="text-sm font-medium text-left">
-              <div className="text-neutral-700 group-hover:text-neutral-900 transition">¿Tu restorán acá?</div>
-              <div className="text-[11px] text-neutral-500">Escríbenos</div>
-            </div>
-          </button>
         </div>
       </div>
-
-      <LeadModal
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        source="contact"
-        ctaTrack="cta_client_logos"
-        title="Súmate a EatCorp"
-        description="Cuéntanos sobre tu restorán y te contactamos en menos de 24 horas hábiles."
-        withMessage
-      />
     </section>
   )
 }
