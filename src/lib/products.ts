@@ -372,7 +372,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     ],
     faq: [
       {
-        q: '¿Cómo se diferencia de Asana, Trello, Notion?',
+        q: '¿En qué se diferencia de una herramienta de tareas genérica?',
         a: 'TaskEat está hecho para restoranes. Categorías ya pensadas (cocina, sala, mantención, admin), recurrencias diarias/semanales típicas, visibilidad híbrida que en herramientas generales hay que hackear, y todo integrado con el resto de las apps de EatCorp.',
       },
       {
@@ -1065,7 +1065,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
       {
         q: '¿Se integra con la liquidación de sueldos?',
-        a: 'No directamente. TipEat reporta los montos; tu contadora o sistema de payroll (Talana, Buk, futuro PayrollEat) los suma a la liquidación correspondiente.',
+        a: 'No directamente. TipEat reporta los montos; tu contadora o tu software de remuneraciones (futuro PayrollEat) los suma a la liquidación correspondiente.',
       },
     ],
     proximasFuncionalidades: [
@@ -1102,7 +1102,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     tagline: 'Stock al día sin contar de noche',
     heroHeadline: 'Tu inventario cuadrado solo, con cada compra y venta',
     heroDescription:
-      'Inventario multi-bodega con cuadre automático: cada recepción de BuyEat suma stock, cada venta vía PayEat o Toteat con receta de RecipEat lo descuenta. Conteos físicos, alertas de mínimo y detección de anomalías.',
+      'Inventario multi-bodega con cuadre automático: cada recepción de BuyEat suma stock, cada venta vía PayEat o tu POS con receta de RecipEat lo descuenta. Conteos físicos, alertas de mínimo y detección de anomalías.',
     category: 'operations',
     categoryLabel: 'Administración y operaciones',
     icon: Boxes,
@@ -1315,9 +1315,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Cada plato del menú digital se vincula a su receta. Cuando vendes, ya está claro qué descontar.',
       },
       {
-        title: 'Conexión PayEat / Toteat → RecipEat',
+        title: 'Conexión PayEat / tu POS → RecipEat',
         description:
-          'Las ventas vienen de PayEat o se importan de Toteat. RecipEat las procesa y dispara los descuentos en InventEat.',
+          'Las ventas vienen de PayEat o se importan de tu POS. RecipEat las procesa y dispara los descuentos en InventEat.',
       },
       {
         title: 'Versionado de recetas',
@@ -1339,7 +1339,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Vende y deja que el sistema haga el resto',
         description:
-          'PayEat (o Toteat) registra la venta → RecipEat lee la receta → InventEat descuenta stock. Todo automático.',
+          'PayEat (o tu POS) registra la venta → RecipEat lee la receta → InventEat descuenta stock. Todo automático.',
       },
     ],
     paraQuien: [
@@ -1351,7 +1351,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     faq: [
       {
         q: '¿Necesito InventEat y PayEat para usar RecipEat?',
-        a: 'Sí, RecipEat es la pieza intermedia. Sin InventEat no hay stock que descontar. Sin PayEat (o integración con Toteat) no hay venta que dispare el descuento. Los tres juntos son el flujo completo.',
+        a: 'Sí, RecipEat es la pieza intermedia. Sin InventEat no hay stock que descontar. Sin PayEat (o la integración con tu POS) no hay venta que dispare el descuento. Los tres juntos son el flujo completo.',
       },
       {
         q: '¿Y si vendo el mismo plato a precios distintos según menú?',
@@ -1390,7 +1390,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     tagline: 'Ventas conectadas a stock y recetas',
     heroHeadline: 'Tus ventas son la fuente de toda la operación',
     heroDescription:
-      'Hoy lo cargas manual o lo lees desde Toteat. Mañana (Q4 2026) tendrás POS completo, comanda a cocina y cobro con tarjeta. En cualquier caso, cada venta vinculada a su receta descuenta stock al instante.',
+      'Hoy lo cargas manual o lo lees desde tu POS actual. Mañana (Q4 2026) tendrás POS completo, comanda a cocina y cobro con tarjeta. En cualquier caso, cada venta vinculada a su receta descuenta stock al instante.',
     category: 'customer',
     categoryLabel: 'Experiencia del cliente',
     icon: Coins,
@@ -1403,7 +1403,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     external: false,
     pilot: true,
     preview: 'sales',
-    oneLiner: 'Ventas · stock automático · Toteat hoy, POS propio Q4 2026.',
+    oneLiner: 'Ventas · stock automático · tu POS hoy, POS propio Q4 2026.',
     beneficios: [
       {
         title: 'Cada venta cuadra la operación entera',
@@ -1411,9 +1411,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Una venta no es solo dinero — es un consumo de stock real, un plato descontado, una receta validada. PayEat conecta todo.',
       },
       {
-        title: 'Toteat hoy, POS propio mañana',
+        title: 'Tu POS hoy, POS propio mañana',
         description:
-          'Si ya usas Toteat, lo conectamos. Si no, cargas ventas manualmente. En Dic 2026 el POS completo entra en producción y migras sin perder data.',
+          'Si ya usas un POS, lo conectamos. Si no, cargas ventas manualmente. En Dic 2026 el POS completo entra en producción y migras sin perder data.',
       },
       {
         title: 'Hardware-agnostic',
@@ -1433,9 +1433,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Modo simple: cargas las ventas del día desde una planilla o un sistema de POS existente.',
       },
       {
-        title: 'Integración Toteat',
+        title: 'Integración con tu POS',
         description:
-          'Lectura de ventas desde Toteat. Las ventas se asocian automáticamente con la receta correspondiente.',
+          'Lectura de ventas desde tu POS. Las ventas se asocian automáticamente con la receta correspondiente.',
       },
       {
         title: 'Vínculo venta ↔ receta ↔ stock',
@@ -1452,7 +1452,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Eliges cómo cargar ventas',
         description:
-          'Modo manual (Excel diario) o integración Toteat. El setup tarda 30 minutos.',
+          'Modo manual (Excel diario) o integración con tu POS. El setup tarda 30 minutos.',
       },
       {
         title: 'Cada venta dispara el flujo',
@@ -1466,22 +1466,22 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
     ],
     paraQuien: [
-      'Restoranes que ya usan Toteat y quieren stock automático',
+      'Restoranes que ya usan un POS y quieren stock automático',
       'Operaciones que cargan ventas manualmente en Excel y quieren empezar a conectarlo todo',
       'Equipos que esperan el POS completo y quieren ir armando la base de data desde ya',
     ],
     faq: [
       {
         q: '¿Cuándo está el POS completo?',
-        a: 'Piloto en El Toro Junio 2026. Lanzamiento externo Diciembre 2026. Hardware-agnostic (Getnet, iPad, Android, móvil), comanda por impresora térmica o KDS, respaldo offline.',
+        a: 'Piloto en El Toro Junio 2026. Lanzamiento externo Diciembre 2026. Hardware-agnostic (lector de tarjetas, iPad, Android, móvil), comanda por impresora térmica o KDS, respaldo offline.',
       },
       {
-        q: '¿Reemplaza a Toteat?',
-        a: 'A futuro sí, pero la transición es opcional. PayEat puede leer Toteat por tiempo indefinido. Cuando decidas migrar, los datos vienen con vos.',
+        q: '¿Reemplaza a mi POS actual?',
+        a: 'A futuro sí, pero la transición es opcional. PayEat puede leer tu POS por tiempo indefinido. Cuando decidas migrar, te llevas todos tus datos.',
       },
       {
         q: '¿Cobro con tarjeta funciona desde el día 1?',
-        a: 'No. Hoy registras la venta y el cobro se hace donde lo hagas habitualmente. El cobro integrado con Getnet es parte del POS completo (Dic 2026).',
+        a: 'No. Hoy registras la venta y el cobro se hace donde lo hagas habitualmente. El cobro con tarjeta integrado es parte del POS completo (Dic 2026).',
       },
     ],
     proximasFuncionalidades: [
@@ -1498,9 +1498,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         eta: 'Q3 2026',
       },
       {
-        title: 'Cobro con tarjeta vía Getnet',
+        title: 'Cobro con tarjeta integrado',
         description:
-          'Integración con Getnet para procesar pagos sin salir de PayEat.',
+          'Integración con pasarela de pago para procesar pagos sin salir de PayEat.',
         eta: 'Q4 2026',
       },
       {
@@ -1518,7 +1518,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     tagline: 'Reservas online sin telefonazos',
     heroHeadline: 'Mesa al día, sin llamadas',
     heroDescription:
-      'Tu sistema de reservas online integrado con EatCorp. Tus clientes reservan desde tu sitio o desde el directorio BookEat. Tu equipo ve el día completo de un vistazo. Reemplazo directo a CoverManager.',
+      'Tu sistema de reservas online integrado con EatCorp. Tus clientes reservan desde tu sitio o desde el directorio BookEat. Tu equipo ve el día completo de un vistazo. Reemplazo directo a tu sistema de reservas actual.',
     category: 'customer',
     categoryLabel: 'Experiencia del cliente',
     icon: Calendar,
@@ -1531,7 +1531,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     external: true,
     externalUrl: 'https://bookeat.cl',
     preview: 'calendar',
-    oneLiner: 'Reservas online · directorio público · reemplazo a CoverManager.',
+    oneLiner: 'Reservas online · directorio público · reemplazo a tu sistema de reservas.',
     beneficios: [
       {
         title: 'Adiós al teléfono que no para',
@@ -1594,8 +1594,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         a: 'BookEat es un servicio (bookeat.cl) con quien EatCorp integra el toggle de acceso. Si tienes EatCorp, activas BookEat con un click. Si quieres solo BookEat, también puedes.',
       },
       {
-        q: '¿Reemplaza a CoverManager?',
-        a: 'Sí, es un reemplazo directo. Si vienes de CoverManager te ayudamos a migrar la base de datos de clientes históricos.',
+        q: '¿Reemplaza a mi sistema de reservas actual?',
+        a: 'Sí, es un reemplazo directo. Si vienes de otro sistema de reservas te ayudamos a migrar la base de datos de clientes históricos.',
       },
     ],
     proximasFuncionalidades: [
@@ -1703,20 +1703,20 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
       {
         q: '¿Calcula liquidaciones de sueldo?',
-        a: 'Aún no — para eso viene PayrollEat (Nov 2026) que reemplaza Talana/Buk con motor propio integrado a StaffEat.',
+        a: 'Aún no — para eso viene PayrollEat (Nov 2026), nuestro motor propio de remuneraciones integrado a StaffEat.',
       },
     ],
     proximasFuncionalidades: [
       {
         title: 'ControlEat — relojes de control',
         description:
-          'Integración con Genera primero, después Geovictoria y otros. Marcaje automático que alimenta asistencia.',
+          'Integración con los principales relojes de control del mercado. Marcaje automático que alimenta asistencia.',
         eta: 'Oct 2026',
       },
       {
         title: 'PayrollEat — motor propio',
         description:
-          'Liquidación de sueldos integrada — reemplaza Talana/Buk. Conexión Previred. Te dejas de pagar el sistema de afuera.',
+          'Liquidación de sueldos integrada — reemplaza el software de remuneraciones externo. Pago de cotizaciones previsionales. Te dejas de pagar el sistema de afuera.',
         eta: 'Nov 2026',
       },
       {
@@ -1914,7 +1914,7 @@ export const UPCOMING_APPS: UpcomingApp[] = [
     name: 'ControlEat',
     tagline: 'Asistencia con reloj control',
     description:
-      'Integración con relojes de control (Genera primero, después Geovictoria y otros). Marcaje automático que alimenta StaffEat, TipEat y PayrollEat.',
+      'Integración con los principales relojes de control del mercado. Marcaje automático que alimenta StaffEat, TipEat y PayrollEat.',
     icon: CalendarCheck,
     category: 'collaborators',
     categoryLabel: 'Colaboradores',
@@ -1931,7 +1931,7 @@ export const UPCOMING_APPS: UpcomingApp[] = [
     name: 'PayrollEat',
     tagline: 'Motor de sueldos propio',
     description:
-      'Liquidación de sueldos integrada — reemplaza Talana/Buk. Conexión Previred. Te dejas de pagar el sistema de afuera y todo está sincronizado.',
+      'Liquidación de sueldos integrada — reemplaza el software de remuneraciones que pagas afuera. Pago de cotizaciones previsionales. Todo sincronizado.',
     icon: Receipt,
     category: 'collaborators',
     categoryLabel: 'Colaboradores',
@@ -1948,7 +1948,7 @@ export const UPCOMING_APPS: UpcomingApp[] = [
     name: 'BillEat',
     tagline: 'PSF híbrido',
     description:
-      'Emisión de documentos tributarios (boletas, facturas, notas de crédito) con partner PSF inicial (Acepta/Sovos) → certificación propia año 2-3.',
+      'Emisión de documentos tributarios (boletas, facturas, notas de crédito) con un partner PSF certificado por el SII → certificación propia año 2-3.',
     icon: Receipt,
     category: 'finanzas',
     categoryLabel: 'Finanzas',
@@ -1999,7 +1999,7 @@ export const UPCOMING_APPS: UpcomingApp[] = [
     name: 'DeliveryEat',
     tagline: 'Canal propio + agregador',
     description:
-      'Delivery propio sin comisiones abusivas (5% vs 28-35% PedidosYa/Uber/Rappi) más integración con los agregadores. Doble jugada.',
+      'Delivery propio sin comisiones abusivas (5% vs 28-35% de los agregadores) más integración con ellos. Doble jugada.',
     icon: Truck,
     category: 'customer',
     categoryLabel: 'Experiencia del cliente',

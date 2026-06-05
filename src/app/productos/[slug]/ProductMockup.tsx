@@ -895,7 +895,7 @@ function PayEatM() {
       <div className="flex items-center justify-between mb-3">
         <div>
           <div className="text-sm font-semibold text-neutral-900">Ventas de hoy</div>
-          <div className="text-[10px] text-neutral-600 mt-0.5">Lectura desde Toteat · 47 tickets</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">Lectura de ventas · 47 tickets</div>
         </div>
         <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-300 font-semibold border border-primary-500/30">
           <Coins size={10} />
@@ -950,10 +950,10 @@ function PayEatM() {
           <div className="text-[9px] font-bold uppercase tracking-wider text-neutral-600">Dic 2026</div>
         </div>
         <div className="text-[10px] text-neutral-700 leading-snug">
-          POS propio con KDS + cobro Getnet en construcción. Por ahora, lectura Toteat o carga manual.
+          POS propio con KDS + cobro con tarjeta en construcción. Por ahora, lectura de tu POS o carga manual.
         </div>
         <div className="flex gap-1 mt-2">
-          {['Comanda KDS', 'Cobro Getnet', 'Recibos', 'Offline'].map((f) => (
+          {['Comanda KDS', 'Cobro con tarjeta', 'Recibos', 'Offline'].map((f) => (
             <span key={f} className="text-[8px] font-bold uppercase tracking-wider text-primary-300 bg-primary-500/15 border border-primary-500/30 px-1.5 py-0.5 rounded">
               {f}
             </span>
