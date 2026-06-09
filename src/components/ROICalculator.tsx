@@ -27,25 +27,23 @@ export function ROICalculator() {
 
   const m = styleMultiplier[style]
 
-  // Breakdown del ahorro mensual (USD)
-  const ahorroCompras = Math.round(facturas * 1 * m)
-  const ahorroEquipo = Math.round(equipo * 5 * m)
-  const ahorroLocales = Math.round(locales * 5 * m)
-  const ahorroPosts = Math.round(posts * 5 * m) // tiempo + valor RRSS
-  const ahorroMantenimiento = Math.round(activos * 8 * m) // evita paradas sorpresa
+  // Desglose del ahorro mensual estimado, en pesos chilenos (CLP)
+  const ahorroCompras = Math.round(facturas * 1000 * m)
+  const ahorroEquipo = Math.round(equipo * 5000 * m)
+  const ahorroLocales = Math.round(locales * 5000 * m)
+  const ahorroPosts = Math.round(posts * 5000 * m) // tiempo + valor RRSS
+  const ahorroMantenimiento = Math.round(activos * 8000 * m) // evita paradas sorpresa
 
   const ahorroMensual = ahorroCompras + ahorroEquipo + ahorroLocales + ahorroPosts + ahorroMantenimiento
   const horasMes = Math.round(facturas * 0.15 + equipo * 4 + locales * 8 + posts * 0.4 + activos * 0.5)
-  const costoPlan = locales <= 1 && equipo <= 5 ? 40 : 100 // Starter / Pro USD
-  const recuperoDias = Math.max(1, Math.round((costoPlan / Math.max(ahorroMensual, 1)) * 30))
 
-  const formatUSD = (n: number) => `$${n.toLocaleString('en-US')}`
+  const formatCLP = (n: number) => `$${n.toLocaleString('es-CL')}`
 
   const breakdown = [
     { label: 'Compras', icon: ShoppingCart, value: ahorroCompras, color: 'bg-blue-500' },
     { label: 'Equipo', icon: Users, value: ahorroEquipo, color: 'bg-primary-500' },
     { label: 'RRSS', icon: Share2, value: ahorroPosts, color: 'bg-pink-500' },
-    { label: 'Mantenimiento', icon: Wrench, value: ahorroMantenimiento, color: 'bg-amber-500' },
+    { label: 'Mantenimiento', icon: Wrench, value: ahorroMantenimiento, color: 'bg-warning-500' },
     { label: 'Multi-local', icon: MapPin, value: ahorroLocales, color: 'bg-violet-500' },
   ].filter((b) => b.value > 0)
 
@@ -74,11 +72,13 @@ export function ROICalculator() {
                 {(['manual', 'mixed', 'software'] as OperationStyle[]).map((s) => (
                   <button
                     key={s}
+                    type="button"
+                    aria-pressed={style === s}
                     onClick={() => setStyle(s)}
                     className={`text-xs font-semibold py-2.5 px-2 rounded-lg border-2 transition ${
                       style === s
-                        ? 'bg-primary-600 text-white border-primary-500 shadow-md shadow-primary-600/30'
-                        : 'bg-brand-800 text-neutral-700 border-brand-700 hover:border-slate-500'
+                        ? 'bg-primary-500 text-brand-950 border-primary-400 shadow-md shadow-primary-600/30'
+                        : 'bg-brand-800 text-neutral-700 border-brand-700 hover:border-neutral-500'
                     }`}
                   >
                     {styleLabel[s]}
@@ -87,7 +87,7 @@ export function ROICalculator() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-x-4 gap-y-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
               <SliderInput
                 label="Facturas/mes"
                 icon={ShoppingCart}
@@ -150,7 +150,8 @@ export function ROICalculator() {
                   className="text-4xl md:text-5xl font-bold tabular-nums tracking-tight"
                   style={{ animation: 'count-pop 0.4s ease-out' }}
                 >
-                  {formatUSD(ahorroMensual)}
+                  {formatCLP(ahorroMensual)}
+                  <span className="text-base font-semibold text-neutral-600 ml-1.5 align-middle">CLP/mes aprox.</span>
                 </div>
               </div>
 
@@ -166,7 +167,7 @@ export function ROICalculator() {
                           <Icon size={11} />
                           <span>{b.label}</span>
                         </div>
-                        <span className="font-semibold tabular-nums text-white">{formatUSD(b.value)}</span>
+                        <span className="font-semibold tabular-nums text-white">{formatCLP(b.value)}</span>
                       </div>
                       <div className="h-1 bg-brand-700/60 rounded-full overflow-hidden">
                         <div
@@ -190,9 +191,9 @@ export function ROICalculator() {
                 <div>
                   <div className="flex items-center gap-1.5 text-neutral-600 text-[10px] mb-1 uppercase tracking-wider">
                     <TrendingUp size={10} />
-                    Recupero
+                    Ahorro al año
                   </div>
-                  <div className="text-xl font-bold tabular-nums">{recuperoDias} días</div>
+                  <div className="text-xl font-bold tabular-nums">{formatCLP(ahorroMensual * 12)}</div>
                 </div>
               </div>
 
@@ -221,51 +222,54 @@ type SliderProps = {
 
 function SliderInput({ label, icon: Icon, value, min, max, step, onChange, colSpan }: SliderProps) {
   const percent = ((value - min) / (max - min)) * 100
+  const id = 'roi-' + label.toLowerCase().replace(/[^a-z]+/g, '-').replace(/^-|-$/g, '')
 
   return (
     <div className={colSpan === 2 ? 'col-span-2' : ''}>
       <div className="flex justify-between items-baseline mb-1.5">
-        <label className="text-xs font-semibold text-neutral-700 flex items-center gap-1.5">
+        <label htmlFor={id} className="text-xs font-semibold text-neutral-700 flex items-center gap-1.5">
           <Icon size={12} className="text-neutral-600" />
           {label}
         </label>
         <span className="text-xl font-bold text-primary-300 tabular-nums">{value}</span>
       </div>
       <input
+        id={id}
         type="range"
         min={min}
         max={max}
         step={step}
         value={value}
+        aria-label={label}
         onChange={(e) => onChange(Number(e.target.value))}
         className="w-full h-2 rounded-full appearance-none cursor-pointer slider-emerald"
         style={{
-          background: `linear-gradient(to right, #10b981 0%, #34d399 ${percent}%, #1e293b ${percent}%, #1e293b 100%)`,
+          background: `linear-gradient(to right, var(--color-primary-500) 0%, var(--color-primary-400) ${percent}%, var(--color-brand-800) ${percent}%, var(--color-brand-800) 100%)`,
         }}
       />
-      <div className="flex justify-between text-[9px] text-neutral-500 mt-0.5">
+      <div className="flex justify-between text-[9px] text-neutral-600 mt-0.5">
         <span>{min}</span>
         <span>{max}</span>
       </div>
       <style jsx>{`
         .slider-emerald::-webkit-slider-thumb {
           appearance: none;
-          width: 18px;
-          height: 18px;
+          width: 26px;
+          height: 26px;
           border-radius: 50%;
-          background: #f8fafc;
-          border: 3px solid #10b981;
+          background: var(--color-neutral-900);
+          border: 3px solid var(--color-primary-500);
           cursor: pointer;
-          box-shadow: 0 2px 12px rgba(16, 185, 129, 0.5);
+          box-shadow: 0 2px 12px color-mix(in srgb, var(--color-primary-500) 50%, transparent);
         }
         .slider-emerald::-moz-range-thumb {
-          width: 18px;
-          height: 18px;
+          width: 26px;
+          height: 26px;
           border-radius: 50%;
-          background: #f8fafc;
-          border: 3px solid #10b981;
+          background: var(--color-neutral-900);
+          border: 3px solid var(--color-primary-500);
           cursor: pointer;
-          box-shadow: 0 2px 12px rgba(16, 185, 129, 0.5);
+          box-shadow: 0 2px 12px color-mix(in srgb, var(--color-primary-500) 50%, transparent);
         }
       `}</style>
     </div>
