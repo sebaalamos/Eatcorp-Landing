@@ -18,10 +18,15 @@ import { Stats } from '@/components/Stats'
 import { CTA } from '@/components/CTA'
 import { Footer } from '@/components/Footer'
 import { JsonLd } from '@/components/JsonLd'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  alternates: { canonical: 'https://eatcorp.cl' },
+}
 
 export default function Home() {
   return (
-    <main className="flex flex-col relative">
+    <main id="contenido" tabIndex={-1} className="flex flex-col relative outline-none">
       <JsonLd />
       <HashRedirect />
       <CursorGlow />

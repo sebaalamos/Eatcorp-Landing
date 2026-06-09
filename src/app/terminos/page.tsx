@@ -5,16 +5,29 @@ import type { Metadata } from 'next'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 
+const META_TITLE = 'Términos y condiciones — EatCorp'
+const META_DESCRIPTION = 'Términos de uso del sitio eatcorp.cl y de la plataforma EatCorp.'
+const META_URL = 'https://eatcorp.cl/terminos'
+
 export const metadata: Metadata = {
-  title: 'Términos y condiciones — EatCorp',
-  description:
-    'Términos de uso del sitio eatcorp.cl y de la plataforma EatCorp.',
-  alternates: { canonical: 'https://eatcorp.cl/terminos' },
+  title: META_TITLE,
+  description: META_DESCRIPTION,
+  alternates: { canonical: META_URL },
+  openGraph: {
+    title: META_TITLE,
+    description: META_DESCRIPTION,
+    url: META_URL,
+    siteName: 'EatCorp',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'EatCorp' }],
+    type: 'website',
+    locale: 'es_419',
+  },
+  twitter: { card: 'summary_large_image', title: META_TITLE, description: META_DESCRIPTION, images: ['/og-image.png'] },
 }
 
 export default function TerminosPage() {
   return (
-    <main className="flex flex-col">
+    <main id="contenido" tabIndex={-1} className="flex flex-col outline-none">
       <Navigation />
       <article className="pt-28 pb-20 px-4 max-w-3xl mx-auto w-full text-neutral-800">
         <header className="mb-10">

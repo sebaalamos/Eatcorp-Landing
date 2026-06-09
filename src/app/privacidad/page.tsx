@@ -5,16 +5,30 @@ import type { Metadata } from 'next'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 
+const META_TITLE = 'Política de privacidad — EatCorp'
+const META_DESCRIPTION =
+  'Cómo EatCorp recolecta, almacena y procesa tus datos personales y los de tu equipo, en cumplimiento con la Ley 19.628 de Chile.'
+const META_URL = 'https://eatcorp.cl/privacidad'
+
 export const metadata: Metadata = {
-  title: 'Política de privacidad — EatCorp',
-  description:
-    'Cómo EatCorp recolecta, almacena y procesa tus datos personales y los de tu equipo, en cumplimiento con la Ley 19.628 de Chile.',
-  alternates: { canonical: 'https://eatcorp.cl/privacidad' },
+  title: META_TITLE,
+  description: META_DESCRIPTION,
+  alternates: { canonical: META_URL },
+  openGraph: {
+    title: META_TITLE,
+    description: META_DESCRIPTION,
+    url: META_URL,
+    siteName: 'EatCorp',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'EatCorp' }],
+    type: 'website',
+    locale: 'es_419',
+  },
+  twitter: { card: 'summary_large_image', title: META_TITLE, description: META_DESCRIPTION, images: ['/og-image.png'] },
 }
 
 export default function PrivacidadPage() {
   return (
-    <main className="flex flex-col">
+    <main id="contenido" tabIndex={-1} className="flex flex-col outline-none">
       <Navigation />
       <article className="pt-28 pb-20 px-4 max-w-3xl mx-auto w-full text-neutral-800">
         <header className="mb-10">

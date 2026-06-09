@@ -21,10 +21,28 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params
   const product = PRODUCTS[slug as ProductSlug]
   if (!product) return {}
+  const title = `${product.name} — ${product.tagline} · EatCorp`
+  const description = product.heroDescription
+  const url = `https://eatcorp.cl/productos/${product.slug}`
   return {
-    title: `${product.name} — ${product.tagline} · EatCorp`,
-    description: product.heroDescription,
-    alternates: { canonical: `https://eatcorp.cl/productos/${product.slug}` },
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: 'EatCorp',
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'EatCorp' }],
+      type: 'website',
+      locale: 'es_419',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/og-image.png'],
+    },
   }
 }
 
@@ -49,7 +67,7 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
   ]
 
   return (
-    <main className="flex flex-col pt-16">
+    <main id="contenido" tabIndex={-1} className="flex flex-col pt-16 outline-none">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navigation />
       <ProductsContextNav activeSlug={product.slug} />

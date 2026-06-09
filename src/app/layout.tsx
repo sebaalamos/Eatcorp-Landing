@@ -35,9 +35,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'EatCorp' }],
   creator: 'EatCorp',
   category: 'business',
-  alternates: {
-    canonical: 'https://eatcorp.cl',
-  },
   icons: {
     icon: '/favicon.svg',
     apple: '/apple-touch-icon.png',
@@ -67,6 +64,12 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${inter.variable} antialiased`}>
+        <a
+          href="#contenido"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-3 focus:left-3 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary-500 focus:text-brand-950 focus:font-semibold"
+        >
+          Saltar al contenido
+        </a>
         {children}
         <Analytics />
         <SpeedInsights />

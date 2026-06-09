@@ -5,11 +5,30 @@ import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import { PRODUCTS_LIST, UPCOMING_APPS, type UpcomingApp } from '@/lib/products'
 
+const META_TITLE = 'Productos — todas las apps de EatCorp'
+const META_DESCRIPTION =
+  'Compras, inventario, recetas, ventas, propinas, carta digital, eventos, mantención, reservas, personal y gift cards. Activa solo las que tu restorán necesite — todo conectado en una plataforma.'
+const META_URL = 'https://eatcorp.cl/productos'
+
 export const metadata: Metadata = {
-  title: 'Productos — todas las apps de EatCorp',
-  description:
-    'Compras, inventario, recetas, ventas, propinas, carta digital, eventos, mantención, reservas, personal y gift cards. Activa solo las que tu restorán necesite — todo conectado en una plataforma.',
-  alternates: { canonical: 'https://eatcorp.cl/productos' },
+  title: META_TITLE,
+  description: META_DESCRIPTION,
+  alternates: { canonical: META_URL },
+  openGraph: {
+    title: META_TITLE,
+    description: META_DESCRIPTION,
+    url: META_URL,
+    siteName: 'EatCorp',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'EatCorp' }],
+    type: 'website',
+    locale: 'es_419',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: META_TITLE,
+    description: META_DESCRIPTION,
+    images: ['/og-image.png'],
+  },
 }
 
 const CATEGORIES: { id: 'operations' | 'collaborators' | 'customer'; label: string; description: string }[] = [
@@ -53,7 +72,7 @@ const ROADMAP_GROUPS: { label: string; status: UpcomingApp['status']; icon: type
 
 export default function ProductosIndex() {
   return (
-    <main className="flex flex-col pt-16">
+    <main id="contenido" tabIndex={-1} className="flex flex-col pt-16 outline-none">
       <Navigation />
 
       {/* Breadcrumb */}
