@@ -100,31 +100,46 @@ export function ProductsMegaMenu({ inMobileSheet = false, onNavigate }: Props) {
   return (
     <div
       ref={containerRef}
-      className="relative"
+      className="hidden md:block"
       onMouseEnter={() => {
         cancelClose()
         setOpen(true)
       }}
       onMouseLeave={scheduleClose}
     >
-      <Link
-        href="/productos"
-        onClick={() => setOpen(false)}
-        aria-haspopup="true"
-        aria-expanded={open}
-        className={`hidden md:inline-flex items-center gap-1 text-sm font-semibold transition rounded-full px-3 py-1.5 border ${
+      <div
+        className={`inline-flex items-center rounded-full border transition ${
           open
-            ? 'bg-primary-500/15 text-primary-300 border-primary-500/40'
-            : 'text-neutral-700 hover:text-neutral-900 border-transparent hover:border-brand-800 hover:bg-brand-900'
+            ? 'bg-primary-500/15 border-primary-500/40'
+            : 'border-transparent hover:border-brand-800 hover:bg-brand-900'
         }`}
       >
-        Productos
-        <ChevronDown size={14} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
-      </Link>
+        <Link
+          href="/productos"
+          onClick={() => setOpen(false)}
+          className={`text-sm font-semibold transition rounded-l-full pl-3 pr-1 py-1.5 ${
+            open ? 'text-primary-300' : 'text-neutral-700 hover:text-neutral-900'
+          }`}
+        >
+          Productos
+        </Link>
+        <button
+          type="button"
+          aria-haspopup="true"
+          aria-expanded={open}
+          aria-label={open ? 'Ocultar apps' : 'Ver apps'}
+          onClick={() => setOpen((v) => !v)}
+          className={`rounded-r-full pl-0.5 pr-2.5 py-1.5 transition ${
+            open ? 'text-primary-300' : 'text-neutral-700 hover:text-neutral-900'
+          }`}
+        >
+          <ChevronDown size={14} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+        </button>
+      </div>
 
       {open && (
         <div
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[min(880px,90vw)] bg-brand-950 border border-brand-800 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden z-50"
+          className="absolute top-full left-0 right-0 mx-auto mt-2 w-[min(880px,90vw)] bg-brand-950 border border-brand-800 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden z-50"
           onMouseEnter={cancelClose}
           onMouseLeave={scheduleClose}
         >
