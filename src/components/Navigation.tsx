@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
-import { supabase } from '@/lib/supabase'
 import { trackCTA } from '@/lib/track'
 import { Logo } from './Logo'
 import { ProductsMegaMenu } from './ProductsMegaMenu'
@@ -13,22 +12,11 @@ const simpleLinks = [
   { href: '/#contacto', label: 'Contacto' },
 ]
 
+const APP_URL = 'https://app.eatcorp.cl/#/'
+
 export function Navigation() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) setIsLoggedIn(true)
-    })
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => setIsLoggedIn(!!session),
-    )
-
-    return () => subscription.unsubscribe()
-  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -43,10 +31,6 @@ export function Navigation() {
       document.body.style.overflow = ''
     }
   }, [menuOpen])
-
-  const handleClick = () => {
-    window.location.href = 'https://app.eatcorp.cl/#/'
-  }
 
   return (
     <nav
@@ -71,30 +55,19 @@ export function Navigation() {
               {link.label}
             </a>
           ))}
-          {isLoggedIn ? (
-            <button
-              onClick={handleClick}
-              className="bg-primary-600 hover:bg-primary-500 text-white px-5 py-2 rounded-lg font-medium transition-colors shadow-sm shadow-primary-600/30"
-            >
-              Mi cuenta
-            </button>
-          ) : (
-            <>
-              <button
-                onClick={handleClick}
-                className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition px-2 py-2"
-              >
-                Iniciar sesión
-              </button>
-              <a
-                href="/#contacto"
-                onClick={() => trackCTA('cta_nav')}
-                className="hidden sm:inline-flex items-center bg-primary-600 hover:bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm shadow-primary-600/30"
-              >
-                Solicitar early access
-              </a>
-            </>
-          )}
+          <a
+            href={APP_URL}
+            className="text-sm font-medium text-neutral-700 hover:text-neutral-900 transition px-2 py-2"
+          >
+            Iniciar sesión
+          </a>
+          <a
+            href="/#contacto"
+            onClick={() => trackCTA('cta_nav')}
+            className="hidden sm:inline-flex items-center bg-primary-500 hover:bg-primary-400 text-brand-950 px-4 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm shadow-primary-600/30"
+          >
+            Solicitar early access
+          </a>
           <button
             type="button"
             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
@@ -108,7 +81,7 @@ export function Navigation() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-brand-950 border-b border-brand-800 shadow-2xl max-h-[calc(100vh-60px)] overflow-y-auto">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-brand-950 border-b border-brand-800 shadow-2xl max-h-[calc(100dvh-60px)] overflow-y-auto">
           <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col">
             <ProductsMegaMenu inMobileSheet onNavigate={() => setMenuOpen(false)} />
             {simpleLinks.map((link) => (
@@ -116,11 +89,21 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-3 text-base font-medium text-neutral-800 hover:text-primary-300 border-b border-brand-800 last:border-0 transition"
+                className="py-3 text-base font-medium text-neutral-800 hover:text-primary-300 border-b border-brand-800 transition"
               >
                 {link.label}
               </a>
             ))}
+            <a
+              href="/#contacto"
+              onClick={() => {
+                trackCTA('cta_nav')
+                setMenuOpen(false)
+              }}
+              className="mt-3 inline-flex items-center justify-center bg-primary-500 hover:bg-primary-400 text-brand-950 px-4 py-3 rounded-lg text-base font-semibold transition-colors shadow-sm shadow-primary-600/30"
+            >
+              Solicitar early access
+            </a>
           </div>
         </div>
       )}
