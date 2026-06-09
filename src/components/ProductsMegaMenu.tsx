@@ -48,43 +48,52 @@ export function ProductsMegaMenu({ inMobileSheet = false, onNavigate }: Props) {
     if (closeTimer.current) clearTimeout(closeTimer.current)
   }
 
-  // Versión simple para el sheet mobile — sin dropdown, expansión inline
+  // Versión mobile: "Productos" navega a /productos; el chevron expande la lista de apps.
   if (inMobileSheet) {
     return (
-      <details className="border-b border-brand-800">
-        <summary className="py-3 text-base font-medium text-neutral-800 cursor-pointer list-none flex items-center justify-between">
-          <span>Productos</span>
-          <ChevronDown size={16} className="text-neutral-600 transition-transform group-open:rotate-180" />
-        </summary>
-        <div className="py-2 space-y-1">
+      <div className="border-b border-brand-800">
+        <div className="flex items-center justify-between">
           <Link
             href="/productos"
             onClick={onNavigate}
-            className="block py-2 text-sm font-semibold text-primary-300 hover:text-primary-200"
+            className="flex-1 py-3 text-base font-medium text-neutral-800 hover:text-primary-300 transition"
           >
-            Ver todos los productos →
+            Productos
           </Link>
-          {PRODUCTS_LIST.map((p) => {
-            const Icon = p.icon
-            return (
-              <Link
-                key={p.slug}
-                href={`/productos/${p.slug}`}
-                onClick={onNavigate}
-                className="flex items-center gap-2.5 py-2 text-sm text-neutral-700 hover:text-neutral-900"
-              >
-                <div className={`w-7 h-7 rounded-md bg-gradient-to-br ${p.gradient} flex items-center justify-center text-white shadow-sm flex-shrink-0`}>
-                  <Icon size={13} />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="font-semibold text-neutral-900 leading-tight">{p.name}</div>
-                  <div className="text-[11px] text-neutral-600 truncate">{p.tagline}</div>
-                </div>
-              </Link>
-            )
-          })}
+          <button
+            type="button"
+            aria-label={open ? 'Ocultar apps' : 'Ver apps'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="p-2 -mr-2 text-neutral-600 hover:text-neutral-900 transition"
+          >
+            <ChevronDown size={18} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+          </button>
         </div>
-      </details>
+        {open && (
+          <div className="pb-2 space-y-1">
+            {PRODUCTS_LIST.map((p) => {
+              const Icon = p.icon
+              return (
+                <Link
+                  key={p.slug}
+                  href={`/productos/${p.slug}`}
+                  onClick={onNavigate}
+                  className="flex items-center gap-2.5 py-2 text-sm text-neutral-700 hover:text-neutral-900"
+                >
+                  <div className={`w-7 h-7 rounded-md bg-gradient-to-br ${p.gradient} flex items-center justify-center text-white shadow-sm flex-shrink-0`}>
+                    <Icon size={13} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-semibold text-neutral-900 leading-tight">{p.name}</div>
+                    <div className="text-[11px] text-neutral-600 truncate">{p.tagline}</div>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        )}
+      </div>
     )
   }
 
