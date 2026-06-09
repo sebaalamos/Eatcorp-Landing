@@ -211,7 +211,7 @@ function MiniMockup({ type }: { type: Moment['mockup'] }) {
             </div>
             <div className="flex gap-1 mt-1">
               <span className="text-[9px] text-pink-400">#tigre</span>
-              <span className="text-[9px] text-pink-400">#bellavista</span>
+              <span className="text-[9px] text-pink-400">#vitacura</span>
             </div>
           </div>
         </div>

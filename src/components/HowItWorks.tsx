@@ -7,9 +7,9 @@ const steps = [
   {
     n: '01',
     Icon: Sparkles,
-    title: 'Activa las apps que necesitas',
+    title: 'Activamos contigo las apps que necesitas',
     description:
-      'Sin instalación. Elige solo las apps que tu restorán usa. Activa más cuando quieras.',
+      'En una llamada definimos qué apps usa tu restorán. Partes solo con las que necesitas y sumas más cuando quieras.',
     detail: `${APP_COUNT} apps disponibles · más en camino`,
   },
   {

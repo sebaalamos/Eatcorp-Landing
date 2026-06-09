@@ -11,7 +11,7 @@ const rows: { feature: string; manual: Cell; generic: Cell; eatcorp: Cell }[] = 
   { feature: 'Lotes de pago bancario (export Excel)', manual: 'partial', generic: 'no', eatcorp: 'yes' },
   { feature: 'Permisos granulares por app', manual: 'no', generic: 'partial', eatcorp: 'yes' },
   { feature: 'Recepción de OC con detección de discrepancias', manual: 'no', generic: 'no', eatcorp: 'yes' },
-  { feature: 'Setup en menos de 30 minutos', manual: 'partial', generic: 'no', eatcorp: 'yes' },
+  { feature: 'Activación acompañada en días, no meses', manual: 'partial', generic: 'no', eatcorp: 'yes' },
 ]
 
 const columns = [
@@ -53,13 +53,13 @@ function CellIcon({ value, size = 'md' }: { value: Cell; size?: 'md' | 'sm' }) {
     )
   if (value === 'no')
     return (
-      <div className={`${dim} rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center`}>
-        <X size={icon} className="text-red-400" />
+      <div className={`${dim} rounded-full bg-danger-500/20 border border-danger-500/40 flex items-center justify-center`}>
+        <X size={icon} className="text-danger-300" />
       </div>
     )
   return (
-    <div className={`${dim} rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center`}>
-      <Minus size={icon} className="text-amber-300" />
+    <div className={`${dim} rounded-full bg-warning-500/20 border border-warning-500/40 flex items-center justify-center`}>
+      <Minus size={icon} className="text-warning-300" />
     </div>
   )
 }
@@ -110,7 +110,7 @@ export function Comparison() {
         </div>
 
         <div className="md:hidden space-y-4">
-          {columns.map((c) => (
+          {[...columns].sort((a, b) => Number(Boolean(b.highlight)) - Number(Boolean(a.highlight))).map((c) => (
             <div
               key={c.key}
               className={`relative rounded-2xl border-2 shadow-md overflow-hidden ${c.highlight ? 'border-primary-500/50 bg-brand-800' : 'border-brand-800 bg-brand-900'}`}
@@ -138,8 +138,8 @@ export function Comparison() {
 
         <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-6 text-xs text-neutral-600">
           <div className="flex items-center gap-1.5"><Check size={14} className="text-primary-300" /> Sí</div>
-          <div className="flex items-center gap-1.5"><Minus size={14} className="text-amber-300" /> Parcial</div>
-          <div className="flex items-center gap-1.5"><X size={14} className="text-red-400" /> No</div>
+          <div className="flex items-center gap-1.5"><Minus size={14} className="text-warning-300" /> Parcial</div>
+          <div className="flex items-center gap-1.5"><X size={14} className="text-danger-300" /> No</div>
         </div>
       </div>
     </section>

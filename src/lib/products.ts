@@ -529,14 +529,14 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'AdsEat — gestión de pauta paga',
         description:
-          'Meta Ads y Google Ads gestionados desde LikeEat. ROI por campaña, optimización automática.',
-        eta: '2026',
+          'Meta Ads y Google Ads gestionados desde EatCorp, conectado a LikeEat. ROI por campaña, optimización automática.',
+        eta: 'Evaluando 2027',
       },
       {
         title: 'InboxEat — WhatsApp Business + DMs unificados',
         description:
           'Todas las conversaciones (WhatsApp, IG DM, Messenger) en una sola bandeja con asistencia IA.',
-        eta: '2027',
+        eta: 'Evaluando 2027',
       },
       {
         title: 'ReviewEat — monitoreo + NPS',
@@ -656,7 +656,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         title: 'ComplianceEat — calendar legal',
         description:
           'Patente, sanitaria, SII, alcohol, ascensor — vencimientos y alertas para no comerte una multa.',
-        eta: '2026',
+        eta: 'Evaluando 2027',
       },
       {
         title: 'Protocolos HACCP / sanitarios',
@@ -1473,7 +1473,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     faq: [
       {
         q: '¿Cuándo está el POS completo?',
-        a: 'Piloto en El Toro Junio 2026. Lanzamiento externo Diciembre 2026. Hardware-agnostic (lector de tarjetas, iPad, Android, móvil), comanda por impresora térmica o KDS, respaldo offline.',
+        a: 'En piloto en El Toro durante 2026; lanzamiento externo en Diciembre 2026. Hardware-agnostic (lector de tarjetas, iPad, Android, móvil), comanda por impresora térmica o KDS, respaldo offline.',
       },
       {
         q: '¿Reemplaza a mi POS actual?',
@@ -1489,7 +1489,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         title: 'POS completo en El Toro',
         description:
           'Punto de venta operativo en El Toro como piloto. Funcionalidad core: comanda + cobro + recibos.',
-        eta: 'Jun 2026',
+        eta: '2026',
       },
       {
         title: 'KDS (Kitchen Display System)',
@@ -1626,7 +1626,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     tagline: 'Vacaciones y ausencias sin Excel paralelo',
     heroHeadline: 'Tu RR.HH. operativo, ordenado',
     heroDescription:
-      'Maneja vacaciones, ausencias y solicitudes del equipo en una sola plataforma. Tu admin sabe quién está dónde sin chasquear contra la cocina. Base para el próximo PayrollEat propio.',
+      'Maneja vacaciones, ausencias y solicitudes del equipo en una sola plataforma. Tu admin sabe quién está dónde sin andar peleando con la cocina. Base para el próximo PayrollEat propio.',
     category: 'collaborators',
     categoryLabel: 'Colaboradores',
     icon: Users,
@@ -1637,7 +1637,6 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     accentDot: 'bg-violet-500',
     gradient: 'from-violet-500 to-purple-500',
     external: true,
-    externalUrl: 'https://sistema-vacaciones-eight.vercel.app/admin',
     preview: 'roster',
     oneLiner: 'Vacaciones · ausencias · solicitudes online del equipo.',
     beneficios: [
@@ -1692,7 +1691,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
     ],
     paraQuien: [
-      'Restoranes con 10+ colaboradores donde las vacaciones son un quilombo',
+      'Restoranes con 10+ colaboradores donde las vacaciones son un cacho',
       'Operaciones que olvidan quién pidió qué día',
       'Equipos donde el RR.HH. lo lleva el dueño en su cabeza',
     ],
@@ -1784,7 +1783,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Certificado PDF para regalar',
         description:
-          'Documento minimalista y prolijo, con el código y el monto, listo para imprimir o enviar digital. Sin pasar por un diseñador.',
+          'Documento minimalista e impecable, con el código y el monto, listo para imprimir o enviar digital. Sin pasar por un diseñador.',
       },
       {
         title: 'Saldo público consultable',

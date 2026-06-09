@@ -14,9 +14,9 @@ export const viewport: Viewport = {
   themeColor: '#020617',
 }
 
-const TITLE = 'EatCorp — El motor de tu restaurante'
+const TITLE = 'EatCorp — Software de gestión para restaurantes en Chile'
 const DESCRIPTION =
-  'Compras, tareas, redes sociales con IA, mantención y más en una sola plataforma. En español, hecha para restoranes en Chile y LatAm. Activa tu restorán en 30 minutos.'
+  'Compras, inventario, propinas, redes con IA y más en una sola plataforma para restoranes en Chile y LatAm. Déjanos tus datos y te contactamos en menos de 24 horas hábiles.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://eatcorp.cl'),
