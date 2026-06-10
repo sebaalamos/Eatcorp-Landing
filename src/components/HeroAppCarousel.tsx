@@ -54,20 +54,35 @@ const accentLabelBg: Record<Slide['accent'], string> = {
 export function HeroAppCarousel() {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [reduceMotion, setReduceMotion] = useState(false)
 
   useEffect(() => {
-    if (paused) return
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setReduceMotion(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    if (paused || reduceMotion) return
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % slides.length)
     }, 6000)
     return () => clearInterval(id)
-  }, [paused])
+  }, [paused, reduceMotion])
 
   const current = slides[index]
   const CurrentIcon = current.icon
 
   return (
-    <div className="relative max-w-5xl mx-auto" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <div
+      className="relative max-w-5xl mx-auto"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onFocusCapture={() => setPaused(true)}
+    >
       <div aria-hidden className={`absolute inset-0 -translate-y-4 bg-gradient-to-tr ${current.gradient} opacity-[0.14] rounded-2xl blur-2xl transition-all duration-1000`}></div>
 
       <div className="signature-corner relative bg-brand-900 rounded-2xl shadow-2xl border border-brand-800 overflow-hidden">
@@ -96,6 +111,7 @@ export function HeroAppCarousel() {
               key={s.slug}
               className={`transition-all duration-700 ${i === index ? 'opacity-100 relative' : 'opacity-0 absolute inset-0 pointer-events-none'}`}
               aria-hidden={i !== index}
+              inert={i !== index}
             >
               {s.slug === 'buyeat' && <BuyEatSlide />}
               {s.slug === 'likeeat' && <LikeEatSlide />}
@@ -118,7 +134,7 @@ export function HeroAppCarousel() {
           </div>
           <Link
             href={`/productos/${current.slug}`}
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-primary-300 hover:text-primary-200 transition flex-shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-300 hover:text-primary-200 transition flex-shrink-0"
           >
             Ver detalle
             <ArrowUpRight size={12} />
@@ -127,19 +143,24 @@ export function HeroAppCarousel() {
       </div>
 
       {/* Indicator dots */}
-      <div className="flex justify-center items-center gap-2 mt-5">
+      <div className="flex justify-center items-center gap-1 mt-4">
         {slides.map((s, i) => (
           <button
             key={s.slug}
             type="button"
             onClick={() => setIndex(i)}
             aria-label={`Mostrar ${s.name}`}
-            className={`h-1.5 rounded-full transition-all ${
-              i === index
-                ? `w-8 bg-gradient-to-r ${s.gradient}`
-                : 'w-1.5 bg-brand-700 hover:bg-brand-600'
-            }`}
-          ></button>
+            aria-current={i === index}
+            className="p-2.5 flex items-center group"
+          >
+            <span
+              className={`block h-1.5 rounded-full transition-all ${
+                i === index
+                  ? `w-8 bg-gradient-to-r ${s.gradient}`
+                  : 'w-1.5 bg-brand-700 group-hover:bg-brand-600'
+              }`}
+            ></span>
+          </button>
         ))}
       </div>
     </div>

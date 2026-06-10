@@ -5,7 +5,7 @@ export function ProductMockup({ slug }: { slug: ProductSlug }) {
   return (
     <div className="relative">
       <div aria-hidden className="absolute -inset-3 bg-primary-500/20 rounded-3xl blur-2xl opacity-30"></div>
-      <div className="relative bg-brand-900 rounded-2xl shadow-2xl border border-brand-700 overflow-hidden">
+      <div className="signature-corner signature-corner-sm relative bg-brand-900 rounded-2xl shadow-2xl border border-brand-700 overflow-hidden">
         <div className="bg-brand-950 px-3 py-2 flex items-center gap-1.5 border-b border-brand-800">
           <div className="w-2.5 h-2.5 rounded-full bg-danger-500/70"></div>
           <div className="w-2.5 h-2.5 rounded-full bg-warning-500/80"></div>
