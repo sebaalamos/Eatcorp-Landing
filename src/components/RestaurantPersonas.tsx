@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Store, Building2, Sparkles, Wine } from 'lucide-react'
+import { Store, Building2, Sparkles, Wine } from 'lucide-react'
 import { PRODUCTS, type ProductSlug } from '@/lib/products'
 
 type Persona = {

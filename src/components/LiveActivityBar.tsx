@@ -7,7 +7,7 @@ type Message = { Icon: React.ElementType; text: string }
 
 const messages: Message[] = [
   { Icon: Banknote, text: 'Aprueba lotes de pago bancario en minutos' },
-  { Icon: CheckCircle2, text: 'Tareas con visibilidad híbrida por categoría' },
+  { Icon: CheckCircle2, text: 'Cada uno ve solo sus tareas; el admin lo ve todo' },
   { Icon: Camera, text: 'Magic Post genera caption desde una foto' },
   { Icon: Wrench, text: 'Mantenciones preventivas calendarizadas' },
   { Icon: Package, text: 'Detección automática de discrepancias en facturas' },

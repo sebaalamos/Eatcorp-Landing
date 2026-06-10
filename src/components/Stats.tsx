@@ -34,7 +34,7 @@ const stats: Stat[] = [
 
 const trust = [
   { icon: Headset, label: 'Soporte en español', sub: 'Personas reales, horario hábil' },
-  { icon: Lock, label: 'TLS + RLS', sub: 'Datos encriptados y aislados por local' },
+  { icon: Lock, label: 'Datos encriptados', sub: 'Aislados por restorán: solo tú ves los tuyos' },
   { icon: Shield, label: 'Backups diarios', sub: 'Respaldo automático todos los días' },
   { icon: Zap, label: 'Uptime monitoreado', sub: 'Infraestructura vigilada' },
 ]

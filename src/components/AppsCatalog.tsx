@@ -30,8 +30,8 @@ export function AppsCatalog() {
               onClick={() => setTab('live')}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition ${
                 tab === 'live'
-                  ? 'bg-primary-600 text-white shadow shadow-primary-600/30'
-                  : 'text-neutral-700 hover:text-white'
+                  ? 'bg-primary-500 text-brand-950 shadow shadow-primary-600/30'
+                  : 'text-neutral-700 hover:text-neutral-900'
               }`}
             >
               Disponibles
@@ -41,8 +41,8 @@ export function AppsCatalog() {
               onClick={() => setTab('soon')}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition flex items-center gap-1.5 ${
                 tab === 'soon'
-                  ? 'bg-primary-600 text-white shadow shadow-primary-600/30'
-                  : 'text-neutral-700 hover:text-white'
+                  ? 'bg-primary-500 text-brand-950 shadow shadow-primary-600/30'
+                  : 'text-neutral-700 hover:text-neutral-900'
               }`}
             >
               <Flame size={12} className={tab === 'soon' ? 'animate-pulse' : ''} />

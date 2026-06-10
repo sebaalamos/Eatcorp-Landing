@@ -32,14 +32,15 @@ export function CTA() {
           </span>
         </h2>
         <p className="text-lg md:text-xl text-neutral-700 mb-10 max-w-2xl mx-auto leading-relaxed">
-          Estamos sumando restoranes en early access. Cuéntanos sobre tu operación
-          y te activamos las apps que necesitas.
+          Activamos pocos restoranes al mes para acompañar bien cada activación.
+          Cuéntanos sobre tu operación y te ayudamos a partir con las apps que
+          necesitas.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
           <button
             onClick={handlePrimary}
-            className="group bg-primary-600 hover:bg-primary-500 text-white px-8 py-4 rounded-lg font-semibold text-base transition-all hover:scale-[1.02]"
+            className="group bg-primary-500 hover:bg-primary-400 text-brand-950 px-8 py-4 rounded-lg font-semibold text-base transition-all hover:scale-[1.02]"
             style={{ boxShadow: 'var(--shadow-wow)' }}
           >
             <span className="flex items-center gap-2">
@@ -48,7 +49,7 @@ export function CTA() {
             </span>
           </button>
         </div>
-        <p className="mt-5 text-xs text-neutral-500">
+        <p className="mt-5 text-xs text-neutral-600">
           Te respondemos en 24 horas hábiles · sin compromiso · sin contratos largos
         </p>
       </div>

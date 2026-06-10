@@ -10,7 +10,6 @@ import {
   ArrowUpRight,
   Check,
   Sparkles,
-  Camera,
   Heart,
   MessageCircle,
   Send,

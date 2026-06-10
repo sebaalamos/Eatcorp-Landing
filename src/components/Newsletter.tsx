@@ -54,16 +54,17 @@ export function Newsletter() {
             <input
               type="email"
               required
+              aria-label="Email"
               placeholder="tu@restoran.cl"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={status === 'loading' || status === 'success'}
-              className="flex-1 px-4 py-3 rounded-lg bg-brand-800 border border-brand-700 text-white placeholder:text-neutral-500 focus:outline-none focus:border-primary-500 focus:bg-brand-900 transition disabled:opacity-60"
+              className="flex-1 px-4 py-3 rounded-lg bg-brand-800 border border-brand-700 text-white placeholder:text-neutral-600 focus:outline-none focus:border-primary-500 focus:bg-brand-900 transition disabled:opacity-60"
             />
             <button
               type="submit"
               disabled={status === 'loading' || status === 'success'}
-              className="px-6 py-3 bg-primary-500 hover:bg-primary-400 text-slate-900 font-semibold rounded-lg transition flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-80"
+              className="px-6 py-3 bg-primary-500 hover:bg-primary-400 text-brand-950 font-semibold rounded-lg transition flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-80"
             >
               {status === 'loading' && <Loader2 size={18} className="animate-spin" />}
               {status === 'success' && <Check size={18} />}
@@ -73,7 +74,7 @@ export function Newsletter() {
             </button>
           </div>
           {status === 'error' && errorMsg && (
-            <p className="text-xs text-rose-300">{errorMsg}</p>
+            <p role="alert" className="text-xs text-danger-300">{errorMsg}</p>
           )}
           {status === 'success' && (
             <p className="text-xs text-primary-300">¡Listo! Te avisamos pronto.</p>

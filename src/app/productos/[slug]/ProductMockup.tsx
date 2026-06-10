@@ -1,4 +1,4 @@
-import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, UserCheck, Coins, Link2, Boxes, ChefHat, TrendingDown, TrendingUp, ArrowRight as ArrowR, Package, Gift, Lock } from 'lucide-react'
+import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, UserCheck, Coins, Link2, Boxes, ChefHat, TrendingUp, ArrowRight as ArrowR, Package, Gift, Lock } from 'lucide-react'
 import type { ProductSlug } from '@/lib/products'
 
 export function ProductMockup({ slug }: { slug: ProductSlug }) {

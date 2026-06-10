@@ -70,6 +70,20 @@ export type UpcomingFeature = {
   eta?: string
 }
 
+/** Acentos de color admitidos para las grillas/cards (deben tener entrada en
+ * accentClasses/previewBg de Apps.tsx). Tipar así convierte un acento inválido
+ * en error de compilación en vez de tarjeta rota en producción. */
+export type Accent =
+  | 'blue'
+  | 'emerald'
+  | 'pink'
+  | 'amber'
+  | 'cyan'
+  | 'violet'
+  | 'rose'
+  | 'orange'
+  | 'teal'
+
 export type Product = {
   slug: ProductSlug
   name: string
@@ -80,7 +94,7 @@ export type Product = {
   category: 'operations' | 'collaborators' | 'customer'
   categoryLabel: string
   icon: LucideIcon
-  accentClass: string
+  accentClass: Accent
   accentText: string
   accentBg: string
   accentBorder: string

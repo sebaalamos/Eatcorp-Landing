@@ -65,7 +65,7 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-4 px-6 sm:px-0">
           <button
             onClick={handlePrimary}
-            className="group relative bg-primary-600 hover:bg-primary-500 text-white px-7 py-3.5 rounded-lg font-semibold text-base transition-all hover:scale-[1.02] focus-visible:scale-[1.02]"
+            className="group relative bg-primary-500 hover:bg-primary-400 text-brand-950 px-7 py-3.5 rounded-lg font-semibold text-base transition-all hover:scale-[1.02] focus-visible:scale-[1.02]"
             style={{ boxShadow: 'var(--shadow-wow)' }}
           >
             <span className="flex items-center gap-2">
@@ -82,8 +82,8 @@ export function Hero() {
           </a>
         </div>
 
-        <p className="text-xs text-neutral-500 mb-14">
-          Cupos limitados · te respondemos en 24 horas hábiles · sin compromiso
+        <p className="text-xs text-neutral-600 mb-14">
+          Te respondemos en 24 horas hábiles · sin compromiso
         </p>
 
         <HeroAppCarousel />

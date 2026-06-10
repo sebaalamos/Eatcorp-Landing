@@ -12,9 +12,8 @@ import {
   ChefHat,
   Gift,
 } from 'lucide-react'
-import { PRODUCTS_LIST, type Product, type ProductSlug } from '@/lib/products'
+import { PRODUCTS_LIST, type Product, type ProductSlug, type Accent } from '@/lib/products'
 
-type Accent = 'blue' | 'emerald' | 'pink' | 'amber' | 'cyan' | 'violet' | 'rose' | 'orange' | 'yellow' | 'teal'
 type Preview = Product['preview']
 
 type AppDef = {
@@ -38,7 +37,7 @@ const apps: AppDef[] = PRODUCTS_LIST.map((p) => ({
   name: p.name,
   description: p.tagline,
   metric: p.oneLiner.split('·')[0].trim(),
-  accent: p.accentClass as Accent,
+  accent: p.accentClass,
   external: p.external,
   externalUrl: p.externalUrl,
   pilot: p.pilot,
@@ -54,7 +53,6 @@ const accentClasses: Record<Accent, string> = {
   violet: 'bg-violet-500/10 text-violet-300 border-violet-500/30 hover:border-violet-400',
   rose: 'bg-rose-500/10 text-rose-300 border-rose-500/30 hover:border-rose-400',
   orange: 'bg-orange-500/10 text-orange-300 border-orange-500/30 hover:border-orange-400',
-  yellow: 'bg-yellow-500/10 text-yellow-300 border-yellow-500/30 hover:border-yellow-400',
   teal: 'bg-teal-500/10 text-teal-300 border-teal-500/30 hover:border-teal-400',
 }
 
@@ -110,7 +108,6 @@ const previewBg: Record<Accent, string> = {
   violet: 'from-violet-500/40 via-violet-500/15 to-transparent',
   rose: 'from-rose-500/40 via-rose-500/15 to-transparent',
   orange: 'from-orange-500/40 via-orange-500/15 to-transparent',
-  yellow: 'from-yellow-500/40 via-yellow-500/15 to-transparent',
   teal: 'from-teal-500/40 via-teal-500/15 to-transparent',
 }
 
