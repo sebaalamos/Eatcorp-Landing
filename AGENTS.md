@@ -35,3 +35,10 @@ Este repo es **`eatcorp-landing`** (Next.js, dominio `eatcorp.cl`). La fuente de
 - **Commits**: imperativo, breve, en español.
 - **Cambios pequeños y focalizados**: un commit = un cambio coherente.
 - **Pregunta antes de asumir** sobre decisiones de producto/marca: este repo es público y cualquier cambio se ve en la primera impresión del visitante.
+
+## Flujo de trabajo
+- **Tier 3 · Solo tú** (sitio público, Next.js).
+- **Merge:** gate por riesgo. 🔴 (poco frecuente acá: tocar el edge `landing-lead` o formularios que escriben a Supabase) → rama + revisión. 🟢 copy/SEO/estilo/componentes → directo a `main`.
+- **Preflight:** manual antes de pushear cambios no triviales: `npm run build` (no hay hook pre-push).
+- **Deploy:** Vercel automático al push a `main` → eatcorp.cl.
+- **QA:** sitio público sin cuenta; verificar en build/preview.
