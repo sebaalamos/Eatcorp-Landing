@@ -39,6 +39,6 @@ Este repo es **`eatcorp-landing`** (Next.js, dominio `eatcorp.cl`). La fuente de
 ## Flujo de trabajo
 - **Tier 3 · Solo tú** (sitio público, Next.js).
 - **Merge:** PR para todo lo con sustancia (feature/fix); directo a `main` solo para triviales (typo/copy/doc chico). 🔴 riesgoso (tocar el edge `landing-lead` o forms que escriben a Supabase) → además `/code-review`.
-- **Preflight:** manual antes de pushear cambios no triviales: `npm run build` (no hay hook pre-push).
+- **Preflight:** automático en `git push` (hook `scripts/git-hooks/pre-push`: `npm run build`). Si falla, arreglar; nunca `--no-verify`.
 - **Deploy:** Vercel automático al push a `main` → eatcorp.cl.
 - **QA:** sitio público sin cuenta; verificar en build/preview.
