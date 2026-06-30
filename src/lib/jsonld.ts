@@ -10,7 +10,6 @@ export function organizationSchema() {
     description:
       'Plataforma todo-en-uno para restoranes en LatAm: compras, tareas, redes sociales con IA, reservas y mantención.',
     foundingLocation: 'Chile',
-    sameAs: ['https://www.linkedin.com/company/eatcorp'],
     contactPoint: [
       {
         '@type': 'ContactPoint',

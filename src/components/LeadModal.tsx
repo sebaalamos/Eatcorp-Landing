@@ -31,18 +31,19 @@ const APP_DESC: Record<string, string> = {
   eventeat: 'Eventos',
   menueat: 'Carta digital',
   tipeat: 'Propinas',
+  cookeat: 'Cocina (KDS)',
   bookeat: 'Reservas',
-  staffeat: 'RR.HH.',
+  peopleat: 'RR.HH.',
+  revieweat: 'Opiniones',
   inventeat: 'Inventario',
   recipeat: 'Recetas',
-  payeat: 'Pagos · POS',
+  payeat: 'POS · ventas',
   gifteat: 'Gift cards',
 }
 
 const APP_OPTIONS = PRODUCTS_LIST.map((p) => ({
   slug: p.slug,
   label: APP_DESC[p.slug] ? `${p.name} · ${APP_DESC[p.slug]}` : p.name,
-  pilot: p.pilot,
 }))
 
 export function LeadModal({
@@ -336,7 +337,6 @@ export function LeadModal({
                           />
                           <span className="truncate">
                             {app.label}
-                            {app.pilot && <span className="text-neutral-600"> (piloto)</span>}
                           </span>
                         </label>
                       )

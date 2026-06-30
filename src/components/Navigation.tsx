@@ -12,7 +12,7 @@ const simpleLinks = [
   { href: '/#contacto', label: 'Contacto' },
 ]
 
-const APP_URL = 'https://app.eatcorp.cl/#/'
+const APP_URL = 'https://app.eatcorp.cl'
 
 export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false)

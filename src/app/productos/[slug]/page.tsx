@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, Check, ChevronRight, ExternalLink, Sparkles, ArrowLeft } from 'lucide-react'
+import { ArrowRight, Check, ChevronRight, ExternalLink, ArrowLeft } from 'lucide-react'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import { ProductsContextNav } from '@/components/ProductsContextNav'
@@ -240,50 +240,6 @@ export default async function ProductPage({ params }: { params: Promise<Params> 
           </ul>
         </div>
       </section>
-
-      {/* Próximas funcionalidades */}
-      {product.proximasFuncionalidades.length > 0 && (
-        <section className="py-20 px-4 bg-brand-950 border-y border-brand-800">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full bg-primary-500/15 text-primary-300 text-xs font-semibold uppercase tracking-wide border border-primary-500/30">
-                <Sparkles size={12} />
-                Roadmap
-              </div>
-              <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4 leading-tight">
-                Próximas funcionalidades
-              </h2>
-              <p className="text-base text-neutral-700 max-w-xl mx-auto">
-                Lo que viene para {product.name} y cómo se conectará con el resto del ecosistema.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              {product.proximasFuncionalidades.map((f) => (
-                <div
-                  key={f.title}
-                  className={`relative bg-brand-900/60 border ${product.accentBorder} rounded-2xl p-5 overflow-hidden`}
-                >
-                  <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${product.gradient}`}></div>
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="text-base font-bold text-neutral-900 leading-snug">{f.title}</h3>
-                    {f.eta && (
-                      <span className={`flex-shrink-0 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${product.accentBg} ${product.accentText} ${product.accentBorder} border`}>
-                        {f.eta}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-neutral-700 leading-relaxed">{f.description}</p>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-center text-xs text-neutral-500 mt-8">
-              Roadmap sujeto a cambios. Las fechas son objetivos internos, no compromisos contractuales.
-            </p>
-          </div>
-        </section>
-      )}
 
       {/* FAQ */}
       {product.faq.length > 0 && (
