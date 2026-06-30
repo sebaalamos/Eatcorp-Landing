@@ -399,7 +399,7 @@ function MaintainEatM() {
     { name: 'Campana extractora · Italinox', next: 'Mant. preventiva en 8 días', status: 'OK', tone: 'bg-primary-500/20 text-primary-300', progress: 0.7 },
     { name: 'Horno combi · Rational', next: 'Programada 24 may', status: 'OK', tone: 'bg-primary-500/20 text-primary-300', progress: 0.85 },
     { name: 'Freezer 600L · Mabe', next: 'Atrasada · 12 días', status: 'Atrasada', tone: 'bg-rose-500/25 text-rose-300', progress: 0.35, urgent: true },
-    { name: 'Plancha 90cm', next: 'Próxima · 12 jun', status: 'OK', tone: 'bg-primary-500/20 text-primary-300', progress: 0.6 },
+    { name: 'Plancha 90cm', next: 'Próxima en 10 días', status: 'OK', tone: 'bg-primary-500/20 text-primary-300', progress: 0.6 },
     { name: 'Extintor cocina', next: 'Recarga anual oct', status: 'OK', tone: 'bg-primary-500/20 text-primary-300', progress: 0.9 },
   ]
   return (

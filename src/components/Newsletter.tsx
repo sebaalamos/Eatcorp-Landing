@@ -45,7 +45,7 @@ export function Newsletter() {
           </div>
           <h3 className="text-2xl font-bold text-white mb-1">Mantente al día</h3>
           <p className="text-sm text-neutral-700">
-            Tips, casos de éxito y novedades para restoranes. Una vez al mes, sin spam.
+            Tips, novedades y buenas prácticas para restoranes. Una vez al mes, sin spam.
           </p>
         </div>
 

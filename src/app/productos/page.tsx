@@ -7,7 +7,7 @@ import { PRODUCTS_LIST } from '@/lib/products'
 
 const META_TITLE = 'Productos — todas las apps de EatCorp'
 const META_DESCRIPTION =
-  'Compras, inventario, recetas, ventas, propinas, carta digital, eventos, mantención, reservas, personal y gift cards. Activa solo las que tu restorán necesite — todo conectado en una plataforma.'
+  'Compras, inventario, recetas, ventas y comandas, cocina, propinas, carta digital, eventos, mantención, reservas, personal, opiniones y gift cards. Activa solo las que tu restorán necesite — todo conectado en una plataforma.'
 const META_URL = 'https://eatcorp.cl/productos'
 
 export const metadata: Metadata = {

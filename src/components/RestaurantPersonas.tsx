@@ -82,8 +82,8 @@ export function RestaurantPersonas() {
             ¿Cuál es tu restorán?
           </h2>
           <p className="text-lg md:text-xl text-neutral-700 max-w-2xl mx-auto">
-            Cada operación necesita un stack distinto. Te mostramos qué apps
-            arrancan más rápido según el tipo de restorán.
+            Cada operación necesita una combinación distinta de apps. Te mostramos
+            cuáles arrancan más rápido según el tipo de restorán.
           </p>
         </div>
 
@@ -114,7 +114,7 @@ export function RestaurantPersonas() {
 
                 <div className="mb-2">
                   <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-2">
-                    Stack recomendado
+                    Apps recomendadas
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {p.apps.map((slug) => {
@@ -139,7 +139,7 @@ export function RestaurantPersonas() {
         </div>
 
         <p className="text-center text-sm text-neutral-600 mt-10">
-          ¿Tu operación no encaja exactamente? Te armamos un stack a medida en una llamada de 30 min.{' '}
+          ¿Tu operación no encaja exactamente? Te armamos una combinación a medida en una llamada de 30 min.{' '}
           <a href="#contacto" className="text-primary-400 hover:text-primary-300 font-semibold transition">
             Conversemos →
           </a>

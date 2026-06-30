@@ -39,7 +39,7 @@ export function Testimonials() {
             Lo que dicen los restoranes
           </h2>
           <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-            Operadores reales operando con EatCorp todos los días.
+            Primeros restoranes operando con EatCorp.
           </p>
         </div>
 

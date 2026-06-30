@@ -26,7 +26,7 @@ const moments: Moment[] = [
     time: '11:00',
     icon: CheckSquare,
     title: 'Aprobación de pagos',
-    description: 'Admin revisa lote del día. Aprueba en 5 minutos lo que antes tomaba 2 horas.',
+    description: 'Admin revisa el lote del día y aprueba en minutos lo que en planilla toma horas.',
     app: 'BuyEat',
     appColor: 'bg-blue-500',
     tenant: 'El Toro',

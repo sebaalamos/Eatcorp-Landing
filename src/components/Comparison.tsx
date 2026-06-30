@@ -26,7 +26,7 @@ const columns = [
   {
     key: 'generic' as const,
     title: 'Software genérico',
-    subtitle: 'ERP, CRM globales',
+    subtitle: 'Sistemas de gestión globales',
     accent: 'border-brand-700 bg-brand-800/40',
     titleColor: 'text-neutral-700',
     subColor: 'text-neutral-500',

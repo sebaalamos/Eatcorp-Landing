@@ -43,20 +43,13 @@ const categories: Category[] = [
     title: 'Inteligencia artificial',
     description: 'Magic Post, Brand Discovery y traducción del menú usan los mejores modelos del mercado, no IA genérica.',
     icon: Sparkles,
-    partners: ['Anthropic Claude', 'OpenAI GPT', 'Google Gemini'],
+    partners: ['Modelos líderes', 'IA en tu voz', 'No genérica'],
     via: 'LikeEat + MenuEat',
     gradient: 'from-pink-500 to-rose-500',
     accentText: 'text-pink-300',
     accentBg: 'bg-pink-500/15',
     accentBorder: 'border-pink-500/40',
   },
-]
-
-const stack = [
-  { name: 'Supabase', role: 'Base de datos + Auth + Storage' },
-  { name: 'Vercel', role: 'Hosting + CDN global' },
-  { name: 'Resend', role: 'Emails transaccionales' },
-  { name: 'Sentry', role: 'Monitoreo de errores' },
 ]
 
 export function ConnectedStack() {
@@ -119,18 +112,16 @@ export function ConnectedStack() {
           })}
         </div>
 
-        <div className="bg-brand-950/60 border border-brand-800 rounded-2xl p-6">
-          <div className="flex items-center gap-2 mb-3">
-            <Shield size={14} className="text-primary-300" />
-            <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-700">Infraestructura</h3>
+        <div className="bg-brand-950/60 border border-brand-800 rounded-2xl p-6 flex items-start gap-4">
+          <div className="w-10 h-10 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center flex-shrink-0">
+            <Shield size={18} className="text-primary-300" />
           </div>
-          <div className="grid md:grid-cols-4 gap-3">
-            {stack.map((s) => (
-              <div key={s.name} className="bg-brand-900 border border-brand-800 rounded-lg p-3">
-                <div className="font-bold text-neutral-900 text-sm">{s.name}</div>
-                <div className="text-xs text-neutral-600 mt-0.5">{s.role}</div>
-              </div>
-            ))}
+          <div>
+            <h3 className="text-base font-bold text-neutral-900 mb-1">Tus datos, seguros y privados</h3>
+            <p className="text-sm text-neutral-700 leading-relaxed">
+              Tu información vive en servidores de primer nivel, con respaldos automáticos y cifrado. Cada
+              restorán ve solo lo suyo — nadie de otra cuenta puede ver lo tuyo.
+            </p>
           </div>
         </div>
 

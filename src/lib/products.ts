@@ -151,7 +151,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Recepción con foto de factura',
         description:
-          'En el local, recepción saca foto a la factura física, marca diferencias contra la OC y la factura queda lista para aprobación. Storage privado, URLs firmadas, nadie ve la foto sin permiso.',
+          'En el local, recepción saca foto a la factura física, marca diferencias contra la OC y la factura queda lista para aprobación. La foto queda guardada de forma privada y nadie la ve sin permiso.',
       },
       {
         title: 'Discrepancias asimétricas',
@@ -221,7 +221,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
       {
         q: '¿Qué pasa si un proveedor me factura algo que no estaba en la OC?',
-        a: 'La línea se marca como discrepancia. Tú decides si la aceptas (queda registrada) o la rechazas (vuelve al proveedor). El audit log queda con quién aceptó qué y cuándo.',
+        a: 'La línea se marca como discrepancia. Tú decides si la aceptas (queda registrada) o la rechazas (vuelve al proveedor). Queda registrado quién aceptó qué y cuándo.',
       },
     ],
   },
@@ -244,7 +244,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     gradient: 'from-primary-500 to-teal-500',
     external: false,
     preview: 'kanban',
-    oneLiner: 'Kanban por categoría · subtareas · visibilidad híbrida · audit log.',
+    oneLiner: 'Kanban por categoría · subtareas · visibilidad híbrida · historial completo.',
     beneficios: [
       {
         title: 'Deja de ser el cuello de botella',
@@ -254,12 +254,12 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Visibilidad híbrida real',
         description:
-          'Los admins ven todas las tareas. Los staff solo ven las suyas, las que crearon, o las que pertenecen a sus categorías. Privacidad enforced en la base de datos, no en el cliente.',
+          'Los admins ven todas las tareas. Los staff solo ven las suyas, las que crearon, o las que pertenecen a sus categorías. La privacidad está garantizada de raíz: aunque alguien quisiera, no puede ver lo que no le corresponde.',
       },
       {
         title: 'Subtareas con auto-cierre',
         description:
-          'Una tarea madre con 5 subtareas — al marcar la última hija, la madre se cierra sola. Audit log con quién hizo qué y cuándo.',
+          'Una tarea madre con 5 subtareas — al marcar la última hija, la madre se cierra sola. Queda registrado quién hizo qué y cuándo.',
       },
       {
         title: 'Comentarios y watchers',
@@ -294,7 +294,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Súmate como observador a una tarea aunque no seas asignado. Te llegan las notificaciones sin estar haciendo el trabajo.',
       },
       {
-        title: 'Audit log permanente',
+        title: 'Historial permanente',
         description:
           'Cada cambio queda registrado. Quién la creó, quién la cerró, quién la reasignó, qué comentarios se hicieron y cuándo.',
       },
@@ -333,7 +333,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
       {
         q: '¿El staff ve las tareas de otros?',
-        a: 'No. Por diseño un staff solo ve: (a) tareas sin categoría, (b) tareas de categorías donde es miembro, (c) tareas que creó, (d) tareas asignadas a él. Implementado a nivel de base de datos, no se puede saltar.',
+        a: 'No. Por diseño un staff solo ve: (a) tareas sin categoría, (b) tareas de categorías donde es miembro, (c) tareas que creó, (d) tareas asignadas a él. Está garantizado de raíz, no se puede saltar.',
       },
       {
         q: '¿Funciona en celular?',
@@ -375,7 +375,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Brand Discovery — la IA aprende tu marca',
         description:
-          'Le das tu Instagram y la IA lee tus posts, identifica tu tono, tus emojis, tus colores, tu vocabulario. Después escribe en tu voz, no en la genérica de ChatGPT.',
+          'Le das tu Instagram y la IA lee tus posts, identifica tu tono, tus emojis, tus colores, tu vocabulario. Después escribe en tu voz, no en una voz genérica de IA.',
       },
       {
         title: 'Aprobaciones internas',
@@ -836,7 +836,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Cada ciclo cerrado genera un link sharable con los resultados (sin exponer datos sensibles). Cero "mostrarme el Excel" — está en su celular.',
       },
       {
-        title: 'Audit log inmutable',
+        title: 'Historial que no se puede alterar',
         description:
           'Cada apertura, cierre, ajuste y pago queda registrado con quién, cuándo y qué cambió. Cero ambigüedad cuando alguien reclama.',
       },
@@ -868,19 +868,19 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
           'Descuentos antes del reparto (servicios, comisiones) con quantity × unit. Ajustes manuales individuales con razón anotada.',
       },
       {
-        title: 'Algoritmo verificable (cross-check)',
+        title: 'Cálculo a prueba de errores',
         description:
-          'Cálculo duplicado en TypeScript y PL/pgSQL con tests bit-a-bit. Si TS y SQL no calzan, el sistema falla — no entrega resultados ambiguos.',
+          'El reparto se calcula y se verifica por dos vías independientes. Si algo no calza, el sistema se detiene en vez de entregar un resultado dudoso — nunca un número inventado.',
       },
       {
         title: 'Exportables — CSV + PDF',
         description:
-          'Genera CSV (RFC 4180 + BOM, abre bien en Excel/Numbers chileno) y PDF profesional. Útil para liquidación o contabilidad.',
+          'Genera un CSV que abre bien en Excel y Numbers (incluso en español) y un PDF profesional. Útil para liquidación o contabilidad.',
       },
       {
         title: 'Link público de ciclo',
         description:
-          'Slug aleatorio de 12 caracteres. El link muestra solo nombres y monto final — sin datos sensibles. Compartible con el equipo.',
+          'Un link único e impredecible. Muestra solo nombres y monto final — sin datos sensibles. Compartible con el equipo.',
       },
       {
         title: 'Permisos granulares',
@@ -913,11 +913,11 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     faq: [
       {
         q: '¿Puedo reabrir un ciclo que ya cerré?',
-        a: 'Sí, mientras no esté marcado como "pagado". Una vez pagado, primero hay que desmarcarlo explícitamente (acción registrada en el audit log) y después se puede reabrir.',
+        a: 'Sí, mientras no esté marcado como "pagado". Una vez pagado, primero hay que desmarcarlo explícitamente (acción que queda registrada) y después se puede reabrir.',
       },
       {
         q: '¿Cómo se comparte el link público?',
-        a: 'Genera un slug aleatorio de 12 caracteres impredecible. Lo mandas por WhatsApp al grupo y solo quien tenga el link puede verlo. Muestra solo nombres y montos — sin datos sensibles.',
+        a: 'Genera un link único e impredecible. Lo mandas por WhatsApp al grupo y solo quien tenga el link puede verlo. Muestra solo nombres y montos — sin datos sensibles.',
       },
       {
         q: '¿Se integra con la liquidación de sueldos?',
@@ -959,7 +959,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Cuadre con workflow de aprobación',
         description:
-          'Conteo físico → discrepancias → revisión por el responsable → ajuste aprobado. Cada movimiento queda con audit log. Trazabilidad completa.',
+          'Conteo físico → discrepancias → revisión por el responsable → ajuste aprobado. Cada movimiento queda registrado. Trazabilidad completa.',
       },
       {
         title: 'Stock por ubicación real',
@@ -1045,7 +1045,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     faq: [
       {
         q: '¿Necesito PayEat o RecipEat para usar InventEat?',
-        a: 'No. InventEat funciona standalone: cargas stock, registras entradas y salidas manuales. Pero el valor crece exponencialmente cuando lo conectas: BuyEat recepción → stock automático, RecipEat + PayEat venta → descuento automático.',
+        a: 'No. InventEat funciona por sí solo: cargas stock, registras entradas y salidas manuales. Pero el valor crece muchísimo cuando lo conectas: BuyEat recepción → stock automático, RecipEat + PayEat venta → descuento automático.',
       },
       {
         q: '¿Cómo detecta las anomalías?',
@@ -1165,7 +1165,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
       {
         q: '¿Y si vendo el mismo plato a precios distintos según menú?',
-        a: 'El precio vive en MenuEat (con sus variantes), el costo vive en RecipEat. Son ortogonales — puedes tener variaciones de precio sin tocar la receta.',
+        a: 'El precio vive en MenuEat (con sus variantes), el costo vive en RecipEat. Van por separado — puedes tener variaciones de precio sin tocar la receta.',
       },
       {
         q: '¿Cómo manejo platos con guarnición elegible?',
@@ -1411,8 +1411,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     accentBorder: 'border-cyan-500/40',
     accentDot: 'bg-cyan-500',
     gradient: 'from-cyan-500 to-sky-500',
-    external: true,
-    externalUrl: 'https://bookeat.cl',
+    external: false,
     preview: 'calendar',
     oneLiner: 'Reservas online · directorio público · reemplazo a tu sistema de reservas.',
     beneficios: [
@@ -1451,7 +1450,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     ],
     pasos: [
       {
-        title: 'Activa BookEat en tu tenant',
+        title: 'Activa BookEat en tu plataforma',
         description:
           'En 5 minutos quedas activo en bookeat.cl y con el widget de reservas listo para tu sitio.',
       },
@@ -1473,8 +1472,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     ],
     faq: [
       {
-        q: '¿BookEat es parte de EatCorp o independiente?',
-        a: 'BookEat es un servicio (bookeat.cl) con quien EatCorp integra el toggle de acceso. Si tienes EatCorp, activas BookEat con un click. Si quieres solo BookEat, también puedes.',
+        q: '¿BookEat es parte de EatCorp?',
+        a: 'Sí, es una de las apps de EatCorp. La activas con un click desde tu plataforma y tus reservas viven junto al resto de tu operación. Tu restorán además aparece en el directorio público de reservas para sumar clientes nuevos.',
       },
       {
         q: '¿Reemplaza a mi sistema de reservas actual?',
@@ -1501,7 +1500,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     gradient: 'from-violet-500 to-purple-500',
     external: false,
     preview: 'roster',
-    oneLiner: 'Ficha por persona · organigrama · sueldos con candado · documentos.',
+    oneLiner: 'Ficha por persona · organigrama · remuneración aparte · documentos.',
     beneficios: [
       {
         title: 'Una sola ficha por persona',
@@ -1516,7 +1515,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Sueldos con candado',
         description:
-          'La remuneración vive en una capa aparte con su propio permiso. Solo la ve quien tú autorices; el resto del equipo usa la ficha sin acceder al sueldo.',
+          'La remuneración vive en una capa aparte: el staff usa la ficha sin acceder al sueldo, y tú decides qué perfiles administrativos pueden verlo.',
       },
       {
         title: 'Documentos en un lugar seguro',
@@ -1543,7 +1542,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Documentos privados por persona',
         description:
-          'Sube contratos y anexos a un bucket privado. Acceso gateado por permiso; nada queda expuesto por defecto.',
+          'Sube contratos y anexos a un espacio privado. El acceso queda detrás de un permiso; nada queda expuesto por defecto.',
       },
       {
         title: 'Organigrama editable',
@@ -1553,7 +1552,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       {
         title: 'Roles y permisos',
         description:
-          'Admin, RR.HH. y visualizador. Cada uno con exactamente lo que necesita ver y editar — los sueldos y documentos siempre detrás de su propio candado.',
+          'Admin, RR.HH. y visualizador. Cada uno con exactamente lo que necesita ver y editar — los sueldos y documentos con su propio permiso, fuera del alcance del staff operativo.',
       },
     ],
     pasos: [
@@ -1581,7 +1580,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     faq: [
       {
         q: '¿Quién puede ver los sueldos del equipo?',
-        a: 'Solo los perfiles con el permiso de remuneración. La información de sueldo vive en una capa separada de la ficha, así que el resto del equipo puede usar PeopleEat sin acceder a los montos.',
+        a: 'La información de sueldo vive en una capa separada de la ficha: el staff operativo no accede a los montos, y tú defines qué perfiles administrativos pueden verlos.',
       },
       {
         q: '¿PeopleEat calcula liquidaciones de sueldo?',
@@ -1589,7 +1588,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       },
       {
         q: '¿Es un módulo interno de EatCorp?',
-        a: 'Sí, es parte de EatCorp y se activa con un click si tienes la plataforma. Toda la información de tu equipo vive dentro de tu mismo tenant, con los permisos que tú definas.',
+        a: 'Sí, es parte de EatCorp y se activa con un click si tienes la plataforma. Toda la información de tu equipo vive dentro de tu misma plataforma, con los permisos que tú definas.',
       },
     ],
   },
@@ -1775,9 +1774,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     ],
     pasos: [
       {
-        title: 'Activa GiftEat en tu tenant',
+        title: 'Activamos GiftEat en tu plataforma',
         description:
-          'Quedas listo para emitir tarjetas en minutos. Defines vigencias por defecto y si quieres PIN obligatorio.',
+          'Lo dejamos listo para emitir tarjetas y defines las vigencias por defecto y si quieres PIN obligatorio.',
       },
       {
         title: 'Emite y entrega',

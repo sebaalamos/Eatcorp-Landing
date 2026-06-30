@@ -10,7 +10,7 @@ export const HOME_FAQS: Faq[] = [
   },
   {
     q: '¿Qué pasa con mi información si decido dejar EatCorp?',
-    a: 'Tus datos son tuyos siempre. En cualquier momento puedes exportar todo: facturas, tareas, posts, contactos, todo en formatos estándar (CSV, JSON, PDF). Si cancelas tu cuenta, te damos 90 días para descargar todo antes de eliminar definitivamente.',
+    a: 'Tus datos son tuyos siempre. En cualquier momento puedes exportar tu información —facturas, tareas, posts, contactos— en planillas (Excel/CSV) y PDF. Si cancelas tu cuenta, te damos un plazo para descargar todo antes de eliminarla definitivamente.',
   },
   {
     q: '¿Funciona en mi celular?',
