@@ -7,7 +7,6 @@ type Moment = {
   description: string
   app: string
   appColor: string
-  tenant: string
   mockup: 'recepcion' | 'pagos' | 'kanban' | 'post' | 'alerta'
 }
 
@@ -19,7 +18,6 @@ const moments: Moment[] = [
     description: 'Recepcionista escanea la factura en BuyEat. Discrepancias detectadas automáticamente.',
     app: 'BuyEat',
     appColor: 'bg-blue-500',
-    tenant: 'El Toro',
     mockup: 'recepcion',
   },
   {
@@ -29,7 +27,6 @@ const moments: Moment[] = [
     description: 'Admin revisa el lote del día y aprueba en minutos lo que en planilla toma horas.',
     app: 'BuyEat',
     appColor: 'bg-blue-500',
-    tenant: 'El Toro',
     mockup: 'pagos',
   },
   {
@@ -39,7 +36,6 @@ const moments: Moment[] = [
     description: 'Equipo actualiza tareas en TaskEat. Visibilidad híbrida — cada uno ve solo lo suyo.',
     app: 'TaskEat',
     appColor: 'bg-primary-500',
-    tenant: 'Tigre',
     mockup: 'kanban',
   },
   {
@@ -49,7 +45,6 @@ const moments: Moment[] = [
     description: 'LikeEat sugiere el post de hoy basado en una efeméride local. Aprobado en un click.',
     app: 'LikeEat',
     appColor: 'bg-pink-500',
-    tenant: 'Tigre',
     mockup: 'post',
   },
   {
@@ -59,7 +54,6 @@ const moments: Moment[] = [
     description: 'MaintainEat alerta que la cámara fría necesita revisión. Técnico agendado para mañana.',
     app: 'MaintainEat',
     appColor: 'bg-amber-500',
-    tenant: 'El Toro',
     mockup: 'alerta',
   },
 ]
@@ -101,7 +95,6 @@ export function ADayWithEatCorp() {
                         <div className="flex items-center gap-3 mb-2">
                           <span className="text-sm font-mono font-bold text-primary-300 bg-primary-500/15 border border-primary-500/30 px-2 py-0.5 rounded shadow-sm shadow-primary-500/20">{m.time}</span>
                           <span className={`text-[10px] font-bold uppercase tracking-wider text-white ${m.appColor} px-2 py-0.5 rounded shadow-sm`}>{m.app}</span>
-                          <span className="text-[10px] font-semibold text-neutral-600 uppercase tracking-wide">@ {m.tenant}</span>
                         </div>
                         <h3 className="text-lg font-bold text-neutral-900 mb-1">{m.title}</h3>
                         <p className="text-sm text-neutral-700 leading-relaxed">{m.description}</p>
@@ -207,11 +200,11 @@ function MiniMockup({ type }: { type: Moment['mockup'] }) {
               <span className="text-[9px] font-bold uppercase text-pink-300">Generando…</span>
             </div>
             <div className="text-[10px] text-neutral-800 leading-snug line-clamp-2">
-              &ldquo;Esta noche, una copa que abraza. Reservas mesa para hoy en Tigre&rdquo;
+              &ldquo;Esta noche, una copa que abraza. Reserva tu mesa para hoy&rdquo;
             </div>
             <div className="flex gap-1 mt-1">
-              <span className="text-[9px] text-pink-400">#tigre</span>
-              <span className="text-[9px] text-pink-400">#vitacura</span>
+              <span className="text-[9px] text-pink-400">#santiago</span>
+              <span className="text-[9px] text-pink-400">#vinos</span>
             </div>
           </div>
         </div>

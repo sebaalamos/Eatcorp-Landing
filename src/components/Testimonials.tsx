@@ -5,23 +5,19 @@ const testimonials = [
     quote:
       'La administración aprueba el lote del día en 10 minutos y el archivo bancario sale solo. Tiempo recuperado para lo que importa.',
     role: 'Equipo de operaciones',
-    restaurant: 'El Toro',
+    restaurant: 'Restorán de autor',
     location: 'Vitacura',
-    instagram: 'https://instagram.com/eltororestoran',
-    instagramHandle: '@eltororestoran',
-    initials: 'ET',
+    initials: 'RA',
     gradient: 'from-amber-400 to-orange-500',
     apps: ['BuyEat', 'TaskEat'],
   },
   {
     quote:
-      'LikeEat nos arma el plan de Instagram con efemérides locales. Aprobamos posts en segundos en vez de pasar horas pensando qué publicar.',
+      'Nos arma el plan de Instagram con efemérides locales. Aprobamos posts en segundos en vez de pasar horas pensando qué publicar.',
     role: 'Equipo de marketing',
-    restaurant: 'Tigre',
-    location: 'Vitacura',
-    instagram: 'https://instagram.com/tigrerestoran',
-    instagramHandle: '@tigrerestoran',
-    initials: 'TG',
+    restaurant: 'Bar-restorán',
+    location: 'Las Condes',
+    initials: 'BR',
     gradient: 'from-primary-400 to-teal-500',
     apps: ['LikeEat', 'TaskEat'],
   },
@@ -66,14 +62,6 @@ export function Testimonials() {
                   <div className="text-xs text-neutral-600 truncate">
                     {t.role} · {t.location}
                   </div>
-                  <a
-                    href={t.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[11px] text-primary-300 hover:text-primary-200 mt-0.5 inline-block"
-                  >
-                    {t.instagramHandle} ↗
-                  </a>
                 </div>
               </div>
 
