@@ -1,4 +1,4 @@
-import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, UserCheck, Coins, Link2, Boxes, ChefHat, TrendingUp, ArrowRight as ArrowR, Package, Gift, Lock } from 'lucide-react'
+import { Check, Sparkles, Camera, Heart, MessageCircle, Send, Bookmark, BadgeCheck, QrCode, Languages, Users, CalendarClock, Wrench, ClipboardList, AlertTriangle, Calendar as CalIcon, Coins, Link2, Boxes, ChefHat, TrendingUp, ArrowRight as ArrowR, Package, Gift, Lock, Star, CookingPot } from 'lucide-react'
 import type { ProductSlug } from '@/lib/products'
 
 export function ProductMockup({ slug }: { slug: ProductSlug }) {
@@ -24,8 +24,10 @@ export function ProductMockup({ slug }: { slug: ProductSlug }) {
         {slug === 'inventeat' && <InventEatM />}
         {slug === 'recipeat' && <RecipEatM />}
         {slug === 'payeat' && <PayEatM />}
+        {slug === 'cookeat' && <CookEatM />}
         {slug === 'bookeat' && <BookEatM />}
-        {slug === 'staffeat' && <StaffEatM />}
+        {slug === 'peopleat' && <PeopleEatM />}
+        {slug === 'revieweat' && <ReviewEatM />}
         {slug === 'gifteat' && <GiftEatM />}
       </div>
     </div>
@@ -653,64 +655,192 @@ function BookEatM() {
   )
 }
 
-function StaffEatM() {
-  const requests = [
-    { initials: 'JC', name: 'Juan Castro', role: 'Cocinero', type: 'Vacaciones', dates: '12-18 may', days: 7, status: 'pending' },
-    { initials: 'PR', name: 'Paula Ríos', role: 'Sala', type: 'Día libre', dates: '8 may', days: 1, status: 'approved' },
-    { initials: 'MA', name: 'Marcos Alarcón', role: 'Bar', type: 'Cambio turno', dates: '15 may', days: 1, status: 'pending' },
-    { initials: 'IT', name: 'Isidora Torres', role: 'Admin', type: 'Vacaciones', dates: '21 may-3 jun', days: 14, status: 'approved' },
+function PeopleEatM() {
+  const people = [
+    { initials: 'IT', name: 'Isidora Torres', role: 'Gerenta', area: 'Administración', salary: true },
+    { initials: 'JC', name: 'Juan Castro', role: 'Jefe de cocina', area: 'Cocina', reports: 'Isidora T.' },
+    { initials: 'PR', name: 'Paula Ríos', role: 'Garzona', area: 'Sala', reports: 'Isidora T.' },
+    { initials: 'MA', name: 'Marcos Alarcón', role: 'Barman', area: 'Barra', reports: 'Juan C.' },
   ]
   return (
     <div className="p-5 bg-gradient-to-br from-brand-900 to-brand-950">
       <div className="flex items-center justify-between mb-3">
         <div>
-          <div className="text-sm font-semibold text-neutral-900">Solicitudes del equipo</div>
-          <div className="text-[10px] text-neutral-600 mt-0.5">2 pendientes · 2 aprobadas</div>
+          <div className="text-sm font-semibold text-neutral-900">Equipo · 12 personas</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">4 áreas · organigrama al día</div>
         </div>
         <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-300 font-semibold border border-violet-500/30">
-          <UserCheck size={10} />
-          RR.HH.
+          <Users size={10} />
+          PeopleEat
         </div>
       </div>
 
-      <div className="space-y-1.5">
-        {requests.map((r, i) => (
-          <div key={i} className={`flex items-center gap-2.5 p-2 rounded-lg border ${r.status === 'pending' ? 'bg-brand-800/60 border-brand-700' : 'bg-primary-500/5 border-primary-500/20'}`}>
+      <div className="space-y-1.5 mb-3">
+        {people.map((p, i) => (
+          <div key={i} className="flex items-center gap-2.5 p-2 rounded-lg border bg-brand-800/60 border-brand-700">
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0 shadow-sm">
-              {r.initials}
+              {p.initials}
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5">
-                <span className="text-[11px] font-semibold text-neutral-900 truncate">{r.name}</span>
+                <span className="text-[11px] font-semibold text-neutral-900 truncate">{p.name}</span>
                 <span className="text-[8px] text-neutral-600">·</span>
-                <span className="text-[9px] text-neutral-600">{r.role}</span>
+                <span className="text-[9px] text-neutral-600 truncate">{p.role}</span>
               </div>
               <div className="flex items-center gap-1.5 mt-0.5">
-                <span className="text-[9px] text-neutral-700 font-medium">{r.type}</span>
-                <span className="text-[9px] text-neutral-600">·</span>
-                <span className="text-[9px] text-neutral-700">{r.dates}</span>
-                <span className="text-[8px] text-neutral-600 bg-brand-900 border border-brand-700 px-1 rounded">{r.days}d</span>
+                <span className="text-[9px] text-violet-200 bg-violet-500/15 border border-violet-500/30 px-1.5 rounded">{p.area}</span>
+                {p.reports && <span className="text-[9px] text-neutral-600">reporta a {p.reports}</span>}
               </div>
             </div>
-            {r.status === 'pending' ? (
-              <div className="flex gap-1">
-                <button className="w-6 h-6 rounded bg-primary-500/20 border border-primary-500/40 flex items-center justify-center">
-                  <Check size={11} className="text-primary-300" strokeWidth={3} />
-                </button>
-                <button className="w-6 h-6 rounded bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-300 text-xs leading-none font-bold">×</button>
-              </div>
-            ) : (
-              <span className="text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full bg-primary-500/20 text-primary-300">
-                Aprobada
-              </span>
-            )}
+            <div className="flex items-center gap-1 text-[9px] font-semibold text-neutral-600 bg-brand-900 border border-brand-700 px-1.5 py-0.5 rounded flex-shrink-0">
+              <Lock size={9} />
+              Sueldo
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-3 pt-3 border-t border-brand-800 flex items-center justify-between text-[10px]">
-        <span className="text-neutral-600">9/12 colaboradores activos esta semana</span>
-        <span className="text-violet-300 font-semibold">Ver calendario</span>
+      <div className="bg-violet-500/10 border border-violet-500/30 rounded-lg p-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-full bg-violet-500/20 border border-violet-500/40 flex items-center justify-center flex-shrink-0">
+            <Lock size={13} className="text-violet-300" />
+          </div>
+          <div>
+            <div className="text-[11px] font-bold text-neutral-900">Remuneración con candado</div>
+            <div className="text-[10px] text-neutral-600">Solo quien tú autorizas ve los sueldos</div>
+          </div>
+        </div>
+        <span className="text-[9px] font-bold uppercase tracking-wide text-violet-300 bg-violet-500/15 border border-violet-500/30 px-1.5 py-0.5 rounded">Permiso</span>
+      </div>
+    </div>
+  )
+}
+
+function CookEatM() {
+  const tickets = [
+    { table: 'Mesa 4', station: 'Caliente', mins: '4′', items: ['2× Asado tira', '1× Pasta nona'], state: 'cocinando' },
+    { table: 'Mesa 7', station: 'Fría', mins: '2′', items: ['1× Ceviche', '2× Ensalada'], state: 'nuevo' },
+    { table: 'Mesa 2', station: 'Barra', mins: '1′', items: ['2× Pisco sour', '1× Limonada'], state: 'nuevo' },
+  ]
+  const stateTone: Record<string, string> = {
+    nuevo: 'bg-rose-500/20 text-rose-300 border-rose-500/40',
+    cocinando: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+  }
+  return (
+    <div className="p-5 bg-gradient-to-br from-brand-900 to-brand-950">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <div className="text-sm font-semibold text-neutral-900">Pantalla de cocina</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">3 comandas en curso · ruteo por estación</div>
+        </div>
+        <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-semibold border border-rose-500/30">
+          <CookingPot size={10} />
+          CookEat
+        </div>
+      </div>
+
+      <div className="space-y-1.5 mb-3">
+        {tickets.map((t, i) => (
+          <div key={i} className="rounded-lg border bg-brand-800/60 border-brand-700 overflow-hidden">
+            <div className="flex items-center justify-between px-2.5 py-1.5 border-b border-brand-700">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[11px] font-bold text-neutral-900">{t.table}</span>
+                <span className="text-[8px] font-semibold uppercase tracking-wide text-neutral-600 bg-brand-900 border border-brand-700 px-1.5 py-0.5 rounded-full">{t.station}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[9px] font-bold text-neutral-700 tabular-nums">{t.mins}</span>
+                <span className={`text-[8px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full border ${stateTone[t.state]}`}>{t.state}</span>
+              </div>
+            </div>
+            <div className="px-2.5 py-1.5 space-y-0.5">
+              {t.items.map((it) => (
+                <div key={it} className="flex items-center gap-1.5 text-[10px] text-neutral-800">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400 flex-shrink-0"></span>
+                  {it}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-rose-500/10 border border-rose-500/30 rounded-lg p-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center flex-shrink-0">
+            <ArrowR size={13} className="text-rose-300" />
+          </div>
+          <div>
+            <div className="text-[11px] font-bold text-neutral-900">Comanda desde PayEat</div>
+            <div className="text-[10px] text-neutral-600">Sala dispara, cocina ve al instante</div>
+          </div>
+        </div>
+        <span className="text-[9px] font-bold uppercase tracking-wide text-rose-300 bg-rose-500/15 border border-rose-500/30 px-1.5 py-0.5 rounded">En vivo</span>
+      </div>
+    </div>
+  )
+}
+
+function ReviewEatM() {
+  const responses = [
+    { initials: 'CL', name: 'Cliente · Mesa 6', score: 9, text: 'La pasta increíble y la atención muy buena.', tone: 'text-primary-300' },
+    { initials: 'CL', name: 'Cliente · link', score: 7, text: 'Rico todo, pero nos demoramos en que llegara.', tone: 'text-amber-300' },
+    { initials: 'CL', name: 'Cliente · Mesa 2', score: 10, text: '¡Volvemos seguro! El postre se lució.', tone: 'text-primary-300' },
+  ]
+  return (
+    <div className="p-5 bg-gradient-to-br from-brand-900 to-brand-950">
+      <div className="flex items-center justify-between mb-3">
+        <div>
+          <div className="text-sm font-semibold text-neutral-900">Opiniones de la semana</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">38 respuestas · inbox unificado</div>
+        </div>
+        <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30">
+          <Star size={10} />
+          ReviewEat
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-1.5 mb-3">
+        {[
+          { label: 'NPS', value: '+62', dot: 'bg-primary-500' },
+          { label: 'Respuestas', value: '38', dot: 'bg-amber-500' },
+          { label: 'Promotores', value: '74%', dot: 'bg-emerald-500' },
+        ].map((b) => (
+          <div key={b.label} className="bg-brand-800/60 border border-brand-700 rounded-lg p-2">
+            <div className="flex items-center gap-1 mb-0.5">
+              <div className={`w-1.5 h-1.5 rounded-full ${b.dot}`}></div>
+              <div className="text-[9px] font-bold uppercase tracking-wider text-neutral-700 truncate">{b.label}</div>
+            </div>
+            <div className="text-base font-bold text-neutral-900 tabular-nums leading-none">{b.value}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="space-y-1.5 mb-3">
+        {responses.map((r, i) => (
+          <div key={i} className="flex items-start gap-2.5 p-2 rounded-lg border bg-brand-800/60 border-brand-700">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 flex items-center justify-center text-white text-[9px] font-bold flex-shrink-0 shadow-sm">
+              {r.initials}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[10px] font-semibold text-neutral-700 truncate">{r.name}</span>
+                <span className={`text-[10px] font-bold tabular-nums ${r.tone}`}>{r.score}/10</span>
+              </div>
+              <div className="text-[10px] text-neutral-800 leading-snug mt-0.5">{r.text}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-3">
+        <div className="flex items-center justify-between mb-1">
+          <div className="text-[10px] font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1">
+            <QrCode size={11} />
+            QR en la mesa
+          </div>
+          <span className="text-[9px] text-neutral-600 font-mono">app.eatcorp.cl/#/q/<span className="text-amber-200">op1n</span></span>
+        </div>
+        <div className="text-[9px] text-neutral-600">El cliente escanea y opina antes de irse.</div>
       </div>
     </div>
   )
@@ -895,7 +1025,7 @@ function PayEatM() {
       <div className="flex items-center justify-between mb-3">
         <div>
           <div className="text-sm font-semibold text-neutral-900">Ventas de hoy</div>
-          <div className="text-[10px] text-neutral-600 mt-0.5">Lectura de ventas · 47 tickets</div>
+          <div className="text-[10px] text-neutral-600 mt-0.5">Ventas del turno · 47 tickets</div>
         </div>
         <div className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-primary-500/20 text-primary-300 font-semibold border border-primary-500/30">
           <Coins size={10} />
@@ -945,15 +1075,15 @@ function PayEatM() {
         <div className="flex items-center justify-between mb-1">
           <div className="text-[10px] font-bold uppercase tracking-wider text-primary-300 flex items-center gap-1">
             <Sparkles size={11} />
-            Flujo completo activado
+            Flujo sala → cocina → caja
           </div>
-          <div className="text-[9px] font-bold uppercase tracking-wider text-neutral-600">Dic 2026</div>
+          <span className="text-[9px] font-bold uppercase tracking-wider text-primary-300 bg-primary-500/15 border border-primary-500/30 px-1.5 py-0.5 rounded">En vivo</span>
         </div>
         <div className="text-[10px] text-neutral-700 leading-snug">
-          POS propio con KDS + cobro con tarjeta en construcción. Por ahora, lectura de tu POS o carga manual.
+          Comanda a cocina con CookEat, cobro dividido y caja con arqueo. Cada venta con receta descuenta stock.
         </div>
-        <div className="flex gap-1 mt-2">
-          {['Comanda KDS', 'Cobro con tarjeta', 'Recibos', 'Offline'].map((f) => (
+        <div className="flex flex-wrap gap-1 mt-2">
+          {['Mesas', 'Comanda KDS', 'Cobro dividido', 'Caja con arqueo'].map((f) => (
             <span key={f} className="text-[8px] font-bold uppercase tracking-wider text-primary-300 bg-primary-500/15 border border-primary-500/30 px-1.5 py-0.5 rounded">
               {f}
             </span>

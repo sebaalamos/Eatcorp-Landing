@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Sparkles, ChevronRight, Clock, Rocket, FlaskConical } from 'lucide-react'
+import { ArrowRight, Sparkles, ChevronRight } from 'lucide-react'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
-import { PRODUCTS_LIST, UPCOMING_APPS, type UpcomingApp } from '@/lib/products'
+import { PRODUCTS_LIST } from '@/lib/products'
 
 const META_TITLE = 'Productos — todas las apps de EatCorp'
 const META_DESCRIPTION =
@@ -49,27 +49,6 @@ const CATEGORIES: { id: 'operations' | 'collaborators' | 'customer'; label: stri
   },
 ]
 
-const ROADMAP_GROUPS: { label: string; status: UpcomingApp['status']; icon: typeof Clock; description: string }[] = [
-  {
-    label: 'En construcción',
-    status: 'construyendo',
-    icon: Rocket,
-    description: 'Apps con desarrollo activo y piloto interno en marcha.',
-  },
-  {
-    label: 'Planeado',
-    status: 'planeado',
-    icon: Clock,
-    description: 'Apps con scope decidido y fecha objetivo definida.',
-  },
-  {
-    label: 'En evaluación',
-    status: 'evaluando',
-    icon: FlaskConical,
-    description: 'Apps en estudio — podrían sumarse al catálogo o quedar como features de otras apps.',
-  },
-]
-
 export default function ProductosIndex() {
   return (
     <main id="contenido" tabIndex={-1} className="flex flex-col pt-16 outline-none">
@@ -91,7 +70,7 @@ export default function ProductosIndex() {
         <div className="max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full bg-primary-500/15 border border-primary-500/30">
             <Sparkles size={12} className="text-primary-300" />
-            <span className="text-xs font-semibold uppercase tracking-wide text-primary-300">{PRODUCTS_LIST.length} apps live · {UPCOMING_APPS.length}+ en roadmap</span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-primary-300">{PRODUCTS_LIST.length} apps disponibles</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 mb-5 leading-[1.05] tracking-tight">
             Una plataforma,
@@ -163,80 +142,6 @@ export default function ProductosIndex() {
               </div>
             )
           })}
-        </div>
-      </section>
-
-      {/* Lo que viene — Roadmap */}
-      <section className="py-24 px-4 bg-brand-900 border-t border-brand-800">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full bg-primary-500/15 text-primary-300 text-xs font-semibold uppercase tracking-wide border border-primary-500/30">
-              <Sparkles size={12} />
-              Roadmap del ecosistema
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4 leading-tight">
-              Lo que viene en EatCorp
-            </h2>
-            <p className="text-lg text-neutral-700 max-w-2xl mx-auto">
-              No vendemos lo que no existe. Pero queremos que sepas hacia dónde va el ecosistema cuando elijas EatCorp.
-            </p>
-          </div>
-
-          {ROADMAP_GROUPS.map((group) => {
-            const apps = UPCOMING_APPS.filter((a) => a.status === group.status)
-            if (apps.length === 0) return null
-            const GroupIcon = group.icon
-            return (
-              <div key={group.status} className="mb-12 last:mb-0">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-9 h-9 rounded-lg bg-brand-800 border border-brand-700 flex items-center justify-center text-primary-300">
-                    <GroupIcon size={16} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-neutral-900 leading-tight">{group.label}</h3>
-                    <p className="text-xs text-neutral-600 mt-0.5">{group.description}</p>
-                  </div>
-                  <div className="ml-auto text-xs font-bold uppercase tracking-wider text-neutral-700 bg-brand-800 border border-brand-700 px-2 py-1 rounded-full">
-                    {apps.length}
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {apps.map((app) => {
-                    const AppIcon = app.icon
-                    return (
-                      <div
-                        key={app.slug}
-                        className={`relative bg-brand-800/50 border ${app.accentBorder} rounded-2xl p-5 overflow-hidden`}
-                      >
-                        <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${app.gradient}`}></div>
-                        <div className="flex items-start justify-between mb-3">
-                          <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${app.gradient} flex items-center justify-center text-white shadow-md shadow-black/20`}>
-                            <AppIcon size={20} />
-                          </div>
-                          <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${app.accentBg} ${app.accentText} ${app.accentBorder} border whitespace-nowrap`}>
-                            {app.eta}
-                          </span>
-                        </div>
-                        <h4 className="text-lg font-bold text-neutral-900 leading-tight mb-1">{app.name}</h4>
-                        <p className={`text-xs font-semibold uppercase tracking-wide ${app.accentText} mb-2`}>
-                          {app.tagline}
-                        </p>
-                        <p className="text-sm text-neutral-700 leading-relaxed">{app.description}</p>
-                        <div className="mt-3 text-[10px] text-neutral-600">
-                          Categoría: <span className="text-neutral-700 font-semibold">{app.categoryLabel}</span>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            )
-          })}
-
-          <p className="text-center text-xs text-neutral-500 mt-8">
-            Roadmap sujeto a cambios. Las fechas son objetivos internos, no compromisos contractuales.
-            Última revisión: mayo 2026.
-          </p>
         </div>
       </section>
 

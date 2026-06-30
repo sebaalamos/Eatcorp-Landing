@@ -1,4 +1,4 @@
-import { CreditCard, Landmark, Clock, FileText, Wallet, Sparkles, Shield, type LucideIcon } from 'lucide-react'
+import { CreditCard, Landmark, Sparkles, Shield, type LucideIcon } from 'lucide-react'
 
 type Category = {
   id: string
@@ -7,7 +7,6 @@ type Category = {
   icon: LucideIcon
   partners: string[]
   via: string
-  live: boolean
   gradient: string
   accentText: string
   accentBg: string
@@ -18,11 +17,10 @@ const categories: Category[] = [
   {
     id: 'pos',
     title: 'POS y ventas',
-    description: 'PayEat lee tus ventas desde tu POS hoy o las cargas manualmente. POS propio + cobro con tarjeta en construcción para Dic 2026.',
+    description: 'PayEat es tu POS: mesas, comandas a cocina y caja con arqueo, con el stock que se descuenta solo. ¿Prefieres seguir con tu POS actual? También leemos esas ventas.',
     icon: CreditCard,
-    partners: ['Tu POS', 'Cobro con tarjeta (Dic 2026)', 'POS propio (Dic 2026)'],
+    partners: ['PayEat (POS propio)', 'Tu POS actual', 'CookEat (cocina)'],
     via: 'PayEat',
-    live: true,
     gradient: 'from-primary-500 to-teal-500',
     accentText: 'text-primary-300',
     accentBg: 'bg-primary-500/15',
@@ -35,7 +33,6 @@ const categories: Category[] = [
     icon: Landmark,
     partners: ['Banco de Chile', 'BCI', 'Santander', 'Itaú', 'Banco Estado'],
     via: 'BuyEat',
-    live: true,
     gradient: 'from-blue-500 to-cyan-500',
     accentText: 'text-blue-300',
     accentBg: 'bg-blue-500/15',
@@ -48,50 +45,10 @@ const categories: Category[] = [
     icon: Sparkles,
     partners: ['Anthropic Claude', 'OpenAI GPT', 'Google Gemini'],
     via: 'LikeEat + MenuEat',
-    live: true,
     gradient: 'from-pink-500 to-rose-500',
     accentText: 'text-pink-300',
     accentBg: 'bg-pink-500/15',
     accentBorder: 'border-pink-500/40',
-  },
-  {
-    id: 'control',
-    title: 'Asistencia y marcaje',
-    description: 'ControlEat integra con los relojes de control que ya tienes — partimos con los más usados y sumamos los demás según demanda.',
-    icon: Clock,
-    partners: ['Relojes de control', 'Otros'],
-    via: 'ControlEat (Oct 2026)',
-    live: false,
-    gradient: 'from-primary-500 to-emerald-500',
-    accentText: 'text-primary-300',
-    accentBg: 'bg-primary-500/15',
-    accentBorder: 'border-primary-500/40',
-  },
-  {
-    id: 'tax',
-    title: 'Documentos tributarios',
-    description: 'BillEat emite boletas, facturas y notas vía un partner PSF certificado por el SII — camino a certificación propia.',
-    icon: FileText,
-    partners: ['SII', 'PSF certificado'],
-    via: 'BillEat (Nov 2026)',
-    live: false,
-    gradient: 'from-emerald-500 to-teal-500',
-    accentText: 'text-primary-300',
-    accentBg: 'bg-primary-500/15',
-    accentBorder: 'border-primary-500/40',
-  },
-  {
-    id: 'payroll',
-    title: 'Liquidación de sueldos',
-    description: 'PayrollEat paga las cotizaciones previsionales por ti. Reemplaza el software de remuneraciones externo con motor propio.',
-    icon: Wallet,
-    partners: ['Cotizaciones previsionales', 'Reemplaza tu software de sueldos'],
-    via: 'PayrollEat (Nov 2026)',
-    live: false,
-    gradient: 'from-violet-500 to-purple-500',
-    accentText: 'text-violet-300',
-    accentBg: 'bg-violet-500/15',
-    accentBorder: 'border-violet-500/40',
   },
 ]
 
@@ -136,14 +93,8 @@ export function ConnectedStack() {
                     <CatIcon size={18} />
                   </div>
                   <h3 className="text-base font-bold text-neutral-900 leading-tight flex-1">{cat.title}</h3>
-                  <span
-                    className={`flex-shrink-0 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
-                      cat.live
-                        ? 'bg-primary-500/15 text-primary-300 border-primary-500/40'
-                        : 'bg-brand-900 text-neutral-600 border-brand-700'
-                    }`}
-                  >
-                    {cat.live ? 'Disponible hoy' : 'Roadmap'}
+                  <span className="flex-shrink-0 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border bg-primary-500/15 text-primary-300 border-primary-500/40">
+                    Disponible hoy
                   </span>
                 </div>
 
@@ -183,10 +134,6 @@ export function ConnectedStack() {
           </div>
         </div>
 
-        <p className="text-center text-xs text-neutral-500 mt-8">
-          Las integraciones marcadas <span className="text-primary-300 font-semibold">Disponible hoy</span> ya
-          funcionan; las de <span className="text-neutral-400 font-semibold">Roadmap</span> entran con la fecha indicada.
-        </p>
       </div>
     </section>
   )

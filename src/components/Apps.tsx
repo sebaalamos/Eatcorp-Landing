@@ -11,6 +11,7 @@ import {
   Boxes,
   ChefHat,
   Gift,
+  Star,
 } from 'lucide-react'
 import { PRODUCTS_LIST, type Product, type ProductSlug, type Accent } from '@/lib/products'
 
@@ -25,7 +26,6 @@ type AppDef = {
   accent: Accent
   external: boolean
   externalUrl?: string
-  pilot?: boolean
   preview: Preview
 }
 
@@ -40,7 +40,6 @@ const apps: AppDef[] = PRODUCTS_LIST.map((p) => ({
   accent: p.accentClass,
   external: p.external,
   externalUrl: p.externalUrl,
-  pilot: p.pilot,
   preview: p.preview,
 }))
 
@@ -73,9 +72,9 @@ export function AppsGrid() {
           >
             <AppPreview type={app.preview} accent={app.accent} />
             <div className="p-4 relative bg-brand-950/40 backdrop-blur-[2px]">
-              {(app.external || app.pilot) && (
+              {app.external && (
                 <span className="absolute top-2 right-2 text-[9px] font-semibold uppercase tracking-wide text-neutral-600 bg-brand-950/80 border border-brand-700 px-1.5 py-0.5 rounded-full">
-                  {app.external ? 'Externa' : 'Piloto'}
+                  Externa
                 </span>
               )}
               <div className="flex items-center gap-2.5 mb-2">
@@ -128,7 +127,58 @@ function AppPreview({ type, accent }: { type: Preview; accent: Accent }) {
         {type === 'recipes' && <RecipesPreview />}
         {type === 'sales' && <SalesPreview />}
         {type === 'gift' && <GiftPreview />}
+        {type === 'kds' && <KdsPreview />}
+        {type === 'reviews' && <ReviewsPreview />}
       </div>
+    </div>
+  )
+}
+
+function KdsPreview() {
+  const tickets = [
+    { table: 'Mesa 4', station: 'Caliente', mins: '4′' },
+    { table: 'Mesa 7', station: 'Fría', mins: '2′' },
+    { table: 'Mesa 2', station: 'Barra', mins: '1′' },
+  ]
+  return (
+    <div className="h-full flex flex-col gap-1">
+      <div className="flex items-center justify-between mb-0.5">
+        <span className="text-[8px] font-bold uppercase tracking-wider text-rose-300">Cocina · en vivo</span>
+        <span className="text-[8px] font-bold text-rose-200 bg-rose-500/30 border border-rose-400/40 px-1 rounded">3</span>
+      </div>
+      {tickets.map((t) => (
+        <div key={t.table} className="flex items-center gap-1.5 bg-brand-950/70 border border-rose-500/20 rounded px-1.5 py-1">
+          <span className="text-[9px] font-bold text-neutral-900 flex-shrink-0">{t.table}</span>
+          <span className="text-[8px] text-neutral-700 bg-brand-900 border border-brand-700 px-1 rounded-full flex-1 truncate">{t.station}</span>
+          <span className="text-[8px] font-bold text-rose-300 tabular-nums">{t.mins}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function ReviewsPreview() {
+  const rows = [
+    { tag: 'Mesa 6', score: '9', w: 'w-11/12' },
+    { tag: 'Link', score: '7', w: 'w-3/4' },
+    { tag: 'Mesa 2', score: '10', w: 'w-full' },
+  ]
+  return (
+    <div className="h-full flex flex-col gap-1">
+      <div className="flex items-center justify-between mb-0.5">
+        <span className="text-[8px] font-bold uppercase tracking-wider text-amber-300">NPS · semana</span>
+        <span className="text-[8px] font-bold text-amber-200 bg-amber-500/30 border border-amber-400/40 px-1 rounded tabular-nums">+62</span>
+      </div>
+      {rows.map((r, i) => (
+        <div key={i} className="flex items-center gap-1.5 bg-brand-950/70 border border-amber-500/20 rounded px-1.5 py-1">
+          <Star size={9} className="text-amber-300 flex-shrink-0" fill="currentColor" />
+          <span className="text-[8px] text-neutral-700 flex-shrink-0">{r.tag}</span>
+          <div className="flex-1 h-1 bg-brand-800 rounded-full overflow-hidden">
+            <div className={`h-full ${r.w} bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full`}></div>
+          </div>
+          <span className="text-[8px] font-bold text-amber-300 tabular-nums">{r.score}</span>
+        </div>
+      ))}
     </div>
   )
 }
